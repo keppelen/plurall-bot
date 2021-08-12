@@ -1,9 +1,11 @@
 import { GetWhichBook } from './interface/select-book'
 import { HowToSolve } from './interface/how-to-solve'
+import { SolveBook } from './resolve-book'
 
 async function Start(){
     const book = await GetWhichBook()
-    await HowToSolve(book)
+    const how = await HowToSolve(book)
+    await SolveBook(book,how)
 }
 
 
