@@ -1,11 +1,45 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import dotenv from 'dotenv'
+import { IBook } from './books'
 dotenv.config()
 
 const token = process.env.TOKEN
 
+interface ITaskProgress {
+    correct: number,
+    wrong: number, 
+    total: number
+}
 
-async function GetTasks(book:string){
+export interface ITask {
+    id: number,
+    name: string,
+    official_answer_in_words: null|string,
+    progress: ITaskProgress,
+    user_task_id: number,
+    status_in_words: string,
+    status: string,
+    end_date: null|string
+}
+
+export interface ITaskGroup {
+    title: string,
+    subtitle: string,
+    quick_answer: boolean,
+    node_id: string,
+    video: {
+      title: string,
+      url: string,
+      thumbnail: string
+    },
+    end_date: null|string,
+    finish_button: null|string,
+    receipt_button: null|string,
+    tasks: ITask[]
+}
+
+
+async function GetTaskGroup(book:IBook){
     console.log("Pegando tarefas do livro x....")
 
     const config:AxiosRequestConfig = {
@@ -28,14 +62,11 @@ async function GetTasks(book:string){
         }
     }
     
-    try{
-        const {data} = await axios.get(`https://api.plurall.net/api/task_workflows?node_group=${book}&page=1`,config)
-        console.log(data)
-    }catch(err){
-        console.log("Ocorreu um erro ao buscar as apostilas...")
-    }
+    const {data} = await axios.get(`https://api.plurall.net/api/task_workflows?node_group=${book.id}&page=1`,config)
+    const taskGroups:ITaskGroup[] = data.data
+    return taskGroups
 }
 
 
 
-export default GetTasks
+export default GetTaskGroup
