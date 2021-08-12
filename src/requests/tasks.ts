@@ -40,7 +40,7 @@ export interface ITaskGroup {
 
 
 async function GetTaskGroup(book:IBook){
-    console.log("Pegando tarefas do livro x....")
+    console.log("🔍 Pegando tarefas da apostila...")
 
     const config:AxiosRequestConfig = {
         headers: {

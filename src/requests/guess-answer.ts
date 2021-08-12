@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { IQuestion } from "./questions";
 
 const token = process.env.TOKEN
+const delay = 3000 //ms
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
     if(question.task_type !== 'multiple_choice'){
@@ -15,7 +16,9 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
     }
 
     console.log(`                   ✏️ Chutando GRUPO: ${groupid} | QUEST: ${question.id} | ALT: ${answer}`)
-    await timeout(4000)
+
+    await timeout(delay) // purposeful delay 
+
     const config:AxiosRequestConfig = {
         headers: {
             'Authorization': `Bearer ${token}`,
@@ -67,5 +70,5 @@ function timeout(ms:number) {
 
 
 function saveAnswer(question:IQuestion,groupid:number, answer:string){
-    console.log("SALVANDO ALTERNATIVA CORRETA")
+    console.log(`                   💾 Salvando alternativa correta.. (${answer})`)
 }

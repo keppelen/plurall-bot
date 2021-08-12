@@ -15,7 +15,7 @@ export interface IBook {
 
 
 async function GetBooks(){
-    console.log("Pegando apostilas....")
+    console.log("🔍 Pegando apostilas....")
 
     const config:AxiosRequestConfig = {
         headers: {
