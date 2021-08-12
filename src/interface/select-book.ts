@@ -1,4 +1,4 @@
-import GetBooks, { IBook } from "./books"
+import GetBooks, { IBook } from "../books"
 import prompt from 'prompt-sync'
 
 const getAwnser = prompt()

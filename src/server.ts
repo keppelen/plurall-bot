@@ -1,9 +1,7 @@
-import GetTasks from './task-from-books'
-import GetBooks from './books'
-import { GetWhichBook } from './interface'
+import { GetWhichBook } from './interface/select-book'
 
 async function Start(){
-    await GetWhichBook()
+    const book = await GetWhichBook()
 }
 
 
