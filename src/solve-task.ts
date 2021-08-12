@@ -1,6 +1,7 @@
 import { IBook } from "./requests/books"
-import { GetQuestions } from "./requests/questions"
 import GetTasks, { ITask, ITaskGroup } from "./requests/tasks"
+import { GetQuestionGroup, IQuestionGroup } from "./requests/questions"
+import { SolveQuestionGroup } from "./solve-question"
 
 
 export async function SolveTaskGroup(book:IBook, taskGroup:ITaskGroup){
@@ -8,20 +9,22 @@ export async function SolveTaskGroup(book:IBook, taskGroup:ITaskGroup){
     const {tasks} = taskGroup
 
     for(let x = 0; x < tasks.length; x++){
-        const task:ITask = tasks[x]
-        await SolveTask(task)
+        await SolveTask(tasks[x])
     }
     
 }
 
-
 async function SolveTask(task:ITask){
     if(isAlreadyFullSolved(task)){
-        console.log(`✅ Task ja resolvida por completo, próxima`)
+        console.log(`   ✅ Task ja resolvida por completo, próxima`)
         return
     }
+    console.log(`   📝 Fazendo task ${task.name}`)
 
-    console.log(`📝 Fazendo task ${task.name}`)
+    const questionGroup:IQuestionGroup[] = await GetQuestionGroup(task)
+    for(let x = 0; x < questionGroup.length; x++){
+        await SolveQuestionGroup(questionGroup[x])
+    }
 }
 
 function isAlreadyFullSolved(task:ITask){

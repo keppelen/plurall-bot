@@ -26,8 +26,8 @@ export interface IQuestionGroup{
     subtasks: IQuestion[]
 }
 
-export async function GetQuestions(task:ITask){
-    console.log(`Pegando perguntas do tarefa ${task.title}....`)
+export async function GetQuestionGroup(task:ITask){
+    console.log(`       🔍 Pegando as perguntas do tarefa...`)
 
     const config:AxiosRequestConfig = {
         headers: {
@@ -49,7 +49,7 @@ export async function GetQuestions(task:ITask){
         }
     }
     
-    const {data} = await axios.get(`https://api.plurall.net/api/task_workflows/119934`,config)
+    const {data} = await axios.get(`https://api.plurall.net/api/task_workflows/${task.id}`,config)
     const questiongroup:IQuestionGroup[] = data.data.subtask_groups
     return questiongroup
 }
