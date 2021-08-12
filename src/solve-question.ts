@@ -15,7 +15,18 @@ export async function SolveQuestionGroup(questionGroup:IQuestionGroup) {
 async function SolveQuestion(question:IQuestion, groupid:number) {
     console.log(`               📝 Fazendo questão ${question.title}`)
     
+    let alternatives:string[] = ['a','b','c','d','e']
+
     for(let x = 0; x < 3; x++){
-        await GuessAnswer(question, groupid, 'a');
+        const guess = alternatives[Random(0,alternatives.length-1)]
+
+        const isCorrect = await GuessAnswer(question, groupid, guess)
+        if(isCorrect) return
+
+        alternatives = alternatives.filter(item => item !== guess)
     }
+}
+
+function Random(min:number, max:number){
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }
