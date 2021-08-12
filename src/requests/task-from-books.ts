@@ -5,7 +5,7 @@ dotenv.config()
 const token = process.env.TOKEN
 
 
-async function GetTasks(book=1778879){
+async function GetTasks(book:string){
     console.log("Pegando tarefas do livro x....")
 
     const config:AxiosRequestConfig = {
