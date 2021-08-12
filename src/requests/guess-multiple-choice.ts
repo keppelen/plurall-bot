@@ -1,14 +1,26 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { GuessOpenAnswer } from "./guess-open-answer";
 import { IQuestion } from "./questions";
+import { ReadAnswer } from "./read-answer";
 
 const token = process.env.TOKEN
 const delay = 3000 //ms
 
-export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
-    if(question.task_type !== 'multiple_choice'){
-        console.log("                   📜Coisa para ler, depois eu faço")
-        return
+
+export async function GuessMultipleChoice(question:IQuestion,groupid:number){
+    let alternatives:string[] = ['a','b','c','d','e']
+
+    for(let x = 0; x < 3; x++){
+        const guess = alternatives[Random(0,alternatives.length-1)]
+
+        const isCorrect = await GuessAnswer(question, groupid, guess)
+        if(isCorrect) return
+
+        alternatives = alternatives.filter(item => item !== guess)
     }
+}
+
+export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
 
     if(question.status !== null){
         console.log('                   🤙 Alternativa já chutada, indo para proxima')
@@ -71,4 +83,8 @@ function timeout(ms:number) {
 
 function saveAnswer(question:IQuestion,groupid:number, answer:string){
     console.log(`                   💾 Salvando alternativa correta.. (${answer})`)
+}
+
+function Random(min:number, max:number){
+    return Math.floor(Math.random() * (max - min + 1) + min)
 }

@@ -3,6 +3,7 @@ import { ITask } from "./tasks"
 
 
 const token = process.env.TOKEN
+const delay = 3000
 
 export interface IQuestion{
     id: string,
@@ -29,6 +30,7 @@ export interface IQuestionGroup{
 
 export async function GetQuestionGroup(task:ITask){
     console.log(`       🔍 Pegando as perguntas do tarefa...`)
+    await timeout(delay)
 
     const config:AxiosRequestConfig = {
         headers: {
@@ -62,4 +64,9 @@ export async function GetQuestionGroup(task:ITask){
 
     return questiongroup
 
+}
+
+
+function timeout(ms:number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
