@@ -1,0 +1,12 @@
+{
+  "name": "plurall-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Igor Ulian <igorulian@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.6.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
