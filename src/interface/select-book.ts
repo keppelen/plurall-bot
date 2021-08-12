@@ -1,7 +1,5 @@
 import GetBooks, { IBook } from "../books"
-import prompt from 'prompt-sync'
-
-const getAwnser = prompt()
+import { numberAnswer } from "../tools/answer"
 
 
 export async function GetWhichBook(){
@@ -13,7 +11,7 @@ export async function GetWhichBook(){
     
     console.log('\n')
     
-    const bookIndex = getSelectedBookIndex()
+    const bookIndex = numberAnswer('Digite o número da apostila que deseja resolver: ',0,books.length)
 
     const selectedBook = books[bookIndex]
 
@@ -21,24 +19,8 @@ export async function GetWhichBook(){
 }
 
 
-function isNumber(n:any) {
-    return !isNaN(parseInt(n)) && isFinite(n);
-}
-
-
 function printOptions(books:IBook[]){
     books.forEach(book => {
         console.log(`[${books.indexOf(book)}]  ${book.value}`)
     })
-}
-
-function getSelectedBookIndex(){
-    let bookIndex:number = -1
-    while(bookIndex < 0){
-        const awnser = getAwnser('Digite o número da apostila que deseja resolver: ');
-
-        if(isNumber(awnser))
-            bookIndex = parseInt(awnser)
-    }
-    return bookIndex
 }
