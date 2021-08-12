@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Igor Ulian <igorulian@outlook.com>",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --no-notify src/server.ts"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^16.6.0",
