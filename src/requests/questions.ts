@@ -20,6 +20,7 @@ export interface IQuestion{
 }
 
 export interface IQuestionGroup{
+    id: number,
     description: null|string,
     title: string,
     layout_type: string,
@@ -49,7 +50,16 @@ export async function GetQuestionGroup(task:ITask){
         }
     }
     
+
     const {data} = await axios.get(`https://api.plurall.net/api/task_workflows/${task.id}`,config)
+    const questiongroupID:number = data.data.id
+    
     const questiongroup:IQuestionGroup[] = data.data.subtask_groups
+
+    questiongroup.forEach(element => { // add the group id inside the array, so we can use the value later 
+        element.id = questiongroupID
+    });
+
     return questiongroup
+
 }
