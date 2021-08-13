@@ -62,7 +62,7 @@ async function GetTaskGroup(book:IBook){
         }
     }
     
-    const {data} = await axios.get(`https://api.plurall.net/api/task_workflows?node_group=${book.id}&page=1`,config)
+    const {data} = await axios.get(`https://api.plurall.net/api/task_workflows?only_available_todo=true&node_group=${book.id}&page=1`,config)
     const taskGroups:ITaskGroup[] = data.data
     return taskGroups
 }
