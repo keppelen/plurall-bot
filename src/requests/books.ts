@@ -43,7 +43,7 @@ async function GetBooks(){
         return books
     }catch(err){
         console.log("Ocorreu um erro ao buscar as apostilas...")
-        return []
+        return null
     }
 }
 

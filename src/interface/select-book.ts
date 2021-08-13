@@ -3,7 +3,12 @@ import { numberAnswer } from "../tools/answer"
 
 
 export async function GetWhichBook(){
-    const books:IBook[] = await GetBooks()
+    const books:IBook[]|null = await GetBooks()
+
+    if(!books){
+        console.log(`Ocorreu um erro ao buscar apóstilas, tente logar novamente`)
+        return
+    }
 
     console.log("Qual apostila deseja resolver?\n")
 
