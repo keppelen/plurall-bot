@@ -1,6 +1,6 @@
 import { Timeout } from "../tools/timeout";
-import { GuessAnswer } from "./guess-answer";
-import { IQuestion } from "./questions";
+import { GuessAnswer } from "../requests/guess-answer";
+import { IQuestion } from "../requests/questions";
 
 const delay = 1000 
 

@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { GuessAnswer } from "../requests/guess-answer";
+import { IQuestion } from "../requests/questions";
 import { Timeout } from "../tools/timeout";
-import { GuessAnswer } from "./guess-answer";
-import { IQuestion } from "./questions";
 
 export async function GuessMultipleChoice(question:IQuestion,groupid:number){
     let alternatives:string[] = ['a','b','c','d','e']

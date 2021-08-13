@@ -1,7 +1,7 @@
-import { GuessMultipleChoice } from "./requests/guess-multiple-choice";
-import { GuessOpenAnswer } from "./requests/guess-open-answer";
+import { GuessMultipleChoice } from "./answer-type/guess-multiple-choice";
+import { GuessOpenAnswer } from "./answer-type/guess-open-answer";
 import { IQuestion, IQuestionGroup } from "./requests/questions";
-import { ReadAnswer } from "./requests/read-answer";
+import { ReadAnswer } from "./answer-type/read-answer";
 
 
 
