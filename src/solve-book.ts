@@ -10,7 +10,7 @@ export async function SolveBook(book:IBook, option='all'){
     const taskGroups:ITaskGroup[] = await GetTaskGroup(book)
 
     for(let x = 0; x < taskGroups.length; x++){
-        await SolveTaskGroup(book,taskGroups[0])
+        await SolveTaskGroup(book,taskGroups[x])
     }
 
 }
