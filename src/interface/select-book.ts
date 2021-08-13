@@ -22,6 +22,7 @@ export async function GetWhichBook(){
 
 
 function printOptions(books:IBook[]){
+    books.reverse()
     books.forEach(book => {
         console.log(`[${books.indexOf(book)}]  ${book.value}`)
     })
