@@ -1,9 +1,10 @@
 import axios, { AxiosRequestConfig } from "axios"
+import { config } from "../config/config"
 import { Timeout } from "../tools/timeout"
 import { IQuestion } from "./questions"
 
 const token = process.env.TOKEN
-const delay = 3000 //ms
+const delay = 2000 * config.DelayMultiplier //ms
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
     

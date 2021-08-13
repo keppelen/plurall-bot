@@ -1,10 +1,11 @@
 import axios, { AxiosRequestConfig } from "axios"
+import { config } from "../config/config"
 import { Timeout } from "../tools/timeout"
 import { ITask } from "./tasks"
 
 
 const token = process.env.TOKEN
-const delay = 3000
+const delay = 2000 * config.DelayMultiplier
 
 export interface IQuestion{
     id: string,
