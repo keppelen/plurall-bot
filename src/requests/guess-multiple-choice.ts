@@ -21,12 +21,7 @@ export async function GuessMultipleChoice(question:IQuestion,groupid:number){
 }
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
-
-    if(question.status !== null){
-        console.log('                   🤙 Alternativa já chutada, indo para proxima')
-        return
-    }
-
+    
     console.log(`                   ✏️ Chutando GRUPO: ${groupid} | QUEST: ${question.id} | ALT: ${answer}`)
 
     await timeout(delay) // purposeful delay 

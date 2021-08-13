@@ -7,12 +7,9 @@ const delay = 1000 //ms
 export async function ReadAnswer(question:IQuestion,groupid:number){
     console.log('                   📜"Lendo" as parada')
 
-
-    if(question.status !== null) return
-
     await timeout(delay) // purposeful delay 
 
-    console.log(question)
+    // console.log(question)
 
     const config:AxiosRequestConfig = {
         headers: {
