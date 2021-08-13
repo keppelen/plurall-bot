@@ -6,8 +6,7 @@ export async function GetWhichBook(){
     const books:IBook[]|null = await GetBooks()
 
     if(!books){
-        console.log(`Ocorreu um erro ao buscar apóstilas, tente logar novamente`)
-        return
+        return console.log(`Ocorreu um erro ao buscar apóstilas, tente logar novamente`)
     }
 
     console.log("Qual apostila deseja resolver?\n")

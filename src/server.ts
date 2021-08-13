@@ -4,6 +4,7 @@ import { SolveBook } from './solve-book'
 
 async function Start(){
     const book = await GetWhichBook()
+    if(!book) return
     const how = await HowToSolve(book)
     await SolveBook(book,how)
 }
