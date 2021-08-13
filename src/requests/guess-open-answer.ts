@@ -1,4 +1,4 @@
-import { GuessAnswer } from "./guess-multiple-choice";
+import { GuessAnswer } from "./guess-answer";
 import { IQuestion } from "./questions";
 
 const resposta = 'Frase para responder'
