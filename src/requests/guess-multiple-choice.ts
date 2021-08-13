@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
-import { GuessOpenAnswer } from "./guess-open-answer";
+import { Timeout } from "../tools/timeout";
 import { IQuestion } from "./questions";
-import { ReadAnswer } from "./read-answer";
 
 const token = process.env.TOKEN
 const delay = 3000 //ms
@@ -22,9 +21,9 @@ export async function GuessMultipleChoice(question:IQuestion,groupid:number){
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
     
-    console.log(`                   ✏️ Chutando GRUPO: ${groupid} | QUEST: ${question.id} | ALT: ${answer}`)
+    console.log(`                   ✏️ Chutando: ${answer}`)
 
-    await timeout(delay) // purposeful delay 
+    await Timeout(delay) // purposeful delay 
 
     const config:AxiosRequestConfig = {
         headers: {
@@ -60,21 +59,15 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
     const officialAnswer = response.data.data.update_interface_data.official_answer
 
     if(correct)
-        console.log('                   ✅ Alternativa correta')
+        console.log('                   ✅ Resposta correta')
     else
-        console.log('                   🅾️ Alternativa incorreta')
+        console.log('                   🅾️ Resposta incorreta')
 
     if(officialAnswer)
         saveAnswer(question,groupid,officialAnswer)
 
     return correct
 }
-
-
-function timeout(ms:number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 
 function saveAnswer(question:IQuestion,groupid:number, answer:string){
     console.log(`                   💾 Salvando alternativa correta.. (${answer})`)

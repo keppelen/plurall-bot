@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios"
+import { Timeout } from "../tools/timeout"
 import { ITask } from "./tasks"
 
 
@@ -30,7 +31,8 @@ export interface IQuestionGroup{
 
 export async function GetQuestionGroup(task:ITask){
     console.log(`       🔍 Pegando as perguntas do tarefa...`)
-    await timeout(delay)
+    
+    await Timeout(delay)
 
     const config:AxiosRequestConfig = {
         headers: {
@@ -64,9 +66,4 @@ export async function GetQuestionGroup(task:ITask){
 
     return questiongroup
 
-}
-
-
-function timeout(ms:number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
