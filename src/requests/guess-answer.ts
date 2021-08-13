@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios"
 import { config } from "../config/config"
+import { SaveAnswer } from "../data/save-answer"
 import { Timeout } from "../tools/timeout"
 import { IQuestion } from "./questions"
 
@@ -51,11 +52,7 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
         console.log('                   🅾️ Resposta incorreta')
 
     if(officialAnswer)
-        saveAnswer(question,groupid,officialAnswer)
+        SaveAnswer(question,groupid,officialAnswer)
 
     return correct
-}
-
-function saveAnswer(question:IQuestion,groupid:number, answer:string){
-    console.log(`                   💾 Salvando alternativa correta.. (${answer})`)
 }
