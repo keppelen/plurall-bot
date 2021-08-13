@@ -4,7 +4,7 @@ import { SaveAnswer } from "../data/save-answer"
 import { Timeout } from "../tools/timeout"
 import { IQuestion } from "./questions"
 
-const token = process.env.TOKEN
+const token = config.Token
 const delay = 2000 * config.DelayMultiplier //ms
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){

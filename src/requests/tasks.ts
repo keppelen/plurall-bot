@@ -1,9 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import dotenv from 'dotenv'
+import { config } from '../config/config'
 import { IBook } from './books'
 dotenv.config()
 
-const token = process.env.TOKEN
+const token = config.Token
 
 interface ITaskProgress {
     correct: number,

@@ -1,8 +1,9 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import dotenv from 'dotenv'
+import { config } from '../config/config'
 dotenv.config()
 
-const token = process.env.TOKEN
+const token = config.Token
 
 export interface IBook {
     id: string,

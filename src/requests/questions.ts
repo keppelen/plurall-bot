@@ -4,7 +4,7 @@ import { Timeout } from "../tools/timeout"
 import { ITask } from "./tasks"
 
 
-const token = process.env.TOKEN
+const token = config.Token
 const delay = 2000 * config.DelayMultiplier
 
 export interface IQuestion{
