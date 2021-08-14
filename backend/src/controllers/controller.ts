@@ -11,12 +11,13 @@ export async function test(req:Request, res:Response){
 export async function add(req:Request, res:Response) {
     try{
         const {answer} = req.body
-        const {group,question} = req.params
+        const {book, group,question} = req.params
 
-        if(!((group) && (question) && (answer)))
+        if(!((group) && (question) && (answer) && (book)))
             return res.status(400).send({error: 'Request malformed'})
 
         console.log(`\nSalvando questão:`)
+        console.log(`Book: ${group}`)
         console.log(`Group: ${group}`)
         console.log(`Question: ${question}`)
         console.log(`Answer: ${answer}`)

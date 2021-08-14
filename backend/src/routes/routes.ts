@@ -5,6 +5,6 @@ const routes:Router = Router()
 
 routes.get('/test', test)
 
-routes.post('/add/:group/:question', add)
+routes.post('/add/:book/:group/:question', add)
 
 export default routes
