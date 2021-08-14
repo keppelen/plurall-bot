@@ -1,6 +1,6 @@
 import { Document, Schema, model } from 'mongoose'
 
-export interface IUser extends Document {
+export interface IQuestion extends Document {
     book: string;
     group: string;
     question: string;
@@ -36,4 +36,4 @@ export const questionSchema:Schema = new Schema({
     }
 })
 
-export const QuestionModel = model<IUser>('Question', questionSchema)
+export const QuestionModel = model<IQuestion>('Question', questionSchema)
