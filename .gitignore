@@ -7,4 +7,4 @@ temp/
 coverage
 ormconfig.json
 dist
-cfg.json
+src/config/cfg.json
