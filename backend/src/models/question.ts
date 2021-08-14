@@ -33,7 +33,8 @@ export const questionSchema:Schema = new Schema({
     email:{
         type: String,
         require: true,
-        lowercase: true
+        lowercase: true,
+        select: false
     },
     createdAt:{
         type: Date,
