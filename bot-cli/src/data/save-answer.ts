@@ -23,9 +23,8 @@ export function SaveAnswer(question:IQuestion, groupid:number, answer:string, bo
       answer: finalAnswer
     }
 
-    // axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
+    axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
 
-    // returns A - B - C... 
 }
 
 
