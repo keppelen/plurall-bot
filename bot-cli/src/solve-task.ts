@@ -9,12 +9,12 @@ export async function SolveTaskGroup(book:IBook, taskGroup:ITaskGroup){
     const {tasks} = taskGroup
 
     for(let x = 0; x < tasks.length; x++){
-        await SolveTask(tasks[x])
+        await SolveTask(tasks[x], book)
     }
     
 }
 
-async function SolveTask(task:ITask){
+async function SolveTask(task:ITask, book:IBook){
     if(isAlreadyFullSolved(task)){
         console.log(`   ✅ Task ja resolvida por completo, próxima`)
         return
@@ -23,7 +23,7 @@ async function SolveTask(task:ITask){
 
     const questionGroup:IQuestionGroup[] = await GetQuestionGroup(task)
     for(let x = 0; x < questionGroup.length; x++){
-        await SolveQuestionGroup(questionGroup[x])
+        await SolveQuestionGroup(questionGroup[x], book)
     }
 }
 

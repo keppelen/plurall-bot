@@ -2,12 +2,13 @@ import axios, { AxiosRequestConfig } from "axios"
 import { config } from "../config/config"
 import { SaveAnswer } from "../data/save-answer"
 import { Timeout } from "../tools/timeout"
+import { IBook } from "./books"
 import { IQuestion } from "./questions"
 
 const token = config.Token
 const delay = 2000 * config.DelayMultiplier //ms
 
-export async function GuessAnswer(question:IQuestion,groupid:number, answer:string){
+export async function GuessAnswer(question:IQuestion,groupid:number, answer:string, book:IBook){
     
     console.log(`                   ✏️ Chutando: ${answer}`)
 

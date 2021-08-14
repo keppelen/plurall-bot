@@ -3,7 +3,7 @@ import { GuessAnswer } from "../requests/guess-answer";
 import { IQuestion } from "../requests/questions";
 import { Timeout } from "../tools/timeout";
 
-export async function GuessMultipleChoice(question:IQuestion,groupid:number){
+export async function GuessMultipleChoice(question:IQuestion, groupid:number, book:IBook){
     let alternatives:string[] = ['a','b','c','d','e']
 
     for(let x = 0; x < 3; x++){
