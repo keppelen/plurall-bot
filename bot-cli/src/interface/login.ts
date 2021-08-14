@@ -20,7 +20,7 @@ export async function Login() {
     const token = await Authenticate(email,pass)
 
     if(token){
-        await UpdateToken(token)
+        await UpdateToken(token,email)
     }
 
     return token
