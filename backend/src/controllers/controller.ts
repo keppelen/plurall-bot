@@ -34,6 +34,8 @@ export async function add(req:Request, res:Response) {
             answer
         })
 
+        console.log(newQuestion)
+
         // add a 'Created by' to see how uploaded that
 
         return res.status(200).send(newQuestion)

@@ -16,20 +16,38 @@ export function SaveAnswer(question:IQuestion, groupid:number, answer:string, bo
 
     let finalAnswer = answer
 
-    if(question.task_type === 'open_response'){
-        const html = answer;
-        const text = convert(html, {
-          wordwrap: 130
-        });
-        finalAnswer = text.replace('-­-­', '-')
-        console.log(`                   💾 Resposta Corrigida: ${finalAnswer}`)
-    }
-
+    if(question.task_type === 'open_response')
+      finalAnswer = TreatHtml(answer)
+    
     const body = {
       answer: finalAnswer
     }
 
-    axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
+    // axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
 
     // returns A - B - C... 
+}
+
+
+
+function TreatHtml(answer:string){
+  let treatedText = ''
+  const html = answer;
+  const text = convert(html, {
+    wordwrap: 130
+  });
+  treatedText = text.replace('-­-­', '-')
+  let treatedTextArray = treatedText.split('\n')
+
+  console.log('before:')
+  console.log(treatedText)
+
+  treatedTextArray.forEach(line => {
+      if(line.startsWith('[') && line.endsWith(']')){
+        treatedTextArray.splice(treatedTextArray.indexOf(line), 1)
+      }
+  });
+
+  console.log(`                   💾 Resposta Corrigida: ${treatedText}`)
+  return treatedText
 }
