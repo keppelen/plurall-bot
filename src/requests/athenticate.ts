@@ -38,9 +38,8 @@ export async function Authenticate(email:string,password:string){
 
     try{
         const response = await axios.post('https://sso.plurall.net/graphql',body,config)
-    
         const token = response.data.data.login.token
-        console.log(response.data)
+        
         return token
     }catch{
         console.log('🅾️ Não foi possivel efetuar o login, digita certo saporra!')
