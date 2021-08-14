@@ -1,6 +1,10 @@
-import { app } from "./app";
+import { app, setupServer } from "./app"
+import { setupDatabase } from "./data/setup"
 
 
-app.listen(4000, () => {
-    console.log('Server ouvindo na porta 4000')
-})
+function start(){
+    setupDatabase()
+    setupServer()
+}
+
+start()

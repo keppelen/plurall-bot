@@ -9,4 +9,11 @@ app.use(cors())
 
 app.use('/api', routes)
 
+export function setupServer(){
+    app.listen(4000, () => {
+        console.log('Server ouvindo na porta 4000')
+    })
+}
+
+
 export {app}
