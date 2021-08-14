@@ -6,14 +6,6 @@ import { QuestionModel } from "../models/question"
 
 const Question:Model<IQuestion> = QuestionModel
 
-export async function test(req:Request, res:Response){
-    try{
-        return res.status(200).send({message: 'test'})
-    }catch{
-        return res.status(400).send({error: 'Erro ao conseguir dados'})
-    }
-}
-
 export async function add(req:Request, res:Response) {
     try{
         const {answer, email} = req.body
@@ -40,6 +32,22 @@ export async function add(req:Request, res:Response) {
         // add a 'Created by' to see how uploaded that
 
         return res.status(200).send(newQuestion)
+    }catch{
+        return res.status(400).send({error: 'Erro ao adicionar dados'})
+    }
+}
+
+
+export async function list(req:Request, res:Response) {
+    try{
+        const {book} = req.params
+
+        if(!book)
+            return res.status(400).send({error: 'Request malformed'})
+
+        const answers = await Question.find({book})
+
+        return res.status(200).send(answers)
     }catch{
         return res.status(400).send({error: 'Erro ao adicionar dados'})
     }
