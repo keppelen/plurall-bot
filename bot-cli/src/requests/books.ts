@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import dotenv from 'dotenv'
-import { config } from '../config/config'
+import { config, UpdateToken } from '../config/config'
 dotenv.config()
 
 const token = config.Token
@@ -44,6 +44,7 @@ async function GetBooks(){
         return books
     }catch(err){
         console.log("Ocorreu um erro ao buscar as apostilas...")
+        await UpdateToken('')
         return null
     }
 }
