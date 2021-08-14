@@ -1,6 +1,7 @@
 import { Document, Schema, model } from 'mongoose'
 
 export interface IQuestion extends Document {
+    email: string;
     book: string;
     group: string;
     question: string;
@@ -25,6 +26,11 @@ export const questionSchema:Schema = new Schema({
         lowercase: true
     },
     answer:{
+        type: String,
+        require: true,
+        lowercase: true
+    },    
+    email:{
         type: String,
         require: true,
         lowercase: true

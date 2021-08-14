@@ -16,10 +16,10 @@ export async function test(req:Request, res:Response){
 
 export async function add(req:Request, res:Response) {
     try{
-        const {answer} = req.body
+        const {answer, email} = req.body
         const {book, group,question} = req.params
 
-        if(!((group) && (question) && (answer) && (book)))
+        if(!((group) && (question) && (answer) && (book) && (email)))
             return res.status(400).send({error: 'Request malformed'})
 
         const alreadyAnswer = await Question.find({book,group,question})
@@ -31,7 +31,8 @@ export async function add(req:Request, res:Response) {
             book,
             group,
             question,
-            answer
+            answer,
+            email
         })
 
         console.log(newQuestion)
