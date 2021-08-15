@@ -57,7 +57,7 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
         else
             console.log('                   🅾️ Resposta incorreta')
 
-        if(officialAnswer)
+        if(officialAnswer && !findedAnswer)
             SaveAnswer(question,groupid,officialAnswer, book)
 
         return correct
