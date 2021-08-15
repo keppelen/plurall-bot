@@ -9,10 +9,6 @@ dotenv.config()
 
 export async function SaveAnswer(question:IQuestion, groupid:number, answer:string, book:IBook){
     console.log(`                   💾 Salvando alternativa correta...`)
-    console.log(`                   💾 Dados:`)
-    console.log(`                   💾   Book:  ${book.id}`)
-    console.log(`                   💾   Group:  ${groupid}`)
-    console.log(`                   💾   Question:  ${question.id}`)
     console.log(`                   💾 Resposta: ${answer}`)
 
     let finalAnswer = answer
