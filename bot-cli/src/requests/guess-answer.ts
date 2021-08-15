@@ -40,20 +40,26 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
         answer,
     }
 
-    const response = await axios.post(`https://api.plurall.net/api/task_workflows/${groupid}/subtasks/${question.id}/answer`,body,config)
-    
-    const status = response.data.data.update_interface_data.status
-    const correct = status === 'correct' ? true : false
+    try{
+        const response = await axios.post(`https://api.plurall.net/api/task_workflows/${groupid}/subtasks/${question.id}/answer`,body,config)
+        
+        const status = response.data.data.update_interface_data.status
+        const correct = status === 'correct' ? true : false
 
-    const officialAnswer = response.data.data.update_interface_data.official_answer
+        const officialAnswer = response.data.data.update_interface_data.official_answer
 
-    if(correct)
-        console.log('                   ✅ Resposta correta')
-    else
-        console.log('                   🅾️ Resposta incorreta')
+        if(correct)
+            console.log('                   ✅ Resposta correta')
+        else
+            console.log('                   🅾️ Resposta incorreta')
 
-    if(officialAnswer)
-        SaveAnswer(question,groupid,officialAnswer, book)
+        if(officialAnswer)
+            SaveAnswer(question,groupid,officialAnswer, book)
 
-    return correct
+        return correct
+    }catch{
+        console.log('⚠️ Ocorreu um erro ao chutar questão')
+        return null
+    }
+
 }
