@@ -8,6 +8,8 @@ dotenv.config()
 
 
 export async function SaveAnswer(question:IQuestion, groupid:number, answer:string, book:IBook){
+    if(question.task_type === 'read') return
+    
     console.log(`                   💾 Salvando alternativa correta...`)
     console.log(`                   💾 Resposta: ${answer}`)
 
