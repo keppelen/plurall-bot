@@ -1,17 +1,21 @@
 import axios, { AxiosRequestConfig } from "axios"
 import { config } from "../config/config"
+import { answers, GetAnswer } from "../data/get-answers"
 import { SaveAnswer } from "../data/save-answer"
 import { Timeout } from "../tools/timeout"
 import { IBook } from "./books"
 import { IQuestion } from "./questions"
 
 const token = config.Token
-const delay = 2000 * config.DelayMultiplier //ms
+const delay = 1000 * config.DelayMultiplier //ms
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string, book:IBook){
     
-    console.log(`                   ✏️ Chutando: ${answer}`)
+    
+    const findedAnswer = GetAnswer(question,groupid,book)
 
+    console.log(`                   ✏️ ${findedAnswer ? 'Resposta encontrada' : 'Chutando'}: ${findedAnswer ? findedAnswer : answer}`)
+    
     await Timeout(delay) // purposeful delay 
 
     const config:AxiosRequestConfig = {
@@ -37,7 +41,7 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
     }
 
     const body = {
-        answer,
+        answer: findedAnswer ? findedAnswer.answer : answer,
     }
 
     try{
