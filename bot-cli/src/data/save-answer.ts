@@ -3,10 +3,11 @@ import { IQuestion } from "../requests/questions"
 import { convert } from 'html-to-text'
 import axios from "axios"
 import dotenv from 'dotenv'
+import { config } from "../config/config"
 dotenv.config()
 
 
-export function SaveAnswer(question:IQuestion, groupid:number, answer:string, book:IBook){
+export async function SaveAnswer(question:IQuestion, groupid:number, answer:string, book:IBook){
     console.log(`                   💾 Salvando alternativa correta...`)
     console.log(`                   💾 Dados:`)
     console.log(`                   💾   Book:  ${book.id}`)
@@ -20,10 +21,15 @@ export function SaveAnswer(question:IQuestion, groupid:number, answer:string, bo
       finalAnswer = TreatHtml(answer)
     
     const body = {
-      answer: finalAnswer
+      answer: finalAnswer,
+      email: config.Email
     }
 
-    axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
+    try{
+      await axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
+    }catch{
+      console.log('⚠️ Ocorreu um erro ao salvar resposta da questão')
+    }
 
 }
 
