@@ -29,8 +29,6 @@ export async function add(req:Request, res:Response) {
 
         console.log(newQuestion)
 
-        // add a 'Created by' to see how uploaded that
-
         return res.status(200).send(newQuestion)
     }catch{
         return res.status(400).send({error: 'Erro ao adicionar dados'})
