@@ -10,11 +10,7 @@ const token = config.Token
 const delay = 1000 * config.DelayMultiplier //ms
 
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string, book:IBook){
-    
-    
-    const findedAnswer = GetAnswer(question,groupid,book)
-
-    console.log(`                   ✏️ ${findedAnswer ? 'Resposta encontrada' : 'Chutando'}: ${findedAnswer ? findedAnswer : answer}`)
+    console.log(`                   ✏️ 'Chutando' ${answer}`)
     
     await Timeout(delay) // purposeful delay 
 
@@ -41,7 +37,7 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
     }
 
     const body = {
-        answer: findedAnswer ? findedAnswer.answer : answer,
+        answer,
     }
 
     try{
@@ -57,7 +53,7 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
         else
             console.log('                   🅾️ Resposta incorreta')
 
-        if(officialAnswer && !findedAnswer)
+        if(officialAnswer)
             SaveAnswer(question,groupid,officialAnswer, book)
 
         return correct
