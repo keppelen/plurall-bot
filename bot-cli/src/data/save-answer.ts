@@ -6,18 +6,21 @@ import dotenv from 'dotenv'
 import { config } from "../config/config"
 dotenv.config()
 
+const saveExampleText = 'Já assisti a video aula, porém ainda não entendi a resposta'
+
 
 export async function SaveAnswer(question:IQuestion, groupid:number, answer:string, book:IBook){
     if(question.task_type === 'read') return
     
     console.log(`                   💾 Salvando alternativa correta...`)
-    console.log(`                   💾 Resposta: ${answer}`)
-
+    
     let finalAnswer = answer
-
+    
     if(question.task_type === 'open_response')
       finalAnswer = TreatHtml(answer)
     
+    console.log(`                   💾 Resposta: ${finalAnswer}`)
+
     const body = {
       answer: finalAnswer,
       email: config.Email
@@ -46,11 +49,19 @@ function TreatHtml(answer:string){
   console.log(treatedText)
 
   treatedTextArray.forEach(line => {
-      if(line.startsWith('[') && line.endsWith(']')){
+      if(line.startsWith('[') && line.endsWith(']'))
         treatedTextArray.splice(treatedTextArray.indexOf(line), 1)
-      }
+      
+      if(line.startsWith('«'))
+        treatedTextArray.splice(treatedTextArray.indexOf(line), 1)
+      
   });
 
+  treatedText = treatedTextArray.join(' ')
+
+  if(treatedText.replace(' ', '') === '')
+    treatedText = saveExampleText
+  
   console.log(`                   💾 Resposta Corrigida: ${treatedText}`)
   return treatedText
 }
