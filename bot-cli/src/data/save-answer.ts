@@ -28,8 +28,9 @@ export async function SaveAnswer(question:IQuestion, groupid:number, answer:stri
 
     try{
       await axios.post(`${process.env.BACKEND_CONNECTION_IP}/add/${book.id}/${groupid}/${question.id}`, body)
-    }catch{
-      console.log('⚠️ Ocorreu um erro ao salvar resposta da questão')
+    }catch(error){
+      console.log('                   ⚠️ Ocorreu um erro ao salvar resposta da questão:')
+      console.log(`                   ⚠️ ${error.response.data.error}`)
     }
 
 }
