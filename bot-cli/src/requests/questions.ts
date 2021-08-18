@@ -66,7 +66,7 @@ export async function GetQuestionGroup(task:ITask){
         return questiongroup
     }catch{
         console.log('⚠️ Ocorreu um erro ao pergar as perguntas ta tarefa')
-        return null
+        return []
     }
 
 }
