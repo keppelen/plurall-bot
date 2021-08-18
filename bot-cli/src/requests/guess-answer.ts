@@ -1,6 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios"
 import { config } from "../config/config"
-import { answers, GetAnswer } from "../data/get-answers"
 import { SaveAnswer } from "../data/save-answer"
 import { Timeout } from "../tools/timeout"
 import { IBook } from "./books"
@@ -18,12 +17,10 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
         headers: {
             'Authorization': `Bearer ${token}`,
             'Host': 'api.plurall.net',
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0',
             'Accept': 'application/json, text/plain, */*, vnd.plurall.api.v3+json',
             'Accept-Language': 'pt-BR,pt;q=0.8,en-US;q=0.5,en;q=0.3',
             'Accept-Encoding': 'gzip, deflate, br',
             'Content-Type': 'application/json',
-            'client': 'PLTR.c89da11c-847f-4b0a-b0f4-6e7b670351a4.1628703542119',
             'Content-Length': '14',
             'Origin': 'https://atividades.plurall.net',
             'Connection': 'keep-alive',
