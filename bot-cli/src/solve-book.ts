@@ -34,7 +34,8 @@ async function SolveSingleTask(book:IBook, taskGroups:ITaskGroup[]){
 
     if(!taskToSolve) return console.log('⚠️ Ocorreu um erro ao pegar tarefa a ser resolvida')
 
-    console.log(taskToSolve)
-    // await SolveTask(taskToSolve, book)
+    await SolveTask(taskToSolve, book)
+
+    console.log("✅ Tarefa Concluida")
 
 }
