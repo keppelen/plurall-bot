@@ -14,7 +14,7 @@ export async function SolveTaskGroup(book:IBook, taskGroup:ITaskGroup){
     
 }
 
-async function SolveTask(task:ITask, book:IBook){
+export async function SolveTask(task:ITask, book:IBook){
     if(isAlreadyFullSolved(task)){
         console.log(`   ✅ Task ja resolvida por completo, próxima`)
         return

@@ -1,11 +1,6 @@
 import { ITask, ITaskGroup } from "../requests/tasks";
 import { stringAnswer } from "../tools/answer";
 
-interface ITaskToSolve {
-    taskgroup:ITaskGroup,
-    task:ITask
-}
-
 
 export function SolveWhichTask(taskGroups:ITaskGroup[]){
     console.log('Selecione a tarefa que deseja resolver:')
@@ -13,9 +8,7 @@ export function SolveWhichTask(taskGroups:ITaskGroup[]){
     printOptions(taskGroups)
 
     const answer = stringAnswer('Digite a tarefa que deseja resolver (ex 3-1): ')
-    const taskToSolve = getTaskFromAnswer(answer,taskGroups)
-
-    if(!taskToSolve) return console.log('⚠️ Ocorreu um erro ao pegar tarefa a ser resolvida')
+    const taskToSolve:ITask|null = getTaskFromAnswer(answer,taskGroups)
 
     return taskToSolve
 }
@@ -38,25 +31,16 @@ function printOptions(taskGroups:ITaskGroup[]){
 function getTaskFromAnswer(answer:string,taskGroups:ITaskGroup[]){
     if(!answer.includes('-')) return null
 
-    const [taskGroupI,taskI] = answer.split('-')
+    const [taskGroup,task] = answer.split('-')
 
-    let taskToSolve:ITaskToSolve|null = null
+    for(let x = 0; x < taskGroups.length; x++){
 
-    taskGroups.forEach(taskgroup => {
-        const groupIndex = taskGroups.indexOf(taskgroup)
-        const groupTasks = taskgroup.tasks
+        for(let y = 0; y < taskGroups[x].tasks.length; y++){
 
-        groupTasks.forEach(task => {
-            const taskIndex = groupTasks.indexOf(task)
+            if(taskGroup === x.toString() && task === y.toString())
+                return taskGroups[x].tasks[y]
+        }
+    }
 
-            if(taskGroupI === groupIndex.toString() && taskI === taskIndex.toString()){
-                taskToSolve = {
-                    taskgroup,
-                    task
-                }
-            }
-        })
-    })
-
-    return taskToSolve
+    return null
 }

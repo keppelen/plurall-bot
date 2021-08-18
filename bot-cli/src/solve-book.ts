@@ -1,7 +1,7 @@
 import { SolveWhichTask } from "./interface/solve-which-task";
 import { IBook } from "./requests/books";
-import GetTaskGroup, { ITaskGroup } from "./requests/tasks";
-import { SolveTaskGroup } from "./solve-task";
+import GetTaskGroup, { ITask, ITaskGroup } from "./requests/tasks";
+import { SolveTask, SolveTaskGroup } from "./solve-task";
 
 
 export async function SolveBook(book:IBook, option='all'){
@@ -30,7 +30,11 @@ async function SolveEntireBook(book:IBook, taskGroups:ITaskGroup[]){
 }
 
 async function SolveSingleTask(book:IBook, taskGroups:ITaskGroup[]){
-    console.log('Resovendo uma questão só...')
-    const taskToSolve = SolveWhichTask(taskGroups)
+    const taskToSolve:ITask|null = SolveWhichTask(taskGroups)
+
+    if(!taskToSolve) return console.log('⚠️ Ocorreu um erro ao pegar tarefa a ser resolvida')
+
+    console.log(taskToSolve)
+    // await SolveTask(taskToSolve, book)
 
 }
