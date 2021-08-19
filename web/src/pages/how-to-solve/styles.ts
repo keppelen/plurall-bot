@@ -57,6 +57,8 @@ export const OptionsContainer = styled.div`
 `
 
 export const Option = styled.div`
+    padding: 10px;
+    display: flex;
     width: 530px;
     height: 140px;
     background-color: #fff;
@@ -64,4 +66,11 @@ export const Option = styled.div`
     border-radius: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    align-items: center;
+`
+export const OptionName = styled.p`    
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    margin-left: 50px;
 `

@@ -1,9 +1,10 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
+import { FaBook, FaFile } from 'react-icons/fa'
 import { IoIosBook } from 'react-icons/io'
 import { useLocation, useParams } from 'react-router-dom'
 import Header from '../components/header'
-import { Content, Page, ContentHeader, SelectedBookTitle, SelectedBook, OptionsContainer, Option } from './styles'
+import { Content, Page, ContentHeader, SelectedBookTitle, SelectedBook, OptionsContainer, Option, OptionName } from './styles'
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -26,8 +27,19 @@ const HowToSolve:React.FC = () => {
 
                 <OptionsContainer>
                     <Option>
-        
+                        <IconContext.Provider value={{ color: "#847FBC", size: '60'}}>
+                            <FaBook/>
+                        </IconContext.Provider>
+                        <OptionName> Resolver apostila inteira </OptionName>
                     </Option>
+
+                    <Option>
+                        <IconContext.Provider value={{ color: "#847FBC", size: '60'}}>
+                            <FaFile/>
+                        </IconContext.Provider>
+                        <OptionName> Resolver apenas uma tarefa específica </OptionName>
+                    </Option>
+
                 </OptionsContainer>
             </Content>
         </Page>
