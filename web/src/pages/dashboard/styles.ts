@@ -72,11 +72,18 @@ export const Description = styled.p`
     margin-top: 45px;
 `
 
-export const BookContent = styled.div`
+export const BookContainer = styled.div`
     display: flex;
+    flex-direction: column;
     margin-top: 65px;
     width: 96%;
     height: 100%;
+`
+
+export const BookHeader = styled.div`
+    height: fit-content;
+    width: 100%;
+    display: flex;
 `
 
 export const UserTitle = styled.p`
@@ -96,4 +103,13 @@ export const UserData = styled.p`
     font-size: 13px;
     line-height: 24px;
     margin-left: 10px;
+`
+
+export const Books = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
+    align-items: center;
+    justify-content: center;
 `

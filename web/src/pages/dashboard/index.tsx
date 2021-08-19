@@ -1,7 +1,8 @@
 import React from "react"
 import { IconContext } from "react-icons";
-import { BookContent, Content, ContentHeader, ContentTitle, Description, Header, HeaderContent, HeaderTitle, Page, UserData, UserTitle } from "./styles"
+import { BookContainer, BookHeader, Books, Content, ContentHeader, ContentTitle, Description, Header, HeaderContent, HeaderTitle, Page, UserData, UserTitle } from "./styles"
 import { FaUserAlt } from 'react-icons/fa';
+import Book from "./book";
 
 const Dashboard:React.FC = () => {
     return (
@@ -18,15 +19,22 @@ const Dashboard:React.FC = () => {
                     <ContentTitle> Todos os cadernos </ContentTitle>
                 </ContentHeader>
 
-                <BookContent>
-                    <div style={{display:'flex'}}>
+                <BookContainer>
+                    <BookHeader>
                         <IconContext.Provider value={{ color: "#847FBC", size: '15'}}> <FaUserAlt/> </IconContext.Provider>
                         <UserTitle> Usuário logado:  </UserTitle>
                         <UserData>  teste@teste.com - dadadadasd</UserData>
-                    </div>
+                    </BookHeader>
 
+                    <Books>
+                        <Book/>
+                        <Book/>
+                        <Book/>
+                        <Book/>
+                        <Book/>
+                    </Books>
 
-                </BookContent>
+                </BookContainer>
 
             </Content>
             
