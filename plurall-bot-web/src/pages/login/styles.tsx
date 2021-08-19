@@ -15,7 +15,7 @@ export const Page = styled.div`
 export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 450px;
     height: fit-content;
     background-color: #fff;
     border-radius: 20px;
@@ -60,14 +60,13 @@ export const LoginButton = styled.button`
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin: 20px;
+    margin: 10px;
     margin-top: 40px;
     margin-bottom: 5px;
 `
 
 export const Input = styled.input`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
-    width: 20px;
     height: 40px;
     color: #262930;
     border-radius: 8px;
