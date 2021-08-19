@@ -4,6 +4,7 @@ import { BookContainer, BookHeader, Books, Content, ContentHeader, ContentTitle,
 import { FaUserAlt } from 'react-icons/fa';
 import Book from "./book";
 import Header from "../components/header";
+import { Link } from "react-router-dom";
 
 export interface IBook {
     id: string,
@@ -54,7 +55,11 @@ const Dashboard:React.FC = () => {
                     </BookHeader>
 
                     <Books>
-                        {books.map(book => <Book book={book}/>)}
+                        {books.map(book => (
+                            <Link to={`/dashboard/how/${book.id}/${book.value}`}>
+                                <Book book={book}/> 
+                            </Link>
+                        ))}
                     </Books>
 
                 </BookContainer>
