@@ -1,10 +1,16 @@
-import React from 'react';
+import React from 'react'
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import Dashboard from './pages/dashboard';
+import Login from './pages/login';
 
-function App() {
+const App:React.FC = () => {
   return (
-    <div className="App">
-      <h1> AAAAAAAAA </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path='/' element={<Dashboard/>}/>
+          <Route path='/login' element={<Login/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
