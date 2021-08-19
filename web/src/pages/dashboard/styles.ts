@@ -22,7 +22,6 @@ export const Header = styled.header`
     box-shadow: rgba(38, 41, 48, 0.1) 0px 2px 0px 0px;
     align-items: center;
     justify-content: center;
-    font-size: 34px;
 `
 export const HeaderContent = styled.div`
     display: flex;
@@ -36,6 +35,9 @@ export const HeaderTitle = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
     font-family: 'Spartan', sans-serif;
     color: #c099ff;
+    /* font-size: 34px; */
+    font-size: 3vh;
+    font-size-adjust: 0.3px;
 `
 
 export const HeaderLeaveButton = styled.button`       
