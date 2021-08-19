@@ -1,8 +1,9 @@
 import React from "react"
 import { IconContext } from "react-icons";
-import { BookContainer, BookHeader, Books, Content, ContentHeader, ContentTitle, Description, Header, HeaderContent, HeaderLeaveButton, HeaderTitle, Page, UserData, UserTitle } from "./styles"
+import { BookContainer, BookHeader, Books, Content, ContentHeader, ContentTitle, Description, Page, UserData, UserTitle } from "./styles"
 import { FaUserAlt } from 'react-icons/fa';
 import Book from "./book";
+import Header from "../components/header";
 
 export interface IBook {
     id: string,
@@ -37,12 +38,7 @@ const Dashboard:React.FC = () => {
 
     return (
         <Page>
-            <Header> 
-                 <HeaderContent> 
-                    <HeaderTitle> Selecione a apostila que deseja fazer </HeaderTitle> 
-                    <HeaderLeaveButton> SAIR </HeaderLeaveButton>
-                 </HeaderContent>
-            </Header>
+            <Header title='Selecione a apostila que deseja fazer'/>
 
             <Content>
                 <ContentHeader>

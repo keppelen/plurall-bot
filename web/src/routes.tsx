@@ -1,6 +1,7 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Dashboard from './pages/dashboard';
+import HowToSolve from './pages/how-to-solve';
 import Login from './pages/login';
 
 const PrivateRoute = ({...rest}: any) => {
@@ -19,6 +20,7 @@ const AppRoutes:React.FC = () => {
             <PrivateRoute path='/' element={<Dashboard/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/dashboard' element={<Dashboard/>}/>
+            <Route path='/dashboard/how/:id' element={<HowToSolve/>}/>
         </Routes>
     )
 }
