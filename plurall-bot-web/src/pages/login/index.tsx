@@ -1,10 +1,15 @@
 import React from "react"
+import { LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
 
 const Login:React.FC = () => {
     return (
-        <div>
-            <h1> LOGINHO </h1>
-        </div>
+        <Page>
+            <LoginContainer>
+                <LoginText> Login </LoginText>
+                <LoginDescription> Lorem iupson sei la</LoginDescription>
+                <LoginButton/>
+            </LoginContainer>
+        </Page>
     )
 }
 

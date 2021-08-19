@@ -1,15 +1,12 @@
 import React from 'react'
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
-import Dashboard from './pages/dashboard';
-import Login from './pages/login';
+import {BrowserRouter} from 'react-router-dom'
+import AppRoutes from './routes';
+
 
 const App:React.FC = () => {
   return (
     <BrowserRouter>
-      <Routes>
-          <Route path='/' element={<Dashboard/>}/>
-          <Route path='/login' element={<Login/>}/>
-      </Routes>
+      <AppRoutes/>
     </BrowserRouter>
   );
 }
