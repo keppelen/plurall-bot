@@ -5,7 +5,7 @@ export const Page = styled.div`
     flex-direction: column;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #fafafa;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -29,12 +29,28 @@ export const HeaderContent = styled.div`
     width: 60%;
     height: 60%;
     align-items: center;
+    justify-content: space-between;
 `
 
 export const HeaderTitle = styled.p`    
     @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
     font-family: 'Spartan', sans-serif;
     color: #c099ff;
+`
+
+export const HeaderLeaveButton = styled.button`       
+    @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
+    font-family: 'Spartan', sans-serif;
+    font-weight: bold;
+    height: 30px;
+    width: 60px;
+    background-color: #655ca3;
+    border: none;
+    border-radius: 20px;
+    color: #ffff;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer
 `
 
 export const Content = styled.div`
@@ -59,7 +75,7 @@ export const ContentTitle = styled.p`
     font-family: 'Nunito', sans-serif;
     font-size: 25px;
     letter-spacing: -0.3px;
-    color: rgb(101, 92, 163);
+    color: #655ca3;
 `
 
 export const Description = styled.p`

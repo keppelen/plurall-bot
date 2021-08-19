@@ -1,16 +1,21 @@
 import React from 'react'
+import { IBook } from '..'
 import { Container, Content, Image, Data, Text } from './styles'
 
+interface BookProps {
+    book:IBook
+}
 
-const Book:React.FC = () => {
+function Book(props:BookProps){
+    const book:IBook = props.book
 
 
     return (
         <Container>
             <Content>
-                <Image src="https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2786203_thumbnail.png"/>
+                <Image src={book.thumbnail}/>
                 <Data>
-                    <Text> Terceirão Alfa - Caderno aluno 7 </Text>
+                    <Text> {book.value} </Text>
                 </Data>
             </Content>
         </Container>
