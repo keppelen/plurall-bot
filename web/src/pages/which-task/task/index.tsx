@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaCheck, FaTimes } from 'react-icons/fa'
+import { Link, useParams } from 'react-router-dom'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBar0, TaskProgressbarNumber, TaskProgressBarProgress} from './styles'
 
 interface ITaskProgress {
@@ -26,6 +27,7 @@ interface TaskProps {
 }
 
 function Task(props:TaskProps){
+    const {id, name} = useParams()
     const {task} = props
     const {correct, wrong, total} = task.progress
     const percent = {
@@ -34,34 +36,36 @@ function Task(props:TaskProps){
     }
 
     return (
-        <TaskContainer>
-            <TaskName> {task.name} </TaskName>
-            <TaskProgressBar>
-                <IconContext.Provider value={{ color: '#fff'}}>
+        <Link to={`/dashboard/solve/${id}/${name}/${task.id}/${task.name}`}>
+            <TaskContainer>
+                <TaskName> {task.name} </TaskName>
+                <TaskProgressBar>
+                    <IconContext.Provider value={{ color: '#fff'}}>
 
-                    {correct + wrong > 0 ?
-                    <>
-                        <TaskProgressBarProgress color='green' percent={percent.correct}>
-                            <FaCheck/>
-                            <TaskProgressbarNumber> {correct} </TaskProgressbarNumber>
-                        </TaskProgressBarProgress>
+                        {correct + wrong > 0 ?
+                        <>
+                            <TaskProgressBarProgress color='green' percent={percent.correct}>
+                                <FaCheck/>
+                                <TaskProgressbarNumber> {correct} </TaskProgressbarNumber>
+                            </TaskProgressBarProgress>
 
-                        <TaskProgressBarProgress color='red' percent={percent.wrong}>
-                            <FaTimes/>
-                            <TaskProgressbarNumber> {wrong} </TaskProgressbarNumber>
-                        </TaskProgressBarProgress>
-                    </>
-                    :    
-                    <TaskProgressBar0>
-                        <div/>
-                        <TaskProgressbarNumber> 0 </TaskProgressbarNumber>
-                    </TaskProgressBar0>
-                    }
+                            <TaskProgressBarProgress color='red' percent={percent.wrong}>
+                                <FaTimes/>
+                                <TaskProgressbarNumber> {wrong} </TaskProgressbarNumber>
+                            </TaskProgressBarProgress>
+                        </>
+                        :    
+                        <TaskProgressBar0>
+                            <div/>
+                            <TaskProgressbarNumber> 0 </TaskProgressbarNumber>
+                        </TaskProgressBar0>
+                        }
 
 
-                </IconContext.Provider>
-            </TaskProgressBar>
-        </TaskContainer>
+                    </IconContext.Provider>
+                </TaskProgressBar>
+            </TaskContainer>
+        </Link>
     )
 
 }
