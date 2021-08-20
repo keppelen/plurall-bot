@@ -1,7 +1,7 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaCheck, FaTimes } from 'react-icons/fa'
-import { TaskContainer, TaskName, TaskProgressBar, TaskProgressbarNumber, TaskProgressBarProgress} from './styles'
+import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBar0, TaskProgressbarNumber, TaskProgressBarProgress} from './styles'
 
 interface ITaskProgress {
     correct: number,
@@ -39,15 +39,25 @@ function Task(props:TaskProps){
             <TaskProgressBar>
                 <IconContext.Provider value={{ color: '#fff'}}>
 
-                    <TaskProgressBarProgress color='green' percent={percent.correct}>
-                        <FaCheck/>
-                        <TaskProgressbarNumber> {correct} </TaskProgressbarNumber>
-                    </TaskProgressBarProgress>
+                    {correct + wrong > 0 ?
+                    <>
+                        <TaskProgressBarProgress color='green' percent={percent.correct}>
+                            <FaCheck/>
+                            <TaskProgressbarNumber> {correct} </TaskProgressbarNumber>
+                        </TaskProgressBarProgress>
 
-                    <TaskProgressBarProgress color='red' percent={percent.wrong}>
-                        <FaTimes/>
-                        <TaskProgressbarNumber> {wrong} </TaskProgressbarNumber>
-                    </TaskProgressBarProgress>
+                        <TaskProgressBarProgress color='red' percent={percent.wrong}>
+                            <FaTimes/>
+                            <TaskProgressbarNumber> {wrong} </TaskProgressbarNumber>
+                        </TaskProgressBarProgress>
+                    </>
+                    :    
+                    <TaskProgressBar0>
+                        <div/>
+                        <TaskProgressbarNumber> 0 </TaskProgressbarNumber>
+                    </TaskProgressBar0>
+                    }
+
 
                 </IconContext.Provider>
             </TaskProgressBar>

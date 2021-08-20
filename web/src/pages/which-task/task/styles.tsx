@@ -37,7 +37,21 @@ export const TaskProgressBar = styled.div`
     margin-top: 10px;
     align-items: center;
 `
-export const TaskProgressBarProgress = styled('div')<ProgressBarProps>`    
+export const TaskProgressBarProgress = styled('div')<ProgressBarProps>`   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 25px;
+    height: 25px;
+    border-radius: 20px;
+    position: relative;
+    background: ${props => props.color === 'green' ? '#1abc9c' : '#ff645f'} none repeat scroll 0% 0%;
+    width: ${props => props.percent ? props.percent : 0}%;
+`
+
+export const TaskProgressBar0 = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,8 +60,8 @@ export const TaskProgressBarProgress = styled('div')<ProgressBarProps>`
     height: 25px;
     border-radius: 20px;
     position: relative;
-    background: ${props => props.color === 'green' ? '#1abc9c' : '#ff645f'} none repeat scroll 0% 0%;
-    width: ${props => props.percent ? props.percent : 0}%;
+    background: #655aa3 none repeat scroll 0% 0%;
+    width: 4%;
 `
 
 export const TaskProgressbarNumber = styled.p`

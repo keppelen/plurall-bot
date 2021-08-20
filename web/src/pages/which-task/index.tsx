@@ -6,7 +6,24 @@ import { useLocation, useParams } from 'react-router-dom'
 import { Content, ContentHeader } from '../components/content'
 import Header from '../components/header'
 import { Page, SelectedBookTitle, SelectedBook, TasksContainer, TaskGroup} from './styles'
-import Task from './task'
+import Task, { ITask } from './task'
+
+const exampleTask:ITask = {
+    'id': 1,
+    'name': 'Tarefa Mínima - Aula 69',
+    'official_answer_in_words': 'string',
+    'progress': {
+        correct: 0,
+        wrong: 0, 
+        total: 30
+    },
+    'user_task_id': 10,
+    'status_in_words': 'string',
+    'status': 'string',
+    'end_date': 'string'
+}
+
+
 
 const WhichTask:React.FC = () => {
     const {id, name} = useParams()
@@ -23,10 +40,7 @@ const WhichTask:React.FC = () => {
 
                 <TasksContainer>
                     <TaskGroup>
-                        <Task/>
-                    </TaskGroup>
-
-                    <TaskGroup>
+                        <Task task={exampleTask}/>
                     </TaskGroup>
 
                 </TasksContainer>
