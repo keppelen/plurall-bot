@@ -1,6 +1,6 @@
 import React from "react"
 import { IconContext } from "react-icons";
-import { BookContainer, BookHeader, Books, Content, ContentHeader, ContentTitle, Description, Page, UserData, UserTitle } from "./styles"
+import { BookContainer, BookHeader, Books, Content, ContentData1, ContentHeader1, ContentTitle1, Description1, Page, UserData, UserTitle } from "./styles"
 import { FaUserAlt } from 'react-icons/fa';
 import Book from "./book";
 import Header from "../components/header";
@@ -42,10 +42,12 @@ const Dashboard:React.FC = () => {
             <Header title='Selecione a apostila que deseja fazer'/>
 
             <Content>
-                <ContentHeader>
-                    <Description> Aula dada, aula feita de maneira mais eficiente :D </Description>
-                    <ContentTitle> Todos os cadernos </ContentTitle>
-                </ContentHeader>
+                <ContentHeader1>
+                    <ContentData1>
+                        <Description1> Aula dada, aula feita de maneira mais eficiente :D </Description1>
+                        <ContentTitle1> Todos os cadernos </ContentTitle1>
+                    </ContentData1>
+                </ContentHeader1>
 
                 <BookContainer>
                     <BookHeader>

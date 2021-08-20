@@ -22,15 +22,20 @@ export const Content = styled.div`
     align-items: center;
 `
 
-export const ContentHeader = styled.div`
+export const ContentHeader1 = styled.div`
     display: flex;
-    flex-direction: column;
     width: 100%;
     height: 85px;
     justify-content: flex-start;
+    margin-top: 45px;
 `
 
-export const ContentTitle = styled.p`
+export const ContentData1 = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const ContentTitle1 = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
     font-family: 'Nunito', sans-serif;
     font-size: 25px;
@@ -38,14 +43,13 @@ export const ContentTitle = styled.p`
     color: #655ca3;
 `
 
-export const Description = styled.p`
+export const Description1 = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@200&display=swap');
     font-family: 'Spartan', sans-serif;
     color: #4a4a4a;
     font-size: 13px;    
     font-weight: lighter;
     letter-spacing: -0.3px;
-    margin-top: 45px;
 `
 
 export const BookContainer = styled.div`
