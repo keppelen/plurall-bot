@@ -3,8 +3,9 @@ import { IconContext } from 'react-icons'
 import { FaBook, FaFile } from 'react-icons/fa'
 import { IoIosBook } from 'react-icons/io'
 import { Link, useLocation, useParams } from 'react-router-dom'
+import { Content, ContentHeader } from '../components/content'
 import Header from '../components/header'
-import { Content, Page, ContentHeader, SelectedBookTitle, SelectedBook, OptionsContainer, Option, OptionName } from './styles'
+import {Page, SelectedBookTitle, SelectedBook, OptionsContainer, Option, OptionName } from './styles'
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);

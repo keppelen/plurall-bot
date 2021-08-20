@@ -13,24 +13,6 @@ export const Page = styled.div`
     justify-content: center;
 `
 
-export const Content = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    & :hover {
-        opacity: 0.9;
-    }
-`
-
-export const ContentHeader = styled.div`
-    height: fit-content;
-    width: 50%;
-    display: flex;
-    margin-top: 100px;
-`
-
 export const SelectedBookTitle = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     font-family: 'Open Sans', sans-serif;
