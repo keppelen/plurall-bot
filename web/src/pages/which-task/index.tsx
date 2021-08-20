@@ -3,8 +3,10 @@ import { IconContext } from 'react-icons'
 import { FaBook, FaFile } from 'react-icons/fa'
 import { IoIosBook } from 'react-icons/io'
 import { useLocation, useParams } from 'react-router-dom'
+import { Content, ContentHeader } from '../components/content'
 import Header from '../components/header'
-import { Content, Page, ContentHeader, SelectedBookTitle, SelectedBook, OptionsContainer, Option, OptionName } from '../which-task/styles'
+import { Page, SelectedBookTitle, SelectedBook, TasksContainer, TaskGroup} from './styles'
+import Task from './task'
 
 const WhichTask:React.FC = () => {
     const {id, name} = useParams()
@@ -19,9 +21,15 @@ const WhichTask:React.FC = () => {
                     <SelectedBook> {name} </SelectedBook> 
                 </ContentHeader>
 
-                <OptionsContainer>
+                <TasksContainer>
+                    <TaskGroup>
+                        <Task/>
+                    </TaskGroup>
 
-                </OptionsContainer>
+                    <TaskGroup>
+                    </TaskGroup>
+
+                </TasksContainer>
             </Content>
         </Page>
     )
