@@ -25,7 +25,6 @@ export const TaskName = styled.p`
     color: #4a4a4a;
     width: 100%;
     margin-top: 10px;
-    margin-left: 10px;
 `
 
 export const TaskProgressBar = styled.div`    
