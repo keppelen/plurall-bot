@@ -55,11 +55,9 @@ const Dashboard:React.FC = () => {
                     </BookHeader>
 
                     <Books>
-                        {books.map(book => (
-                            <Link to={`/dashboard/how/${book.id}/${book.value}`}>
-                                <Book book={book}/> 
-                            </Link>
-                        ))}
+                        {books.map(book => 
+                            <Book book={book}/> 
+                        )}
                     </Books>
 
                 </BookContainer>

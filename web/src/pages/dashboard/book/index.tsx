@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { IBook } from '..'
 import { Container, Content, Image, Data, Text } from './styles'
 
@@ -12,12 +13,14 @@ function Book(props:BookProps){
 
     return (
         <Container>
-            <Content>
-                <Image src={book.thumbnail}/>
-                <Data>
-                    <Text> {book.value} </Text>
-                </Data>
-            </Content>
+            <Link to={`/dashboard/how/${book.id}/${book.value}`} style={{ textDecoration: 'none' }}>
+                <Content>
+                    <Image src={book.thumbnail}/>
+                    <Data>
+                        <Text> {book.value} </Text>
+                    </Data>
+                </Content>
+            </Link>
         </Container>
     )
 }
