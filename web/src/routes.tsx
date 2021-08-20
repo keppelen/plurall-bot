@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import Dashboard from './pages/dashboard';
 import HowToSolve from './pages/how-to-solve';
 import Login from './pages/login';
+import Solving from './pages/solving';
 import WhichTask from './pages/which-task';
 
 const PrivateRoute = ({...rest}: any) => {
@@ -23,6 +24,7 @@ const AppRoutes:React.FC = () => {
             <Route path='/dashboard' element={<Dashboard/>}/>
             <Route path='/dashboard/how/:id/:name' element={<HowToSolve/>}/>
             <Route path='/dashboard/which-task/:id/:name' element={<WhichTask/>}/>
+            <Route path='/dashboard/solve/:bookid/:bookname/:taskid/:taskname' element={<Solving/>}/>
         </Routes>
     )
 }
