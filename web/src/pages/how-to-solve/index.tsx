@@ -2,7 +2,7 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaBook, FaFile } from 'react-icons/fa'
 import { IoIosBook } from 'react-icons/io'
-import { useLocation, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import Header from '../components/header'
 import { Content, Page, ContentHeader, SelectedBookTitle, SelectedBook, OptionsContainer, Option, OptionName } from './styles'
 
@@ -27,18 +27,20 @@ const HowToSolve:React.FC = () => {
 
                 <OptionsContainer>
                     <Option>
-                        <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
-                            <FaBook/>
-                        </IconContext.Provider>
-                        <OptionName> Resolver apostila inteira </OptionName>
+                            <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
+                                <FaBook/>
+                            </IconContext.Provider>
+                            <OptionName> Resolver apostila inteira </OptionName>
                     </Option>
 
-                    <Option>
-                        <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
-                            <FaFile/>
-                        </IconContext.Provider>
-                        <OptionName> Resolver apenas uma tarefa </OptionName>
-                    </Option>
+                    <Link to={`/dashboard/which-task/${id}/${name}`} style={{ textDecoration: 'none' }}>
+                        <Option>
+                            <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
+                                <FaFile/>
+                            </IconContext.Provider>
+                            <OptionName> Resolver apenas uma tarefa </OptionName>
+                        </Option>
+                    </Link>
 
                 </OptionsContainer>
             </Content>

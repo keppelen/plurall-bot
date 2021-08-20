@@ -76,4 +76,5 @@ export const OptionName = styled.p`
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
     margin-left: 30px;
+    color: rgb(74, 74, 74);
 `
