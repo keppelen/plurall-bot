@@ -19,6 +19,9 @@ export const Content = styled.div`
     height: 100%;
     width: 100%;
     align-items: center;
+    & :hover {
+        opacity: 0.9;
+    }
 `
 
 export const ContentHeader = styled.div`
@@ -72,5 +75,5 @@ export const OptionName = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
-    margin-left: 50px;
+    margin-left: 30px;
 `

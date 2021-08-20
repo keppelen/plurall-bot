@@ -8,6 +8,9 @@ export const Container = styled.div`
     border-radius: 10px;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
+    & :hover {
+        opacity: 0.9;
+    }
 `
 
 export const Content = styled.div`
