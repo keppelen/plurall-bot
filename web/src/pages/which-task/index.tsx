@@ -13,8 +13,8 @@ const exampleTask:ITask = {
     'name': 'Tarefa Mínima - Aula 69',
     'official_answer_in_words': 'string',
     'progress': {
-        correct: 0,
-        wrong: 0, 
+        correct: 4,
+        wrong: 23, 
         total: 30
     },
     'user_task_id': 10,

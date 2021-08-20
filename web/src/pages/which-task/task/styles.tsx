@@ -40,8 +40,8 @@ export const TaskProgressBarProgress = styled('div')<ProgressBarProps>`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 25px;
     height: 25px;
     border-radius: 20px;
@@ -54,13 +54,13 @@ export const TaskProgressBar0 = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 25px;
     border-radius: 20px;
     position: relative;
     background: #655aa3 none repeat scroll 0% 0%;
-    width: 4%;
+    width: 3%;
 `
 
 export const TaskProgressbarNumber = styled.p`
