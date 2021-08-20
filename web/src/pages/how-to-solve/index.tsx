@@ -27,17 +27,17 @@ const HowToSolve:React.FC = () => {
 
                 <OptionsContainer>
                     <Option>
-                        <IconContext.Provider value={{ color: "#847FBC", size: '60'}}>
+                        <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
                             <FaBook/>
                         </IconContext.Provider>
                         <OptionName> Resolver apostila inteira </OptionName>
                     </Option>
 
                     <Option>
-                        <IconContext.Provider value={{ color: "#847FBC", size: '60'}}>
+                        <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
                             <FaFile/>
                         </IconContext.Provider>
-                        <OptionName> Resolver apenas uma tarefa específica </OptionName>
+                        <OptionName> Resolver apenas uma tarefa </OptionName>
                     </Option>
 
                 </OptionsContainer>
