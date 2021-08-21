@@ -30,8 +30,9 @@ export const HeaderLeaveButton = styled.button`
     @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
     font-family: 'Spartan', sans-serif;
     font-weight: bold;
+    font-size: min(2.5vw, 13px);
     height: 30px;
-    width: 60px;
+    width: min(20vw, 60px);
     background-color: #655ca3;
     border: none;
     border-radius: 20px;
