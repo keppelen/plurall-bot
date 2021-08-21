@@ -1,12 +1,15 @@
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { FaFile } from 'react-icons/fa'
 import { IoIosBook } from 'react-icons/io'
 import { useParams } from 'react-router-dom'
 import BackButton from '../components/back-button'
-import { Content, ContentHeader } from '../components/content'
+import { Content } from '../components/content'
+import ContentHeader from '../components/content-header'
+import { ContentHeader2 } from '../components/content-header/styles'
 import Header from '../components/header'
-import { ContentData1, ContentHeader1, ContentTitle1, Description1 } from '../dashboard/styles'
 import { SelectedBookTitle } from '../how-to-solve/styles'
 import { Page, SelectedBook } from '../which-task/styles'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBarProgress } from '../which-task/task/styles'
@@ -14,37 +17,39 @@ import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBarProgress } fro
 
 const Solving:React.FC = () => {
     const {bookid, bookname, taskid, taskname} = useParams()
+    const [percent, setPercent] = useState(0)
+    const solveAll = taskid === '0' ? true : false
+
+    useEffect(() => {
+        const test = () => {
+            for(let x = 0; x < 10; x++){
+                setTimeout(() => {
+                    setPercent(percent+10)
+                },1000 )
+            }
+        }
+        test()
+    })
+
 
     return (
         <Page>
             <Header title='Aguarde, a tarefa está sendo resolvida...'/>
             <Content>
 
-                <ContentHeader1>
-                    <BackButton/>
-                    <ContentData1>
-                        <Description1> Aula dada, aula feita de maneira mais eficiente :D </Description1>
-                        <ContentTitle1> Resolvendo tarefa... </ContentTitle1>
-                    </ContentData1>
-                </ContentHeader1>
+                <ContentHeader bookname={bookname} title='Resolvendo...'/>
 
-
-                <ContentHeader>
-                    <IconContext.Provider value={{ color: "#847FBC", size: '25'}}> <IoIosBook/> </IconContext.Provider>
-                    <SelectedBookTitle> Apostila selecionada: </SelectedBookTitle> 
-                    <SelectedBook> {bookname} </SelectedBook> 
-                </ContentHeader>
-                <ContentHeader style={{marginTop: '5px'}}>
+                {!solveAll && <ContentHeader2 style={{marginTop: '5px'}}>
                     <IconContext.Provider value={{ color: "#847FBC", size: '20'}}> <FaFile/> </IconContext.Provider>
                     <SelectedBookTitle> Tarefa Selecionada: </SelectedBookTitle> 
                     <SelectedBook> {taskname} </SelectedBook> 
-                </ContentHeader>
+                </ContentHeader2> }
 
-                <TaskContainer style={{marginTop: '50px'}}>
+                <TaskContainer style={{marginTop: '15%'}}>
                     <TaskName> Resolvendo.. </TaskName>
 
                 <TaskProgressBar>
-                    <TaskProgressBarProgress color='green' percent={80}/>
+                    <TaskProgressBarProgress color='green' percent={percent}/>
                 </TaskProgressBar>
                 </TaskContainer>
 

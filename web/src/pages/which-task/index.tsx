@@ -3,10 +3,10 @@ import { IconContext } from 'react-icons'
 import { IoIosBook } from 'react-icons/io'
 import { useParams } from 'react-router-dom'
 import BackButton from '../components/back-button'
-import { Content, ContentHeader } from '../components/content'
+import { Content } from '../components/content'
+import ContentHeader from '../components/content-header'
 import Header from '../components/header'
-import { ContentData1, ContentHeader1, ContentTitle1, Description1 } from '../dashboard/styles'
-import { Page, SelectedBookTitle, SelectedBook, TasksContainer, TaskGroup} from './styles'
+import { Page, TasksContainer, TaskGroup} from './styles'
 import Task, { ITask } from './task'
 
 const exampleTask:ITask = {
@@ -34,20 +34,7 @@ const WhichTask:React.FC = () => {
             <Header title='Selecione a tarefa que deseja resolver:'/>
             <Content>
 
-                <ContentHeader1>
-                    <BackButton/>
-                    <ContentData1>
-                        <Description1> Aula dada, aula feita de maneira mais eficiente :D </Description1>
-                        <ContentTitle1> Selecione a tarefa que deseja resolver </ContentTitle1>
-                    </ContentData1>
-                </ContentHeader1>
-
-
-                <ContentHeader>
-                    <IconContext.Provider value={{ color: "#847FBC", size: '25'}}> <IoIosBook/> </IconContext.Provider>
-                    <SelectedBookTitle> Apostila selecionada: </SelectedBookTitle> 
-                    <SelectedBook> {name} </SelectedBook> 
-                </ContentHeader>
+                <ContentHeader bookname={name} title='Selecione a tarefa desejada'/>
 
                 <TasksContainer>
                     <TaskGroup>
