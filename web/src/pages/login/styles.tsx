@@ -5,6 +5,7 @@ export const Page = styled.div`
     margin: 0;
     padding: 0;
     background-color: #7229e6;
+    background-color: #fafafa;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -21,6 +22,7 @@ export const LoginContainer = styled.div`
     border-radius: 20px;
     text-align: left;
     padding: 32px;
+    box-shadow: 0 1px 3px #cdc6c6;
 `
 export const LoginText = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
