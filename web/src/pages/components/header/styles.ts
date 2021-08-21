@@ -23,8 +23,7 @@ export const HeaderTitle = styled.p`
     font-family: 'Spartan', sans-serif;
     color: #c099ff;
     /* font-size: 34px; */
-    font-size: 3vh;
-    font-size-adjust: 0.3px;
+    font-size: min(4vw, 25px);
 `
 
 export const HeaderLeaveButton = styled.button`       
