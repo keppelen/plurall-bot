@@ -1,7 +1,10 @@
 import React from "react"
 import { useState } from "react"
 import { Input, LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
-import ReactLoading from 'react-loading';
+import ReactLoading from 'react-loading'
+import axios from "axios"
+import env from '../../env.json'
+import api from "../../services/api"
 
 const Login:React.FC = () => {
     const [loading,setLoding] = useState(false)
@@ -11,7 +14,26 @@ const Login:React.FC = () => {
     async function login(){
         setLoding(true)
         console.log(email,password)
-        window.location.href = '/dashboard'
+        const token = await Authenticate(email,password)
+
+        if(!token) return
+
+        localStorage.setItem('token', token)
+
+        setLoding(false)
+    }
+
+    async function Authenticate(email:string,password:string) {
+        try{
+            console.log(`${env.BACKEND_URL}/login`)
+            const response = await api.post('/login', {email,password})
+            console.log(response)
+            const {token} = response.data
+            return token
+        }catch(error){
+            alert(error.response.data.error)
+            return null
+        }
     }
 
     return (
