@@ -9,6 +9,7 @@ export const TaskContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 760px;
+    width: min(80vw, 760px);
     height: 90px;
     background-color: #fff;
     margin-top: 10px;
