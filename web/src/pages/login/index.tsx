@@ -19,17 +19,14 @@ const Login:React.FC = () => {
         if(!token) return
 
         localStorage.setItem('token', token)
-
         setLoding(false)
+        window.location.href = '/dashboard'
     }
 
     async function Authenticate(email:string,password:string) {
         try{
-            console.log(`${env.BACKEND_URL}/login`)
             const response = await api.post('/login', {email,password})
-            console.log(response)
-            const {token} = response.data
-            return token
+            return response.data.token
         }catch(error){
             alert(error.response.data.error)
             return null
