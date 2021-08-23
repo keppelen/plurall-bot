@@ -3,50 +3,24 @@ import { Request, Response } from "express"
 import {Model} from 'mongoose'
 import { IQuestion } from "../models/question"
 import { QuestionModel } from "../models/question"
+import { Authenticate } from "../requests/athenticate"
 
 const Question:Model<IQuestion> = QuestionModel
 
-export async function add(req:Request, res:Response) {
+export async function login(req:Request, res:Response) {
     try{
-        const {answer, email} = req.body
-        const {book, group,question} = req.params
+        const {email,password} = req.body
 
-        if(!((group) && (question) && (answer) && (book) && (email)))
+        if(!email || !password)
             return res.status(400).send({error: 'Request malformed'})
 
-        const alreadyAnswer = await Question.find({book,group,question})
-        
-        if(alreadyAnswer.length > 0)
-            return res.status(400).send({error: 'Answer already exists'})
+        const token = await Authenticate(email,password)
 
-        const newQuestion = await Question.create({
-            book,
-            group,
-            question,
-            answer,
-            email
-        })
+        if(!token)
+            return res.status(400).send({error: 'Email ou senha inválidos'})
 
-        console.log(newQuestion)
-
-        return res.status(200).send(newQuestion)
+        return res.status(200).send({token})
     }catch{
-        return res.status(400).send({error: 'Erro ao adicionar dados'})
-    }
-}
-
-
-export async function list(req:Request, res:Response) {
-    try{
-        const {book} = req.params
-
-        if(!book)
-            return res.status(400).send({error: 'Request malformed'})
-
-        const answers = await Question.find({book})
-
-        return res.status(200).send(answers)
-    }catch{
-        return res.status(400).send({error: 'Erro ao adicionar dados'})
+        return res.status(400).send({error: 'Erro ao efetuar login'})
     }
 }
