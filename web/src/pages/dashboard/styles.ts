@@ -64,6 +64,8 @@ export const BookHeader = styled.div`
     height: fit-content;
     width: 100%;
     display: flex;
+    margin-bottom: 20px;
+    align-items: center;
 `
 
 export const UserTitle = styled.p`
@@ -72,7 +74,7 @@ export const UserTitle = styled.p`
     color: #4a4a4a;
     font-weight: bold;
     font-size: 13px;
-    line-height: 24px;
+    line-height: 15px;
     margin-left: 7px;
 `
 
@@ -81,7 +83,7 @@ export const UserData = styled.p`
     font-family: 'Open Sans', sans-serif;
     color: #4a4a4a;
     font-size: 13px;
-    line-height: 24px;
+    line-height: 15px;
     margin-left: 10px;
 `
 

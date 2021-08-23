@@ -18,7 +18,7 @@ function ContentHeader(props:ContentHeaderProps){
             <BackButton/>
 
             <ContentData1>
-                <Description1> Aula dada, aula feita de maneira mais eficiente :D </Description1>
+                <Description1> Aula dada, aula não feita </Description1>
                 <ContentTitle1> {title} </ContentTitle1>
             </ContentData1>
         </ContentHeader1>

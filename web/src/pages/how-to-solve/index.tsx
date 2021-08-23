@@ -20,23 +20,23 @@ const HowToSolve:React.FC = () => {
                 <ContentHeader bookname={name} title='Selecione o método desejado'/>
 
                 <OptionsContainer>
-                    <Link to={`/dashboard/solve/${id}/${name}/${0}/${0}`} style={{ textDecoration: 'none' }}>
-                        <Option>
+                    <Option>
+                        <Link to={`/dashboard/solve/${id}/${name}/${0}/${0}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                                 <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
                                     <FaBook/>
                                 </IconContext.Provider>
                                 <OptionName> Resolver apostila inteira </OptionName>
-                        </Option>
-                    </Link>
+                        </Link>
+                    </Option>
 
-                    <Link to={`/dashboard/which-task/${id}/${name}`} style={{ textDecoration: 'none' }}>
-                        <Option>
+                    <Option>
+                        <Link to={`/dashboard/which-task/${id}/${name}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center'  }}>
                             <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
                                 <FaFile/>
                             </IconContext.Provider>
                             <OptionName> Resolver apenas uma tarefa </OptionName>
-                        </Option>
-                    </Link>
+                        </Link>
+                    </Option>
 
                 </OptionsContainer>
             </Content>

@@ -42,10 +42,10 @@ export const OptionsContainer = styled.div`
 `
 
 export const Option = styled.div`
-    padding: 10px;
     display: flex;
-    width: 530px;
+    width: min(80vw, 530px);
     height: 140px;
+    padding: 10px;
     background-color: #fff;
     margin-top: 10px;
     border-radius: 10px;
