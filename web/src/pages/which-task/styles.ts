@@ -5,7 +5,7 @@ export const Page = styled.div`
     flex-direction: column;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
+    background-color: #fafafa; 
     width: 100%;
     height: 100%;
     position: absolute;
@@ -14,9 +14,8 @@ export const Page = styled.div`
 `
 
 export const TasksContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    grid-gap: 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 `
