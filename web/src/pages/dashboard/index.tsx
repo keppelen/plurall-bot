@@ -1,10 +1,10 @@
 import React from "react"
 import { IconContext } from "react-icons";
-import { BookContainer, BookHeader, Books, Content, ContentData1, ContentHeader1, ContentTitle1, Description1, Page, UserData, UserTitle } from "./styles"
+import { BookContainer, BookHeader, Books, Content, Page, UserData, UserTitle } from "./styles"
 import { FaUserAlt } from 'react-icons/fa';
 import Book from "./book";
 import Header from "../components/header";
-import { Link } from "react-router-dom";
+import { ContentData1, ContentHeader1, ContentTitle1, Description1 } from "../components/content-header/styles";
 
 export interface IBook {
     id: string,

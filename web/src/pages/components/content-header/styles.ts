@@ -4,7 +4,7 @@ import styled from "styled-components"
 export const ContentHeader1 = styled.div`
     display: flex;
     width: 100%;
-    height: 85px;
+    height: fit-content;
     justify-content: flex-start;
     margin-top: 45px;
     align-items: center;

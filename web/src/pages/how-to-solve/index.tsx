@@ -18,27 +18,43 @@ const HowToSolve:React.FC = () => {
                 <ContentHeader bookname={name} title='Selecione o método desejado'/>
 
                 <OptionsContainer>
-                    <Option>
-                        <Link to={`/dashboard/solve/${id}/${name}/${0}/${0}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                                <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
-                                    <FaBook/>
-                                </IconContext.Provider>
-                                <OptionName> Resolver apostila inteira </OptionName>
-                        </Link>
-                    </Option>
+                    <OptionFullBook id={id} name={id}/>
 
-                    <Option>
-                        <Link to={`/dashboard/which-task/${id}/${name}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center'  }}>
-                            <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
-                                <FaFile/>
-                            </IconContext.Provider>
-                            <OptionName> Resolver apenas uma tarefa </OptionName>
-                        </Link>
-                    </Option>
-
+                    <OptionSingleTask id={id} name={id}/>
                 </OptionsContainer>
             </Content>
         </Page>
+    )
+}
+
+interface OptionProps {
+    id: string,
+    name: string
+}
+
+function OptionFullBook(props:OptionProps){
+    return (
+        <Option>
+            <Link to={`/dashboard/solve/${props.id}/${props.name}/${0}/${0}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                    <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
+                        <FaBook/>
+                    </IconContext.Provider>
+                    <OptionName> Resolver apostila inteira </OptionName>
+            </Link>
+        </Option>   
+    ) 
+}
+
+function OptionSingleTask(props:OptionProps){
+    return (
+        <Option>
+            <Link to={`/dashboard/which-task/${props.id}/${props.name}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center'  }}>
+                <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
+                    <FaFile/>
+                </IconContext.Provider>
+                <OptionName> Resolver apenas uma tarefa </OptionName>
+            </Link>
+        </Option>
     )
 }
 
