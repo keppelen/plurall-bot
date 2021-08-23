@@ -8,9 +8,9 @@ const Login:React.FC = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    function login(){
+    async function login(){
         setLoding(true)
-        Login
+        console.log(email,password)
     }
 
     return (
@@ -20,7 +20,7 @@ const Login:React.FC = () => {
                 <LoginDescription> Entre com sua conta do plurall para começar a ilegalidade </LoginDescription>
                 
                 <Input placeholder='Digite seu email' onChange={v => setEmail(v.target.value)}/>
-                <Input placeholder='Digite sua senha' onChange={v => setPassword(v.target.value)}/>
+                <Input placeholder='Digite sua senha' type='password' onChange={v => setPassword(v.target.value)}/>
                 
                 <LoginButton onClick={() => login()}>
                     {!loading ? 'Acessar' : 
