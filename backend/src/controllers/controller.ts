@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { Authenticate } from "../requests/athenticate"
 import GetBooks from "../requests/books"
+import { GuessAnswer } from "../requests/guess-answer"
 import { GetQuestionGroup } from "../requests/questions"
 import GetTaskGroup from "../requests/tasks"
 
@@ -78,3 +79,23 @@ export async function questionlist(req:Request, res:Response) {
         return res.status(400).send({error: 'Erro ao pegar as perguntas da tarefa'})
     }
 }
+
+export async function guessQuestion(req:Request, res:Response) {
+    try{
+        const {token} = req
+        const {answer} = req.body
+        const {bookid,groupid, questionid} = req.params
+
+        if(!token)
+            return res.status(400).send({error: 'No token provided'})
+
+        const questions = await GuessAnswer(bookid ,groupid, questionid, answer ,token)
+
+        if(questions === null)
+            return res.status(400).send({error: 'Não foi possivel chutar a pergunta'})
+
+        return res.status(200).send(questions)
+    }catch{
+        return res.status(400).send({error: 'Erro ao chutar a pergunta'})
+    }
+} // :bookid/:groupid/:questionid
