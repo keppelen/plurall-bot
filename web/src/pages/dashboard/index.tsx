@@ -20,7 +20,7 @@ const Dashboard:React.FC = () => {
     const books:IBook[] = [
         {
             id: '1',
-            value: 'Terceirão alfa - Caderno aluno 1',
+            value: 'Terceirão alfa - Caderno aluno 7',
             thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2786203_thumbnail.png',
             access_status: 'string',
             status_in_words: 'string',
@@ -28,16 +28,16 @@ const Dashboard:React.FC = () => {
         },
         {
             id: '2',
-            value: 'Terceirão alfa - Caderno aluno 2',
-            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2786203_thumbnail.png',
+            value: 'Terceirão alfa - Caderno aluno 6',
+            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2748190_thumbnail.png',
             access_status: 'string',
             status_in_words: 'string',
             available: true
         },
         {
             id: '3',
-            value: 'Terceirão alfa - Caderno aluno 3',
-            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2786203_thumbnail.png',
+            value: 'Terceirão alfa - Caderno aluno 5',
+            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2580100_thumbnail.png',
             access_status: 'string',
             status_in_words: 'string',
             available: true

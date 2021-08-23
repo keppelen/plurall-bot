@@ -18,9 +18,9 @@ const HowToSolve:React.FC = () => {
                 <ContentHeader bookname={name} title='Selecione o método desejado'/>
 
                 <OptionsContainer>
-                    <OptionFullBook id={id} name={id}/>
+                    <OptionFullBook id={id} name={name}/>
 
-                    <OptionSingleTask id={id} name={id}/>
+                    <OptionSingleTask id={id} name={name}/>
                 </OptionsContainer>
             </Content>
         </Page>
