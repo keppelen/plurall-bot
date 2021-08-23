@@ -1,30 +1,49 @@
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import api, { authorizaton } from '../../services/api'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import Header from '../components/header'
 import { Page, TasksContainer, TaskGroup} from './styles'
 import Task, { ITask } from './task'
 
-const exampleTask:ITask = {
-    'id': 1,
-    'name': 'Tarefa Mínima - Aula 69',
-    'official_answer_in_words': 'string',
-    'progress': {
-        correct: 4,
-        wrong: 23, 
-        total: 30
+export interface ITaskGroup {
+    title: string,
+    subtitle: string,
+    quick_answer: boolean,
+    node_id: string,
+    video: {
+      title: string,
+      url: string,
+      thumbnail: string
     },
-    'user_task_id': 10,
-    'status_in_words': 'string',
-    'status': 'string',
-    'end_date': 'string'
+    end_date: null|string,
+    finish_button: null|string,
+    receipt_button: null|string,
+    tasks: ITask[]
 }
 
 
 
 const WhichTask:React.FC = () => {
     const {id, name} = useParams()
+    const [taskGroups, setTaskGroups] = useState<ITaskGroup[]>([])
+
+    useEffect(() => {
+        requestTasks()
+    },[])
+
+    async function requestTasks(){
+        try{
+            const response = await api.get(`/task/list/${id}`, authorizaton)
+            const taskGroups = response.data
+            setTaskGroups(taskGroups)
+        }catch{
+            alert('Ocorreu um erro ao buscar as tarefas')
+        }
+    }
 
     return (
         <Page>
@@ -34,10 +53,13 @@ const WhichTask:React.FC = () => {
                 <ContentHeader bookname={name} title='Selecione a tarefa desejada'/>
 
                 <TasksContainer>
-                    <TaskGroup>
-                        <Task task={exampleTask}/>
-                    </TaskGroup>
-
+                    {taskGroups.map(taskGroup => (
+                        <TaskGroup>
+                            {taskGroup.tasks.map(task => (
+                                <Task task={task}/>
+                            ))}
+                        </TaskGroup>
+                    ))}
                 </TasksContainer>
             </Content>
         </Page>
