@@ -13,25 +13,6 @@ export const Page = styled.div`
     justify-content: center;
 `
 
-export const SelectedBookTitle = styled.p`
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-    font-family: 'Open Sans', sans-serif;
-    color: #4a4a4a;
-    font-weight: bold;
-    font-size: 15px;
-    line-height: 24px;
-    margin-left: 7px;
-`
-
-export const SelectedBook = styled.p`
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@100&display=swap');
-    font-family: 'Open Sans', sans-serif;
-    color: #4a4a4a;
-    font-size: 15px;
-    line-height: 24px;
-    margin-left: 10px;
-`
-
 export const OptionsContainer = styled.div`
     margin-top: 50px;
     display: grid;

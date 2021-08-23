@@ -1,8 +1,5 @@
 import React from 'react'
-import { IconContext } from 'react-icons'
-import { IoIosBook } from 'react-icons/io'
 import { useParams } from 'react-router-dom'
-import BackButton from '../components/back-button'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import Header from '../components/header'
