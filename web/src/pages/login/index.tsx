@@ -10,7 +10,7 @@ const Login:React.FC = () => {
 
     function login(){
         setLoding(true)
-        window.location.href = '/dashboard'
+        Login
     }
 
     return (
