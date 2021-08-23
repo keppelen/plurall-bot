@@ -11,6 +11,7 @@ const Login:React.FC = () => {
     async function login(){
         setLoding(true)
         console.log(email,password)
+        window.location.href = '/dashboard'
     }
 
     return (

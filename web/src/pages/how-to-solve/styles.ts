@@ -15,7 +15,9 @@ export const Page = styled.div`
 
 export const OptionsContainer = styled.div`
     margin-top: 50px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 20px;
     align-items: center;

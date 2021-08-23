@@ -34,6 +34,14 @@ const Dashboard:React.FC = () => {
             status_in_words: 'string',
             available: true
         },
+        {
+            id: '3',
+            value: 'Terceirão alfa - Caderno aluno 3',
+            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2786203_thumbnail.png',
+            access_status: 'string',
+            status_in_words: 'string',
+            available: true
+        },
     ]
 
 
