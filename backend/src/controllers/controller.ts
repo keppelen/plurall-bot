@@ -1,13 +1,9 @@
-import { Cipher } from "crypto"
 import { Request, Response } from "express"
-import {Model} from 'mongoose'
-import { IQuestion } from "../models/question"
-import { QuestionModel } from "../models/question"
 import { Authenticate } from "../requests/athenticate"
 import GetBooks from "../requests/books"
+import { GetQuestionGroup } from "../requests/questions"
 import GetTaskGroup from "../requests/tasks"
 
-const Question:Model<IQuestion> = QuestionModel
 
 export async function login(req:Request, res:Response) {
     try{
@@ -56,10 +52,29 @@ export async function tasklist(req:Request, res:Response) {
         const tasks = await GetTaskGroup(bookid, token)
 
         if(!tasks)
-            return res.status(400).send({error: 'Erro ao pegar as tarefas'})
+            return res.status(400).send({error: 'Não foi possivel pegar as tarefas'})
 
         return res.status(200).send(tasks)
     }catch{
-        return res.status(400).send({error: 'Erro ao efetuar login'})
+        return res.status(400).send({error: 'Erro ao pegar as tarefas'})
+    }
+}
+
+export async function questionlist(req:Request, res:Response) {
+    try{
+        const {token} = req
+        const {taskid} = req.params
+
+        if(!token)
+            return res.status(400).send({error: 'No token provided'})
+
+        const questions = await GetQuestionGroup(taskid, token)
+
+        if(!questions)
+            return res.status(400).send({error: 'Não foi possivel pegar as perguntas da tarefa'})
+
+        return res.status(200).send(questions)
+    }catch{
+        return res.status(400).send({error: 'Erro ao pegar as perguntas da tarefa'})
     }
 }

@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import { add, list } from '../controllers/answer-controller'
-import { booklist, login, tasklist } from '../controllers/controller'
+import { booklist, login, questionlist, tasklist } from '../controllers/controller'
 import { tokenMiddleware } from '../middlewares/token.middleware'
 
 const routes:Router = Router()
@@ -15,6 +15,7 @@ routes.use(tokenMiddleware)
 
 routes.get('/book/list', booklist)
 routes.get('/task/list/:bookid', tasklist)
+routes.get('/questions/list/:taskid', questionlist)
 
 
 
