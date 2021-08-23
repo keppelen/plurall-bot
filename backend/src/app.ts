@@ -3,6 +3,7 @@ import cors from 'cors'
 import routes from './routes/routes'
 
 const app = express()
+const port = 4000
 
 app.use(express.json())
 app.use(cors())
@@ -10,8 +11,8 @@ app.use(cors())
 app.use('/api', routes)
 
 export function setupServer(){
-    app.listen(4000, () => {
-        console.log('Server ouvindo na porta 4000')
+    app.listen(port, () => {
+        console.log(`🔥 Servidor ouvindo na porta ${port}`)
     })
 }
 

@@ -10,10 +10,10 @@ mongoose.set('useFindAndModify', false)
 export function setupDatabase(){
     mongoose.connect(`${process.env.MONGO_CONNECT_LINK}`,{ useUnifiedTopology: true })
     .then(() => {
-        console.log('Conectado ao database!')
+        console.log('📦 Conectado ao database!')
     })
     .catch(() => {
-        console.log('Erro ao connectar ao databse')
+        console.log('❌ Erro ao connectar ao databse')
     })
 } 
 
