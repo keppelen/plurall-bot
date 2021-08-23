@@ -5,12 +5,11 @@ const api:AxiosInstance = Axios.create({
 })
 
 
-export const authorizaton = (token:string|null) => {
-    return {
-        headers: {
-        'Authorization': `Bearer ${token}` 
-        }
+export const authorizaton =  {
+    headers: {
+    'Authorization': `Bearer ${localStorage.getItem('token')}` 
     }
 }
+
 
 export default api

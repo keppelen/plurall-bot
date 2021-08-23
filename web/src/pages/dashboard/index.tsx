@@ -5,6 +5,9 @@ import { FaUserAlt } from 'react-icons/fa';
 import Book from "./book";
 import Header from "../components/header";
 import { ContentData1, ContentHeader1, ContentTitle1, Description1 } from "../components/content-header/styles";
+import { useEffect } from "react";
+import { useState } from "react";
+import api, { authorizaton } from "../../services/api";
 
 export interface IBook {
     id: string,
@@ -16,33 +19,20 @@ export interface IBook {
 }
 
 const Dashboard:React.FC = () => {
+    const [books,setBooks] = useState([])
 
-    const books:IBook[] = [
-        {
-            id: '1',
-            value: 'Terceirão alfa - Caderno aluno 7',
-            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2786203_thumbnail.png',
-            access_status: 'string',
-            status_in_words: 'string',
-            available: true
-        },
-        {
-            id: '2',
-            value: 'Terceirão alfa - Caderno aluno 6',
-            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2748190_thumbnail.png',
-            access_status: 'string',
-            status_in_words: 'string',
-            available: true
-        },
-        {
-            id: '3',
-            value: 'Terceirão alfa - Caderno aluno 5',
-            thumbnail: 'https://app.plurall.net/sites/default/files/didactic_material/thumbnails/2580100_thumbnail.png',
-            access_status: 'string',
-            status_in_words: 'string',
-            available: true
-        },
-    ]
+    useEffect(() => {
+        requestBooks()
+    })
+
+    async function requestBooks(){
+        try{
+            const response = await api.get('/book/list', authorizaton)
+            setBooks(response.data)
+        }catch{
+            alert('Ocorreu um erro ao buscar as apostilas')
+        }
+    }
 
 
     return (
