@@ -37,6 +37,7 @@ export const ContentHeader2 = styled.div`
     width: 100%;
     display: flex;
     margin-top: 50px;
+    align-items: center;
 `
 
 export const SelectedBookTitle = styled.p`
@@ -47,7 +48,7 @@ export const SelectedBookTitle = styled.p`
     font-size: 15px;
     line-height: 24px;
     margin-left: 7px;
-    line-height: 20px;
+    line-height: 18px;
 `
 
 export const SelectedBook = styled.p`
@@ -57,5 +58,5 @@ export const SelectedBook = styled.p`
     font-size: 15px;
     line-height: 24px;
     margin-left: 10px;
-    line-height: 20px;
+    line-height: 18px;
 `

@@ -3,15 +3,13 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { FaFile } from 'react-icons/fa'
-import { IoIosBook } from 'react-icons/io'
 import { useParams } from 'react-router-dom'
-import BackButton from '../components/back-button'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import { ContentHeader2 } from '../components/content-header/styles'
 import Header from '../components/header'
-import { SelectedBookTitle } from '../how-to-solve/styles'
-import { Page, SelectedBook } from '../which-task/styles'
+import { SelectedBookTitle, SelectedBook } from '../components/content-header/styles'
+import { Page } from '../which-task/styles'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBarProgress } from '../which-task/task/styles'
 
 
@@ -39,7 +37,7 @@ const Solving:React.FC = () => {
 
                 <ContentHeader bookname={bookname} title='Resolvendo...'/>
 
-                {!solveAll && <ContentHeader2 style={{marginTop: '5px'}}>
+                {!solveAll && <ContentHeader2 style={{marginTop: '10px'}}>
                     <IconContext.Provider value={{ color: "#847FBC", size: '20'}}> <FaFile/> </IconContext.Provider>
                     <SelectedBookTitle> Tarefa Selecionada: </SelectedBookTitle> 
                     <SelectedBook> {taskname} </SelectedBook> 
