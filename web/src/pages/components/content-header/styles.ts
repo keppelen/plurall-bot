@@ -18,7 +18,7 @@ export const ContentData1 = styled.div`
 export const ContentTitle1 = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
     font-family: 'Nunito', sans-serif;
-    font-size: 25px;
+    font-size: min(5vw, 25px);
     letter-spacing: -0.3px;
     color: #655ca3;
 `
@@ -27,7 +27,7 @@ export const Description1 = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@200&display=swap');
     font-family: 'Spartan', sans-serif;
     color: #4a4a4a;
-    font-size: 13px;    
+    font-size: min(2vw, 13px);
     font-weight: lighter;
     letter-spacing: -0.3px;
 `
