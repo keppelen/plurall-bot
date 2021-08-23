@@ -8,7 +8,6 @@ export const Page = styled.div`
     background-color: #fafafa; 
     width: 100%;
     height: 100%;
-    position: absolute;
     align-items: center;
     justify-content: center;
 `

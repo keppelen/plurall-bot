@@ -9,7 +9,7 @@ import ContentHeader from '../components/content-header'
 import { ContentHeader2 } from '../components/content-header/styles'
 import Header from '../components/header'
 import { SelectedBookTitle, SelectedBook } from '../components/content-header/styles'
-import { Page } from '../which-task/styles'
+import { Page } from '../dashboard/styles'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBarProgress } from '../which-task/task/styles'
 
 
