@@ -23,7 +23,7 @@ const Dashboard:React.FC = () => {
 
     useEffect(() => {
         requestBooks()
-    })
+    },[])
 
     async function requestBooks(){
         try{
