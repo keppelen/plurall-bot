@@ -6,11 +6,18 @@ interface HeaderProps {
 }
 
 function Header(props:HeaderProps){
+
+    function Leave(){
+        localStorage.setItem('token', '')
+        localStorage.setItem('email', '')
+        window.location.href = '/login'
+    }
+
     return (
         <HeaderContainer> 
             <HeaderContent> 
                 <HeaderTitle> {props.title} </HeaderTitle> 
-                <HeaderLeaveButton> SAIR </HeaderLeaveButton>
+                <HeaderLeaveButton onClick={() => {Leave()}}> SAIR </HeaderLeaveButton>
                 </HeaderContent>
         </HeaderContainer>
     )
