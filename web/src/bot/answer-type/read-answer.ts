@@ -1,8 +1,6 @@
 import { GuessAnswer } from "../requests/guess-answer";
 import { IQuestion } from "../requests/questions";
 
-const delay = 1000 
-
 export async function ReadAnswer(question:IQuestion, groupid:number, bookid:string){
     console.log('                   📜"Lendo" as parada')
 

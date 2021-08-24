@@ -1,6 +1,5 @@
 import { SolveBook } from './solve-book'
 import { GetAnswers } from './data/get-answers'
-import { ITask } from './requests/tasks'
 import { ItaskData } from '../pages/solving'
 
 

@@ -1,5 +1,5 @@
 import { cancel } from "./main";
-import GetTaskGroup, { ITask, ITaskGroup } from "./requests/tasks";
+import GetTaskGroup, { ITaskGroup } from "./requests/tasks";
 import { SolveTask, SolveTaskGroup } from "./solve-task";
 
 

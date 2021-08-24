@@ -1,4 +1,3 @@
-import axios, { AxiosRequestConfig } from 'axios'
 import api, { authorizaton } from '../../services/api'
 
 interface ITaskProgress {

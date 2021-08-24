@@ -2,8 +2,6 @@ import React from "react"
 import { useState } from "react"
 import { Input, LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
 import ReactLoading from 'react-loading'
-import axios from "axios"
-import env from '../../env.json'
 import api from "../../services/api"
 
 const Login:React.FC = () => {

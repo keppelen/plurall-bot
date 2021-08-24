@@ -1,4 +1,4 @@
-import GetTasks, { ITask, ITaskGroup } from "./requests/tasks"
+import { ITask, ITaskGroup } from "./requests/tasks"
 import { GetQuestionGroup, IQuestionGroup } from "./requests/questions"
 import { SolveQuestionGroup } from "./solve-question"
 import { cancel } from "./main"
@@ -29,7 +29,7 @@ export async function SolveTask(taskId:string, bookid:string){
     }
 }
 
-function isAlreadyFullSolved(task:ITask){
-    const {total, correct, wrong} = task.progress
-    return total === (correct + wrong)
-}
+// function isAlreadyFullSolved(task:ITask){
+//     const {total, correct, wrong} = task.progress
+//     return total === (correct + wrong)
+// }
