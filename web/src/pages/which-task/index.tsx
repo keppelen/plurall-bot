@@ -54,9 +54,9 @@ const WhichTask:React.FC = () => {
 
                 <TasksContainer>
                     {taskGroups.map(taskGroup => (
-                        <TaskGroup>
+                        <TaskGroup key={taskGroup.node_id}>
                             {taskGroup.tasks.map(task => (
-                                <Task task={task}/>
+                                <Task task={task} key={task.id}/>
                             ))}
                         </TaskGroup>
                     ))}

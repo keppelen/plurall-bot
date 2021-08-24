@@ -19,7 +19,7 @@ export interface IBook {
 }
 
 const Dashboard:React.FC = () => {
-    const [books,setBooks] = useState([])
+    const [books,setBooks] = useState<IBook[]>([])
 
     useEffect(() => {
         requestBooks()
@@ -56,7 +56,7 @@ const Dashboard:React.FC = () => {
 
                     <Books>
                         {books.map(book => 
-                            <Book book={book}/> 
+                            <Book book={book} key={book.id}/> 
                         )}
                     </Books>
 
