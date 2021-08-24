@@ -43,9 +43,9 @@ export async function SaveAnswer(bookid:string, groupid:string, questionid:strin
         if(alreadyAnswer.length > 0) return
 
         const newQuestion = await Question.create({
-            bookid,
-            groupid,
-            questionid,
+            book: bookid,
+            group: groupid,
+            question: questionid,
             answer,
             email: 'teste@teste.com'
         })
