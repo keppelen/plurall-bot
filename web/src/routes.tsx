@@ -20,6 +20,7 @@ const AppRoutes:React.FC = () => {
     return (
         <Routes>
             <PrivateRoute path='/' element={<Dashboard/>}/>
+            <PrivateRoute path='*' element={<Dashboard/>}/>
             <Route path='/login' element={<Login/>}/>
             <PrivateRoute path='/dashboard' element={<Dashboard/>}/>
             <PrivateRoute path='/dashboard/how/:id/:name' element={<HowToSolve/>}/>
