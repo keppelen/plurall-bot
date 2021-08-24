@@ -28,7 +28,10 @@ async function SolveQuestion(question:IQuestion, groupid:number, bookid:string){
 
     const type = question.task_type
 
-    if(type === 'video') return
+    if(type === 'video'){
+        updateTaskData({...taskInProgressData, correct: taskInProgressData.correct + 1})
+        return await ReadAnswer(question, groupid, bookid)
+    }
 
     if(type === 'read'){
         updateTaskData({...taskInProgressData, correct: taskInProgressData.correct + 1})
