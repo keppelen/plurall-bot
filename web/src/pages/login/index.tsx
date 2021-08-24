@@ -19,6 +19,7 @@ const Login:React.FC = () => {
         if(!token) return
 
         localStorage.setItem('token', token)
+        localStorage.setItem('email', email)
         setLoding(false)
         window.location.href = '/dashboard'
     }
