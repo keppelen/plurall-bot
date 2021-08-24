@@ -51,7 +51,7 @@ const Dashboard:React.FC = () => {
                     <BookHeader>
                         <IconContext.Provider value={{ color: "#847FBC", size: '15'}}> <FaUserAlt/> </IconContext.Provider>
                         <UserTitle> Usuário logado:  </UserTitle>
-                        <UserData>  teste@teste.com - dadadadasd</UserData>
+                        <UserData>  {localStorage.getItem('email')}</UserData>
                     </BookHeader>
 
                     <Books>
