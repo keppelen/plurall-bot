@@ -63,7 +63,7 @@ const Solving:React.FC = () => {
     useEffect(() => {
         const intervalRef = setInterval(() => {
                 UpdateData()
-        }, 100);
+        }, 200);
   
         return () => clearInterval(intervalRef)
     },[])
@@ -73,11 +73,6 @@ const Solving:React.FC = () => {
             console.log('atualizadno task data')
             setTaskData(getTaskData())
         }
-    }
-
-    
-    function Timeout(ms:number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function Stop(c=true){
