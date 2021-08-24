@@ -1,6 +1,7 @@
 import GetTasks, { ITask, ITaskGroup } from "./requests/tasks"
 import { GetQuestionGroup, IQuestionGroup } from "./requests/questions"
 import { SolveQuestionGroup } from "./solve-question"
+import { cancel } from "./main"
 
 
 export async function SolveTaskGroup(bookid:string, taskGroup:ITaskGroup){
@@ -8,6 +9,7 @@ export async function SolveTaskGroup(bookid:string, taskGroup:ITaskGroup){
     const {tasks} = taskGroup
 
     for(let x = 0; x < tasks.length; x++){
+        if(cancel) return
         await SolveTask(tasks[x].id.toString(), bookid)
     }
     
@@ -22,6 +24,7 @@ export async function SolveTask(taskId:string, bookid:string){
 
     const questionGroup:IQuestionGroup[] = await GetQuestionGroup(taskId)
     for(let x = 0; x < questionGroup.length; x++){
+        if(cancel) return
         await SolveQuestionGroup(questionGroup[x], bookid)
     }
 }

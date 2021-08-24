@@ -11,29 +11,37 @@ import Header from '../components/header'
 import { SelectedBookTitle, SelectedBook } from '../components/content-header/styles'
 import { Page } from '../dashboard/styles'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBarProgress } from '../which-task/task/styles'
-import { Solve } from '../../bot/main'
+import { Cancel, Solve } from '../../bot/main'
+import { StartButton, StopButton } from './styles'
 
 const Solving:React.FC = () => {
     const {bookid, bookname, taskid, taskname} = useParams()
     const [percent, setPercent] = useState(0)
+    const [solving, setSolving] = useState(false)
+    const [solved, setSolved] = useState(false)
     const solveAll = taskid === '0' ? true : false
 
     const option = solveAll ? 'all' : 'one'
 
-    function testSolve(){
-        Solve(bookid, option, taskid)
+    async function StartSolve(){
+        setSolving(true)
+        Cancel(false)
+        await Solve(bookid, option, taskid)
+        setSolving(false)
+        setSolved(true)
     }
 
-    useEffect(() => {
-        testSolve()
-    },[])
+    function SetCancel(){
+        Cancel()
+    }
+
 
     return (
         <Page>
             <Header title='Aguarde, a tarefa está sendo resolvida...'/>
             <Content>
 
-                <ContentHeader bookname={bookname} title='Resolvendo...'/>
+                <ContentHeader bookname={bookname} title={solving ? 'Resolvendo...' : 'Clique no botão para começar'}/>
 
                 {!solveAll && <ContentHeader2 style={{marginTop: '10px'}}>
                     <IconContext.Provider value={{ color: "#847FBC", size: '20'}}> <FaFile/> </IconContext.Provider>
@@ -42,12 +50,15 @@ const Solving:React.FC = () => {
                 </ContentHeader2> }
 
                 <TaskContainer style={{marginTop: '15%'}}>
-                    <TaskName> Resolvendo.. </TaskName>
+                    <TaskName> {solving ? 'Resolvendo...' : 'Clique no botão para começar'} </TaskName>
 
                 <TaskProgressBar>
                     <TaskProgressBarProgress color='green' percent={percent}/>
                 </TaskProgressBar>
                 </TaskContainer>
+
+                {!solving && <StartButton onClick={() => {StartSolve()}}> Resolver </StartButton>}
+                {solving && <StopButton onClick={() => {SetCancel()}}> Parar </StopButton>}
 
             </Content>
         </Page>

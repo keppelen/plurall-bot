@@ -1,3 +1,4 @@
+import { cancel } from "./main";
 import GetTaskGroup, { ITask, ITaskGroup } from "./requests/tasks";
 import { SolveTask, SolveTaskGroup } from "./solve-task";
 
@@ -10,10 +11,10 @@ export async function SolveBook(bookid:string, option='all', taskToSolveId:strin
 
     switch(option){
         case 'all':
-            SolveEntireBook(bookid, taskGroups)
+            await SolveEntireBook(bookid, taskGroups)
         break
         case 'one':
-            SolveSingleTask(bookid, taskGroups, taskToSolveId)
+            await SolveSingleTask(bookid, taskGroups, taskToSolveId)
         break
     }
 
@@ -23,6 +24,7 @@ export async function SolveBook(bookid:string, option='all', taskToSolveId:strin
 async function SolveEntireBook(bookid:string, taskGroups:ITaskGroup[]){
 
     for(let x = 0; x < taskGroups.length; x++){
+        if(cancel) return
         await SolveTaskGroup(bookid, taskGroups[x])
     }
 }
