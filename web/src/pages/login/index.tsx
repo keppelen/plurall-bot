@@ -13,14 +13,13 @@ const Login:React.FC = () => {
 
     async function login(){
         setLoding(true)
-        console.log(email,password)
         const token = await Authenticate(email,password)
 
+        setLoding(false)
         if(!token) return
 
         localStorage.setItem('token', token)
         localStorage.setItem('email', email)
-        setLoding(false)
         window.location.href = '/dashboard'
     }
 

@@ -21,10 +21,10 @@ const AppRoutes:React.FC = () => {
         <Routes>
             <PrivateRoute path='/' element={<Dashboard/>}/>
             <Route path='/login' element={<Login/>}/>
-            <Route path='/dashboard' element={<Dashboard/>}/>
-            <Route path='/dashboard/how/:id/:name' element={<HowToSolve/>}/>
-            <Route path='/dashboard/which-task/:id/:name' element={<WhichTask/>}/>
-            <Route path='/dashboard/solve/:bookid/:bookname/:taskid/:taskname' element={<Solving/>}/>
+            <PrivateRoute path='/dashboard' element={<Dashboard/>}/>
+            <PrivateRoute path='/dashboard/how/:id/:name' element={<HowToSolve/>}/>
+            <PrivateRoute path='/dashboard/which-task/:id/:name' element={<WhichTask/>}/>
+            <PrivateRoute path='/dashboard/solve/:bookid/:bookname/:taskid/:taskname' element={<Solving/>}/>
         </Routes>
     )
 }
