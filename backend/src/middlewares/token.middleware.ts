@@ -1,5 +1,4 @@
-import { NextFunction, request, Request } from 'express'
-import { Response } from 'express-serve-static-core'
+import { NextFunction, Request, Response } from 'express'
 
 
 export function tokenMiddleware(req:Request,res:Response,next:NextFunction){
@@ -18,7 +17,6 @@ export function tokenMiddleware(req:Request,res:Response,next:NextFunction){
     if (!/^Bearer$/i.test(scheme))
         return res.status(401).send({error: 'Token malformated'})
 
-    console.log('recebendo token: ' + token)
     req.token = token
     next()
 }

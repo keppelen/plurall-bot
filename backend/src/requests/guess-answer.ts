@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios"
+import { SaveAnswer } from "../controllers/answer-controller"
 
 export async function GuessAnswer(bookid:string, groupid:string, questionid:string, answer:string, token:string){
 
@@ -39,8 +40,8 @@ export async function GuessAnswer(bookid:string, groupid:string, questionid:stri
         else
             console.log('                   🅾️ Resposta incorreta')
 
-        // if(officialAnswer)
-        //     SaveAnswer(question,groupid,officialAnswer, bookid)
+        if(officialAnswer)
+            SaveAnswer(bookid, groupid, questionid, officialAnswer)
 
         return correct
     }catch{

@@ -36,6 +36,28 @@ export async function add(req:Request, res:Response) {
 }
 
 
+export async function SaveAnswer(bookid:string, groupid:string, questionid:string, answer:string) {
+    try{
+        const alreadyAnswer = await Question.find({bookid,groupid,questionid})
+        
+        if(alreadyAnswer.length > 0) return
+
+        const newQuestion = await Question.create({
+            bookid,
+            groupid,
+            questionid,
+            answer,
+            email: 'teste@teste.com'
+        })
+
+        console.log(newQuestion)
+
+        return true
+    }catch{
+        console.log('ERRO ao adicionar resposta')
+    }
+}
+
 export async function list(req:Request, res:Response) {
     try{
         const {book} = req.params
