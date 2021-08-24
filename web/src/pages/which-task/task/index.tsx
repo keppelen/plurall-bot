@@ -35,6 +35,10 @@ function Task(props:TaskProps){
         wrong: wrong / total * 100 
     }
 
+    if((correct + wrong) >= total)
+        return null
+    
+
     return (
         <Link to={`/dashboard/solve/${id}/${name}/${task.id}/${task.name}?total=${task.progress.total}`} style={{ textDecoration: 'none' }}>
             <TaskContainer>
