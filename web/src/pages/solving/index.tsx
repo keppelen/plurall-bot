@@ -11,24 +11,22 @@ import Header from '../components/header'
 import { SelectedBookTitle, SelectedBook } from '../components/content-header/styles'
 import { Page } from '../dashboard/styles'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBarProgress } from '../which-task/task/styles'
-
+import { Solve } from '../../bot/main'
 
 const Solving:React.FC = () => {
     const {bookid, bookname, taskid, taskname} = useParams()
     const [percent, setPercent] = useState(0)
     const solveAll = taskid === '0' ? true : false
 
-    useEffect(() => {
-        const test = () => {
-            for(let x = 0; x < 10; x++){
-                setTimeout(() => {
-                    setPercent(percent+10)
-                },1000 )
-            }
-        }
-        test()
-    })
+    const option = solveAll ? 'all' : 'one'
 
+    function testSolve(){
+        Solve(bookid, option, taskid)
+    }
+
+    useEffect(() => {
+        testSolve()
+    },[])
 
     return (
         <Page>
