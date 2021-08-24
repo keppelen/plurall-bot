@@ -35,12 +35,12 @@ interface OptionProps {
 function OptionFullBook(props:OptionProps){
     return (
         <Option style={{opacity: 0.3, cursor: 'unset'}}>
-            {/* <Link to={`/dashboard/solve/${props.id}/${props.name}/${0}/${0}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}> */}
+            <Link to={`/dashboard/solve/${props.id}/${props.name}/${0}/${0}`} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
                 <IconContext.Provider value={{ color: "#655ca3", size: '60'}}>
                     <FaBook/>
                 </IconContext.Provider>
                 <OptionName style={{userSelect: 'none'}}> Resolver apostila inteira </OptionName>
-            {/* </Link> */}
+            </Link>
         </Option>   
     ) 
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { IconContext } from 'react-icons'
 import { FaCheck, FaFile, FaTimes } from 'react-icons/fa'
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import { ContentHeader2 } from '../components/content-header/styles'
@@ -11,7 +11,7 @@ import { SelectedBookTitle, SelectedBook } from '../components/content-header/st
 import { Page } from '../dashboard/styles'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBar0, TaskProgressbarNumber, TaskProgressBarProgress } from '../which-task/task/styles'
 import { Cancel, getTaskData, Solve } from '../../bot/main'
-import { StartButton, StopButton } from './styles'
+import { FinishedTaskText, StartButton, StopButton } from './styles'
 import { useEffect } from 'react'
 
 export interface ItaskData {
@@ -28,7 +28,7 @@ const Solving:React.FC = () => {
     const query = useQuery()
     const totalstr = query.get('total')
 
-    let total = 10
+    let total = 10  
     if(totalstr)
         total = parseInt(totalstr) ? parseInt(totalstr) : 20
 
@@ -48,22 +48,32 @@ const Solving:React.FC = () => {
         await Solve(bookid, option, taskid)
 
         if(!stoped)
-            setFinished(true)
+            finish()
         
         setSolving(false)
     }
 
+    function finish(){
+        setFinished(true)
+        if((taskData.correct + taskData.wrong) <= 0)
+            taskData.correct = total
+    }
+
 
     useEffect(() => {
-        const update = async() => {
-            while(true){
-                await Timeout(1000)
-                console.log('atualizadno task data')
-                setTaskData(getTaskData())
-            }
-        }
-        update()
+        const intervalRef = setInterval(() => {
+                UpdateData()
+        }, 100);
+  
+        return () => clearInterval(intervalRef)
     },[])
+
+    function UpdateData(){
+        if(!finished){
+            console.log('atualizadno task data')
+            setTaskData(getTaskData())
+        }
+    }
 
     
     function Timeout(ms:number) {
@@ -117,9 +127,9 @@ const Solving:React.FC = () => {
                 </TaskProgressBar>
                 </TaskContainer>
 
-                {!solving && <StartButton onClick={() => {StartSolve()}}> Resolver </StartButton>}
-                {solving && <StopButton onClick={() => {Stop()}}> Parar </StopButton>}
-                {/* {finished && <h1> TAREFA CONCLUIDA </h1>} */}
+                {!solving && !finished && <StartButton onClick={() => {StartSolve()}}> Resolver </StartButton>}
+                {solving && !finished && <StopButton onClick={() => {Stop()}}> Parar </StopButton>}
+                {finished && <FinishedTaskText> <FaCheck/> Tarefa Concluída </FinishedTaskText>}
 
             </Content>
         </Page>

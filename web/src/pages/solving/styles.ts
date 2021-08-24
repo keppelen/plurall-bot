@@ -29,3 +29,11 @@ export const StopButton = styled.button`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
     font-family: 'Public Sans', sans-serif;
 `
+
+export const FinishedTaskText = styled.p`
+    margin-top: 40px;
+    color: #00b083;
+    font-weight: bold;
+    @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+    font-family: 'Public Sans', sans-serif;
+`
