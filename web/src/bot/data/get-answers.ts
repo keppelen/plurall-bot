@@ -1,5 +1,5 @@
 import { IQuestion } from "../requests/questions";
-import api from "../../services/api";
+import api, { authorizaton } from "../../services/api";
 
 interface IAnswer{
     _id: string,
@@ -14,7 +14,7 @@ export let answers:IAnswer[]|null = null
 export async function GetAnswers(bookid:string){
     console.log('Pegando as repostas ta apostila...')
     try{
-        const response = await api.get(`/list/${bookid}`)
+        const response = await api.get(`/answer/list/${bookid}`, authorizaton)
         answers = response.data
         console.log(answers)
     }catch{
