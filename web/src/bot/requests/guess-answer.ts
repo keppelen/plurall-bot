@@ -1,7 +1,6 @@
 import api, { authorizaton } from "../../services/api"
 import { IQuestion } from "./questions"
 
-
 export async function GuessAnswer(question:IQuestion,groupid:number, answer:string, bookid:string){
     console.log(`                   ✏️ 'Chutando' ${answer}`)
 
@@ -14,7 +13,7 @@ export async function GuessAnswer(question:IQuestion,groupid:number, answer:stri
             console.log('                   ✅ Resposta correta')
         else
             console.log('                   🅾️ Resposta incorreta')
-
+        
         return correct
     }catch{
         console.log('⚠️ Ocorreu um erro ao chutar questão')

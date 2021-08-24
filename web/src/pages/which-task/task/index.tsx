@@ -36,7 +36,7 @@ function Task(props:TaskProps){
     }
 
     return (
-        <Link to={`/dashboard/solve/${id}/${name}/${task.id}/${task.name}`} style={{ textDecoration: 'none' }}>
+        <Link to={`/dashboard/solve/${id}/${name}/${task.id}/${task.name}?total=${task.progress.total}`} style={{ textDecoration: 'none' }}>
             <TaskContainer>
                 <TaskName> {task.name} </TaskName>
                 <TaskProgressBar>

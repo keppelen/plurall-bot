@@ -1,4 +1,6 @@
 import React from 'react'
+import { useEffect } from 'react'
+import { resetTaskData } from '../../../bot/main'
 import { HeaderContent, HeaderLeaveButton, HeaderTitle, HeaderContainer } from './styles'
 
 interface HeaderProps {
@@ -12,6 +14,10 @@ function Header(props:HeaderProps){
         localStorage.setItem('email', '')
         window.location.href = '/login'
     }
+
+    useEffect(() => {
+        resetTaskData()
+    },[])
 
     return (
         <HeaderContainer> 

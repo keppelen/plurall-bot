@@ -19,7 +19,7 @@ export async function GuessMultipleChoice(question:IQuestion, groupid:number, bo
             attempts = 2
             alternatives = alternatives.filter(item => item !== findedAnswer.answer.toLowerCase()) //remove wron answer from guess list
         }else{
-            return
+            return true
         }
     }
 
@@ -27,10 +27,12 @@ export async function GuessMultipleChoice(question:IQuestion, groupid:number, bo
         const guess = alternatives[Random(0,alternatives.length-1)]
 
         const isCorrect = await GuessAnswer(question, groupid, guess, bookid)
-        if(isCorrect) return
+        if(isCorrect) return true
 
         alternatives = alternatives.filter(item => item !== guess)
     }
+
+    return false
 }
 
 

@@ -1,6 +1,24 @@
 import { SolveBook } from './solve-book'
 import { GetAnswers } from './data/get-answers'
-import { ITask } from '../pages/which-task/task'
+import { ITask } from './requests/tasks'
+import { ItaskData } from '../pages/solving'
+
+
+export let taskInProgressData:ItaskData = {correct: 0, wrong: 0}
+
+export function updateTaskData(taskdata:ItaskData){
+    console.log('atualizando para:')
+    console.log(taskdata)
+    taskInProgressData = taskdata
+}
+
+export function getTaskData(){
+    return taskInProgressData
+}
+
+export function resetTaskData(){
+    taskInProgressData = {correct: 0, wrong: 0}
+}
 
 export let cancel = false
 
