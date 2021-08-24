@@ -20,6 +20,8 @@ export const Content = styled.div`
     width: 60%;
     justify-content: center;
     align-items: center;
+    margin-top: 64px;
+    margin-bottom: 60px;
 `
 
 export const BookContainer = styled.div`

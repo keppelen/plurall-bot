@@ -9,9 +9,9 @@ function Header(props:HeaderProps){
     return (
         <HeaderContainer> 
             <HeaderContent> 
-            <HeaderTitle> {props.title} </HeaderTitle> 
-            <HeaderLeaveButton> SAIR </HeaderLeaveButton>
-            </HeaderContent>
+                <HeaderTitle> {props.title} </HeaderTitle> 
+                <HeaderLeaveButton> SAIR </HeaderLeaveButton>
+                </HeaderContent>
         </HeaderContainer>
     )
 }

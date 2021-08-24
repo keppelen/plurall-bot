@@ -7,6 +7,8 @@ export const Content = styled.div`
     height: 100%;
     width: 60%;
     align-items: center;
+    margin-top: 64px;
+    margin-bottom: 60px;
 `
 
 export const ContentHeader = styled.div`
