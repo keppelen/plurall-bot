@@ -21,7 +21,7 @@ export async function SaveAnswer(bookid:string, groupid:string, questionid:strin
             group: groupid,
             question: questionid,
             answer: treatedAnswer,
-            email: email ? email : 'teste@teste.com'
+            email: email ? email : 'undefined'
         })
 
         console.log(newQuestion)
