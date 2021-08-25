@@ -31,7 +31,7 @@ async function SolveEntireBook(bookid:string, taskGroups:ITaskGroup[]){
 
 async function SolveSingleTask(bookid:string, taskGroups:ITaskGroup[], taskToSolveId:string){
     await SolveTask(taskToSolveId, bookid)
-
+    if(cancel) return
     console.log("✅ Tarefa Concluida")
 
 }

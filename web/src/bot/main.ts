@@ -28,4 +28,5 @@ export function Cancel(c=true){
 export async function Solve(bookid:string,how:string, taskToSolveId:string){
     await GetAnswers(bookid)
     await SolveBook(bookid,how,taskToSolveId)
+    if(cancel) return 'paused'
 }

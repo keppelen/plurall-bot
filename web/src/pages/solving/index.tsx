@@ -33,7 +33,7 @@ const Solving:React.FC = () => {
         total = parseInt(totalstr) ? parseInt(totalstr) : 20
 
     const {bookid, bookname, taskid, taskname} = useParams()
-    const [stoped, setStopped] = useState(false)
+    const [paused, setPaused] = useState(false)
     const [finished, setFinished] = useState(false)
     const [solving, setSolving] = useState(false)
     const [taskData, setTaskData] = useState<ItaskData>({wrong: 0, correct: 0})
@@ -42,12 +42,13 @@ const Solving:React.FC = () => {
     const option = solveAll ? 'all' : 'one'
 
     async function StartSolve(){
+        setFinished(false)
+        Pause(false)
         setSolving(true)
-        Stop(false)
 
-        await Solve(bookid, option, taskid)
+        const isPaused = await Solve(bookid, option, taskid) === 'paused'
 
-        if(!stoped)
+        if(!isPaused)
             finish()
         
         setSolving(false)
@@ -55,6 +56,7 @@ const Solving:React.FC = () => {
 
     function finish(){
         setFinished(true)
+
         if((taskData.correct + taskData.wrong) <= 0)
             taskData.correct = total
     }
@@ -63,20 +65,17 @@ const Solving:React.FC = () => {
     useEffect(() => {
         const intervalRef = setInterval(() => {
                 UpdateData()
-        }, 200);
+        }, 300)
   
         return () => clearInterval(intervalRef)
     },[])
 
     function UpdateData(){
-        if(!finished){
-            console.log('atualizadno task data')
-            setTaskData(getTaskData())
-        }
+        console.log('atualizadno task data')
+        setTaskData(getTaskData())
     }
 
-    function Stop(c=true){
-        setStopped(c)
+    function Pause(c=true){
         Cancel(c)
     }
 
@@ -123,8 +122,8 @@ const Solving:React.FC = () => {
                 </TaskContainer>
 
                 {!solving && !finished && <StartButton onClick={() => {StartSolve()}}> Resolver </StartButton>}
-                {solving && !finished && <StopButton onClick={() => {Stop()}}> Parar </StopButton>}
-                {finished && <FinishedTaskText> <FaCheck/> Tarefa Concluída </FinishedTaskText>}
+                {solving  && <StopButton onClick={() => {Pause(true)}}> Parar </StopButton>}
+                {finished && <FinishedTaskText> <FaCheck/> {solveAll ? 'Parte da apostila' : 'Tarefa'} Concluída </FinishedTaskText>}
 
             </Content>
         </Page>

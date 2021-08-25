@@ -23,6 +23,7 @@ async function SolveQuestion(question:IQuestion, groupid:number, bookid:string){
 
     if(question.status !== null){
         console.log('                   🤙 Alternativa já chutada, indo para proxima')
+        updateTaskData({...taskInProgressData, correct: taskInProgressData.correct + 1})
         return
     }
 
@@ -45,8 +46,6 @@ async function SolveQuestion(question:IQuestion, groupid:number, bookid:string){
     
     if(type === 'multiple_choice'){
         const iscorrect = await GuessMultipleChoice(question, groupid, bookid)
-
-        console.log(`QUESTÂO ESTÀ: ${iscorrect ? 'CERTA' : 'ERRRADA'}`)
 
         if(iscorrect)
             updateTaskData({...taskInProgressData, correct: taskInProgressData.correct + 1})
