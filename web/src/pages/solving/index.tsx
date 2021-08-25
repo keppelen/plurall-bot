@@ -33,7 +33,6 @@ const Solving:React.FC = () => {
         total = parseInt(totalstr) ? parseInt(totalstr) : 20
 
     const {bookid, bookname, taskid, taskname} = useParams()
-    const [paused, setPaused] = useState(false)
     const [finished, setFinished] = useState(false)
     const [solving, setSolving] = useState(false)
     const [taskData, setTaskData] = useState<ItaskData>({wrong: 0, correct: 0})
@@ -71,7 +70,7 @@ const Solving:React.FC = () => {
     },[])
 
     function UpdateData(){
-        console.log('atualizadno task data')
+        // console.log('atualizadno task data')
         setTaskData(getTaskData())
     }
 

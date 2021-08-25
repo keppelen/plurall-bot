@@ -1,11 +1,10 @@
 import {Router} from 'express'
-import { add, list } from '../controllers/answer-controller'
+import { list } from '../controllers/answer-controller'
 import { booklist, guessQuestion, login, questionlist, tasklist } from '../controllers/controller'
 import { tokenMiddleware } from '../middlewares/token.middleware'
 
 const routes:Router = Router()
 
-routes.post('/answer/add/:book/:group/:question', add)
 routes.get('/answer/list/:book', list)
 
 

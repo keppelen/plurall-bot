@@ -83,13 +83,13 @@ export async function questionlist(req:Request, res:Response) {
 export async function guessQuestion(req:Request, res:Response) {
     try{
         const {token} = req
-        const {answer} = req.body
+        const {answer, email} = req.body
         const {bookid,groupid, questionid} = req.params
 
         if(!token)
             return res.status(400).send({error: 'No token provided'})
 
-        const questions = await GuessAnswer(bookid ,groupid, questionid, answer ,token)
+        const questions = await GuessAnswer(bookid ,groupid, questionid, answer ,token, email)
 
         if(questions === null)
             return res.status(400).send({error: 'Não foi possivel chutar a pergunta'})
