@@ -16,7 +16,8 @@ import { useEffect } from 'react'
 
 export interface ItaskData {
     wrong: number,
-    correct: number
+    correct: number,
+    total: number
 }
 
 function useQuery() {
@@ -35,7 +36,7 @@ const Solving:React.FC = () => {
     const {bookid, bookname, taskid, taskname} = useParams()
     const [finished, setFinished] = useState(false)
     const [solving, setSolving] = useState(false)
-    const [taskData, setTaskData] = useState<ItaskData>({wrong: 0, correct: 0})
+    const [taskData, setTaskData] = useState<ItaskData>({wrong: 0, correct: 0, total: 0})
     const solveAll = taskid === '0' ? true : false
 
     const option = solveAll ? 'all' : 'one'
@@ -57,7 +58,7 @@ const Solving:React.FC = () => {
         setFinished(true)
 
         if((taskData.correct + taskData.wrong) <= 0)
-            taskData.correct = total
+            taskData.correct = taskData.total
     }
 
 
@@ -97,14 +98,14 @@ const Solving:React.FC = () => {
                 <TaskProgressBar>
                     <IconContext.Provider value={{ color: '#fff'}}>
                         {taskData.correct > 0 && 
-                            <TaskProgressBarProgress color='green' percent={(taskData.correct / total * 100)}>
+                            <TaskProgressBarProgress color='green' percent={(taskData.correct / taskData.total * 100)}>
                                 <FaCheck/>
                                 <TaskProgressbarNumber> {taskData.correct} </TaskProgressbarNumber>
                             </TaskProgressBarProgress>
                         }
 
                         {taskData.wrong > 0 && 
-                            <TaskProgressBarProgress color='red' percent={(taskData.wrong / total * 100)}>
+                            <TaskProgressBarProgress color='red' percent={(taskData.wrong / taskData.total * 100)}>
                                 <FaTimes/>
                                 <TaskProgressbarNumber> {taskData.wrong} </TaskProgressbarNumber>
                             </TaskProgressBarProgress> 

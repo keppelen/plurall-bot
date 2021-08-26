@@ -1,5 +1,5 @@
 import { cancel } from "./main";
-import GetTaskGroup, { ITaskGroup } from "./requests/tasks";
+import GetTaskGroup, { ITask, ITaskGroup } from "./requests/tasks";
 import { SolveTask, SolveTaskGroup } from "./solve-task";
 
 
@@ -30,7 +30,30 @@ async function SolveEntireBook(bookid:string, taskGroups:ITaskGroup[]){
 }
 
 async function SolveSingleTask(bookid:string, taskGroups:ITaskGroup[], taskToSolveId:string){
-    await SolveTask(taskToSolveId, bookid)
+
+    let task:ITask = {    
+        id: parseInt(taskToSolveId),
+        name: 'Task example',
+        official_answer_in_words: null,
+        progress: {
+            correct: 0,
+            wrong: 0, 
+            total: 10
+        },
+        user_task_id: 1,
+        status_in_words: 'string',
+        status: 'string',
+        end_date: null
+    }
+
+    taskGroups.map(tg => {
+        tg.tasks.map(tsk => {
+            if(tsk.id.toString() === taskToSolveId)
+                task = tsk
+        })
+    })
+
+    await SolveTask(task, bookid)
     if(cancel) return
     console.log("✅ Tarefa Concluida")
 
