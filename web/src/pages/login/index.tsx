@@ -7,8 +7,8 @@ import AlertBox from "../components/alertbox"
 
 const Login:React.FC = () => {
     const [loading,setLoding] = useState(false)
-    const [email, setEmail] = useState('a')
-    const [password, setPassword] = useState('b')
+    const [email, setEmail] = useState('email')
+    const [password, setPassword] = useState('password')
     const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
 
     async function login(){
