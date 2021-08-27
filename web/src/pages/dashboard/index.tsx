@@ -8,6 +8,8 @@ import { ContentData1, ContentHeader1, ContentTitle1, Description1 } from "../co
 import { useEffect } from "react";
 import { useState } from "react";
 import api, { authorizaton } from "../../services/api";
+import AlertBox, { Leave } from "../components/alertbox";
+import AppLoading from "../components/loading";
 
 export interface IBook {
     id: string,
@@ -20,6 +22,8 @@ export interface IBook {
 
 const Dashboard:React.FC = () => {
     const [books,setBooks] = useState<IBook[]>([])
+    const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         requestBooks()
@@ -29,14 +33,24 @@ const Dashboard:React.FC = () => {
         try{
             const response = await api.get('/book/list', authorizaton)
             setBooks(response.data)
-        }catch{
-            alert('Ocorreu um erro ao buscar as apostilas')
+        }catch(err){
+            if(err.response)
+                setError({title:'Ops!', description: 'Ocorreu um erro com os servidores do plurall, tente logar novamente :)',on: true, function: () => {Leave()}})
+            else
+            setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
         }
+        setLoading(false)
     }
-
-
+    
+    
     return (
         <Page>
+            {loading && <AppLoading/>}
+
+            {error.on && 
+                <AlertBox title={error.title} description={error.description} onPressOk={() => {error.function()}}/>
+            }
+
             <Header title='Selecione a apostila que deseja fazer'/>
 
             <Content>
@@ -54,6 +68,7 @@ const Dashboard:React.FC = () => {
                         <UserData>  {localStorage.getItem('email')}</UserData>
                     </BookHeader>
 
+                    
                     <Books>
                         {books.map(book => 
                             <Book book={book} key={book.id}/> 

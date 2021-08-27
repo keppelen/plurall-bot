@@ -20,18 +20,7 @@ export interface ItaskData {
     total: number
 }
 
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-  
-
 const Solving:React.FC = () => {
-    const query = useQuery()
-    const totalstr = query.get('total')
-
-    let total = 10  
-    if(totalstr)
-        total = parseInt(totalstr) ? parseInt(totalstr) : 20
 
     const {bookid, bookname, taskid, taskname} = useParams()
     const [finished, setFinished] = useState(false)
