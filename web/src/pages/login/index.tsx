@@ -3,11 +3,13 @@ import { useState } from "react"
 import { Input, LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
 import ReactLoading from 'react-loading'
 import api from "../../services/api"
+import AlertBox from "../components/alertbox"
 
 const Login:React.FC = () => {
     const [loading,setLoding] = useState(false)
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('a')
+    const [password, setPassword] = useState('b')
+    const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
 
     async function login(){
         setLoding(true)
@@ -25,14 +27,23 @@ const Login:React.FC = () => {
         try{
             const response = await api.post('/login', {email,password})
             return response.data.token
-        }catch(error){
-            alert(error.response.data.error)
-            return null
+        }catch(error){ 
+            if(error.response)
+                setError({title:'Ops!', description: error.response.data.error, on: true, function: () => {}})
+            else
+                setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
         }
+    }
+
+    function resetAlert(){
+        setError({...error, on: false})
     }
 
     return (
         <Page>
+            {error.on && 
+                <AlertBox title={error.title} description={error.description} onPressOk={() => {resetAlert();error.function()}}/>
+            }
             <LoginContainer>
                 <LoginText> Login </LoginText>
                 <LoginDescription> Entre com sua conta do plurall para começar a ilegalidade </LoginDescription>
