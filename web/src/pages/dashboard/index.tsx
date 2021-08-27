@@ -37,7 +37,7 @@ const Dashboard:React.FC = () => {
             if(err.response)
                 setError({title:'Ops!', description: 'Ocorreu um erro com os servidores do plurall, tente logar novamente :)',on: true, function: () => {Leave()}})
             else
-            setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
+                setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
         }
         setLoading(false)
     }

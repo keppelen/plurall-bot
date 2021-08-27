@@ -29,7 +29,7 @@ const Login:React.FC = () => {
             return response.data.token
         }catch(error){ 
             if(error.response)
-                setError({title:'Ops!', description: error.response.data.error, on: true, function: () => {}})
+                setError({title:'Ops!', description: error.response.data.error? error.response.data.error:'Erro inesperado', on: true, function: () => {}})
             else
                 setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
         }

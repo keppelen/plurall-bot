@@ -20,6 +20,9 @@ export const AlertPageBackground = styled.div`
 
 export const AlertContainer = styled.div`
     width: 400px;
+    @media(max-width: 400px){
+        width: 80%;
+    }
     height: 200px;
     background-color: #fff;
     border-radius: 20px;
@@ -56,4 +59,8 @@ export const AlertButton = styled.button`
     margin-left: 300px;
     cursor: pointer;
     font-size: 17px;
+    @media(max-width: 400px){
+        margin-top: 70px;
+        margin-left: 200px;
+    }
 `

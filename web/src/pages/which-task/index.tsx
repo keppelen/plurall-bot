@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import api, { authorizaton } from '../../services/api'
+import AlertBox, { Leave } from '../components/alertbox'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import Header from '../components/header'
@@ -30,6 +31,7 @@ export interface ITaskGroup {
 const WhichTask:React.FC = () => {
     const {id, name} = useParams()
     const [taskGroups, setTaskGroups] = useState<ITaskGroup[]>([])
+    const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
 
     useEffect(() => {
         requestTasks()
@@ -40,29 +42,38 @@ const WhichTask:React.FC = () => {
             const response = await api.get(`/task/list/${id}`, authorizaton)
             const taskGroups = response.data
             setTaskGroups(taskGroups)
-        }catch{
-            alert('Ocorreu um erro ao buscar as tarefas')
+        }catch(error){
+            if(error.response)
+                setError({title:'Ops!', description: 'Ocorreu um erro com os servidores do plurall, tente logar novamente :)',on: true, function: () => {Leave()}})
+            else
+                setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
         }
     }
 
     return (
-        <Page>
-            <Header title='Selecione a tarefa que deseja resolver:'/>
-            <Content>
+        <>
+            {error.on && 
+                <AlertBox title={error.title} description={error.description} onPressOk={() => {error.function()}}/>
+            }
+                <Page>
 
-                <ContentHeader bookname={name} title='Selecione a tarefa desejada'/>
+                <Header title='Selecione a tarefa que deseja resolver:'/>
+                <Content>
+                    
+                    <ContentHeader bookname={name} title='Selecione a tarefa desejada'/>
 
-                <TasksContainer>
-                    {taskGroups.map(taskGroup => (
-                        <TaskGroup key={taskGroup.node_id}>
-                            {taskGroup.tasks.map(task => (
-                                <Task task={task} key={task.id}/>
-                            ))}
-                        </TaskGroup>
-                    ))}
-                </TasksContainer>
-            </Content>
-        </Page>
+                    <TasksContainer>
+                        {taskGroups.map(taskGroup => (
+                            <TaskGroup key={taskGroup.node_id}>
+                                {taskGroup.tasks.map(task => (
+                                    <Task task={task} key={task.id}/>
+                                ))}
+                            </TaskGroup>
+                        ))}
+                    </TasksContainer>
+                </Content>
+            </Page>
+        </>
     )
 }
 

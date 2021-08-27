@@ -5,7 +5,8 @@ import { AlertButton, AlertContainer, AlertDescription, AlertPage, AlertPageBack
 interface AlertBoxProps {
     title:string,
     description:string,
-    onPressOk: Function
+    onPressOk: Function,
+    style?:object,
 }
 
 
@@ -16,7 +17,7 @@ export default function AlertBox(props:AlertBoxProps){
         return <div/>
 
     return (
-        <AlertPage>
+        <AlertPage style={props.style}>
             <AlertPageBackground/>
             <AlertContainer>
                 <AlertTitle> {props.title} </AlertTitle>
