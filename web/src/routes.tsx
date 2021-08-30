@@ -4,7 +4,7 @@ import Dashboard from './pages/dashboard';
 import HowToSolve from './pages/how-to-solve';
 import Login from './pages/login';
 import Solving from './pages/solving';
-import WhichTask from './pages/which-task';
+import WhichTask from './pages/which-task'; 
 
 const PrivateRoute = ({...rest}: any) => {
     const isAuthenticated = localStorage.getItem('token') ? true : false
