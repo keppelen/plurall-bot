@@ -10,6 +10,7 @@ import { useState } from "react";
 import api, { authorizaton } from "../../services/api";
 import AlertBox, { Leave } from "../components/alertbox";
 import AppLoading from "../components/loading";
+import { AxiosResponse } from "axios";
 
 export interface IBook {
     id: string,
@@ -33,7 +34,10 @@ const Dashboard:React.FC = () => {
         try{
             const response = await api.get('/book/list', authorizaton)
             setBooks(response.data)
-        }catch(err){
+        }catch(err:any){
+            if(!err) 
+                return setError({title:'Ops!', description: 'Ocorreu um erro inesperado, tente novamente mais tarde :/',on: true, function: () => {}})
+
             if(err.response)
                 setError({title:'Ops!', description: 'Ocorreu um erro com os servidores do plurall, tente logar novamente :)',on: true, function: () => {Leave()}})
             else

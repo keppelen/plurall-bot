@@ -27,7 +27,9 @@ const Login:React.FC = () => {
         try{
             const response = await api.post('/login', {email,password})
             return response.data.token
-        }catch(error){ 
+        }catch(error:any){
+            if(!error)
+                return setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
             if(error.response)
                 setError({title:'Ops!', description: error.response.data.error? error.response.data.error:'Erro inesperado', on: true, function: () => {}})
             else
