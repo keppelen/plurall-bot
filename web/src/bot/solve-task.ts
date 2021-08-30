@@ -1,7 +1,7 @@
 import { ITask, ITaskGroup } from "./requests/tasks"
 import { GetQuestionGroup, IQuestionGroup } from "./requests/questions"
 import { SolveQuestionGroup } from "./solve-question"
-import { cancel, taskInProgressData, updateTaskData } from "./main"
+import { cancel, updateTaskData } from "./main"
 
 
 export async function SolveTaskGroup(bookid:string, taskGroup:ITaskGroup){

@@ -38,24 +38,24 @@ const WhichTask:React.FC = () => {
     const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
 
     useEffect(() => {
+        async function requestTasks(){
+            try{
+                const response = await api.get(`/task/list/${id}`, authorizaton)
+                const taskGroups = response.data
+                setTaskGroups(taskGroups)
+            }catch(error:any){
+                if(!error) 
+                    return setError({title:'Ops!', description: 'Ocorreu um erro inesperado, tente novamente mais tarde :/',on: true, function: () => {}})
+                
+                if(error.response)
+                    setError({title:'Ops!', description: 'Ocorreu um erro com os servidores do plurall, tente logar novamente :)',on: true, function: () => {Leave()}})
+                else
+                    setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
+            }
+        }
         requestTasks()
     },[])
 
-    async function requestTasks(){
-        try{
-            const response = await api.get(`/task/list/${id}`, authorizaton)
-            const taskGroups = response.data
-            setTaskGroups(taskGroups)
-        }catch(error:any){
-            if(!error) 
-                return setError({title:'Ops!', description: 'Ocorreu um erro inesperado, tente novamente mais tarde :/',on: true, function: () => {}})
-            
-            if(error.response)
-                setError({title:'Ops!', description: 'Ocorreu um erro com os servidores do plurall, tente logar novamente :)',on: true, function: () => {Leave()}})
-            else
-                setError({title:'Ops!', description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true, function: () => {}})
-        }
-    }
 
     return (
         <>
