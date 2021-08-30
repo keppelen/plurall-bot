@@ -2,6 +2,7 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaCheck, FaTimes } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
+import { IParams } from '..'
 import { TaskContainer, TaskName, TaskProgressBar, TaskProgressBar0, TaskProgressbarNumber, TaskProgressBarProgress} from './styles'
 
 interface ITaskProgress {
@@ -27,7 +28,7 @@ interface TaskProps {
 }
 
 function Task(props:TaskProps){
-    const {id, name} = useParams()
+    const {id, name} = useParams<IParams>()
     const {task} = props
     const {correct, wrong, total} = task.progress
     const percent = {

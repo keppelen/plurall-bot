@@ -7,8 +7,13 @@ import ContentHeader from '../components/content-header'
 import Header from '../components/header'
 import {Page, OptionsContainer, Option, OptionName } from './styles'
 
+interface IParams {
+    id: string,
+    name: string
+}
+
 const HowToSolve:React.FC = () => {
-    const {id, name} = useParams()
+    const {id, name} = useParams<IParams>() 
 
     return (
         <Page>

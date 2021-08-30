@@ -1,5 +1,5 @@
 import React from 'react'
-import {Routes, Route} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
 import Dashboard from './pages/dashboard';
 import HowToSolve from './pages/how-to-solve';
 import Login from './pages/login';
@@ -12,21 +12,19 @@ const PrivateRoute = ({...rest}: any) => {
     if(isAuthenticated)
       return <Route {...rest}/>
     else
-      return <Route path='/login' element={<Login/>}/> // idk how to fix it yet '-'
-  
+      return <Redirect to={{ pathname: "/login"}} />
 }
 
 const AppRoutes:React.FC = () => {
     return (
-        <Routes>
-            <PrivateRoute path='/' element={<Dashboard/>}/>
-            <PrivateRoute path='*' element={<Dashboard/>}/>
-            <Route path='/login' element={<Login/>}/>
-            <PrivateRoute path='/dashboard' element={<Dashboard/>}/>
-            <PrivateRoute path='/dashboard/how/:id/:name' element={<HowToSolve/>}/>
-            <PrivateRoute path='/dashboard/which-task/:id/:name' element={<WhichTask/>}/>
-            <PrivateRoute path='/dashboard/solve/:bookid/:bookname/:taskid/:taskname' element={<Solving/>}/>
-        </Routes>
+        <Switch>
+            <PrivateRoute exact path='/' component={Dashboard}/>
+            <Route exact path='/login' component={Login}/>
+            <PrivateRoute exact path='/dashboard' component={Dashboard}/>
+            <PrivateRoute exact path='/dashboard/how/:id/:name' component={HowToSolve}/>
+            <PrivateRoute exact path='/dashboard/which-task/:id/:name' component={WhichTask}/>
+            <PrivateRoute exact path='/dashboard/solve/:bookid/:bookname/:taskid/:taskname' component={Solving}/>
+        </Switch>
     )
 }
 

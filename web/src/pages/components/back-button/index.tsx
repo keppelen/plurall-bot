@@ -1,16 +1,16 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { IoIosArrowDropleftCircle } from 'react-icons/io'
-import { useNavigate } from 'react-router-dom'
+import { useHistory} from 'react-router-dom'
 import { Cancel } from '../../../bot/main'
 
 
 const BackButton:React.FC = () => {
-    const navigate = useNavigate()
+    const history = useHistory()
 
     return (
         <button 
-            onClick={() => {Cancel(); navigate(-1);}}
+            onClick={() => {Cancel(); history.go(-1);}}
             style={{width: '40px',
             height: '40px',
             alignItems: 'center', 

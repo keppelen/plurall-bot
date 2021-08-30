@@ -26,10 +26,14 @@ export interface ITaskGroup {
     tasks: ITask[]
 }
 
+export interface IParams {
+    id: string,
+    name: string
+}
 
 
 const WhichTask:React.FC = () => {
-    const {id, name} = useParams()
+    const {id, name} = useParams<IParams>()
     const [taskGroups, setTaskGroups] = useState<ITaskGroup[]>([])
     const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
 

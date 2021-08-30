@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { IconContext } from 'react-icons'
 import { FaCheck, FaFile, FaTimes } from 'react-icons/fa'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import { ContentHeader2 } from '../components/content-header/styles'
@@ -20,9 +20,15 @@ export interface ItaskData {
     total: number
 }
 
-const Solving:React.FC = () => {
+interface IParams {
+    bookid: string,
+    bookname: string,
+    taskid: string,
+    taskname: string
+}
 
-    const {bookid, bookname, taskid, taskname} = useParams()
+const Solving:React.FC = () => {
+    const {bookid, bookname, taskid, taskname} = useParams<IParams>()
     const [finished, setFinished] = useState(false)
     const [solving, setSolving] = useState(false)
     const [taskData, setTaskData] = useState<ItaskData>({wrong: 0, correct: 0, total: 0})
