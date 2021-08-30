@@ -46,8 +46,8 @@ async function SolveSingleTask(bookid:string, taskGroups:ITaskGroup[], taskToSol
         end_date: null
     }
 
-    taskGroups.map(tg => {
-        tg.tasks.map(tsk => {
+    taskGroups.forEach(tg => {
+        tg.tasks.forEach(tsk => {
             if(tsk.id.toString() === taskToSolveId)
                 task = tsk
         })
