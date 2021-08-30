@@ -54,7 +54,7 @@ const WhichTask:React.FC = () => {
             }
         }
         requestTasks()
-    },[])
+    },[id])
 
 
     return (
