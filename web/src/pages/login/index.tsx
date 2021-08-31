@@ -48,7 +48,7 @@ const Login:React.FC = () => {
             }
             <LoginContainer>
                 <LoginText> Login </LoginText>
-                <LoginDescription> Entre com sua conta do plurall para começar a ilegalidade </LoginDescription>
+                <LoginDescription> Entre com sua conta do plurall para começar </LoginDescription>
                 
                 <Input placeholder='Digite seu email' onChange={v => setEmail(v.target.value)}/>
                 <Input placeholder='Digite sua senha' type='password' onChange={v => setPassword(v.target.value)}/>
