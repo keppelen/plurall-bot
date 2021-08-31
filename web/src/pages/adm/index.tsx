@@ -5,19 +5,23 @@ import api from '../../services/api'
 import AlertBox from '../components/alertbox'
 
 const Admin:React.FC = () =>{
-    const [loading,setLoding] = useState(false)
+    const [loading, setLoding] = useState(false)
     const [email, setEmail] = useState('email')
     const [password, setPassword] = useState('password')
     const [error,setError] = useState({title:'Ops!',description: '',on: false, function: () => {resetAlert()}})
 
     async function Request(a='delete') {
         try{
+            setLoding(true)
             const response = await api.post(`/adm/users/${a}`, {email}, {headers:{Authorization: `Bearer ${password}`}})
             console.log(response)
             if(!response.data.message) return
             
+            
+            setLoding(false)
             return setError({...error, title: 'Sucesso!', description: response.data.message? response.data.message:'Erro inesperado', on: true})
         }catch(error:any){
+            setLoding(false)
             if(!error)
                 return setError({...error, description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/', on: true})
             
