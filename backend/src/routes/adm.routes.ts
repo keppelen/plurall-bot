@@ -6,9 +6,9 @@ const admroutes:Router = Router()
 
 admroutes.use(admMiddleware)
 
-admroutes.post('/users/add', addUser)
-admroutes.delete('/users/delete', removeUser)
-admroutes.get('/users/list', listUsers)
+admroutes.post('/adm/users/add', addUser)
+admroutes.post('/adm/users/delete', removeUser)
+admroutes.get('/adm/users/list', listUsers)
 
 
 

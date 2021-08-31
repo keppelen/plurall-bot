@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/api', routes)
-app.use('/adm', admroutes)
+app.use('/api', admroutes)
 
 export function setupServer(){
     app.listen(port, () => {
