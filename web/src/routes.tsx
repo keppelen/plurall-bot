@@ -1,5 +1,6 @@
 import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
+import Admin from './pages/adm';
 import Dashboard from './pages/dashboard';
 import HowToSolve from './pages/how-to-solve';
 import Login from './pages/login';
@@ -24,6 +25,7 @@ const AppRoutes:React.FC = () => {
             <PrivateRoute exact path='/dashboard/how/:id/:name' component={HowToSolve}/>
             <PrivateRoute exact path='/dashboard/which-task/:id/:name' component={WhichTask}/>
             <PrivateRoute exact path='/dashboard/solve/:bookid/:bookname/:taskid/:taskname' component={Solving}/>
+            <Route exact path='/paodeforma' component={Admin}/>
         </Switch>
     )
 }
