@@ -4,6 +4,7 @@ import GetBooks from "../requests/books"
 import { GuessAnswer } from "../requests/guess-answer"
 import { GetQuestionGroup } from "../requests/questions"
 import GetTaskGroup from "../requests/tasks"
+import { checkUser } from "./adm-controller"
 
 
 export async function login(req:Request, res:Response) {
@@ -12,6 +13,11 @@ export async function login(req:Request, res:Response) {
 
         if(!email || !password)
             return res.status(400).send({error: 'Request malformed'})
+
+        const hasuser = await checkUser(email)
+
+        if(!hasuser)
+            return res.status(400).send({error: 'Você ainda não possui permissão para utilizar a plataforma :/'})
 
         const token = await Authenticate(email,password)
 
