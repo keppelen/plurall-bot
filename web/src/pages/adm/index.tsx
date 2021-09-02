@@ -3,8 +3,7 @@ import { AdmButton, AdmContainer, AdmDescription, AdmText, Input, Page } from '.
 import ReactLoading from 'react-loading'
 import api from '../../services/api'
 import AlertBox from '../components/alertbox'
-import AdmList from './list'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Admin:React.FC = () =>{
     const [loading, setLoding] = useState(false)
