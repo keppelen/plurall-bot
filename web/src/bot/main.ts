@@ -6,7 +6,6 @@ import { ItaskData } from '../pages/solving'
 export let taskInProgressData:ItaskData = {correct: 0, wrong: 0, total: 0}
 
 export function updateTaskData(taskdata:ItaskData){
-    console.log(taskdata)
     taskInProgressData = taskdata
 }
 
