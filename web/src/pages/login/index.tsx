@@ -7,11 +7,15 @@ import AlertBox from "../components/alertbox"
 
 const Login:React.FC = () => {
     const [loading,setLoding] = useState(false)
-    const [email, setEmail] = useState('email')
-    const [password, setPassword] = useState('password')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
 
     async function login(){
+
+        if(email === '' || password === '')
+            return setError({title:'Ops!', description: 'Preencha todos os campos!', on: true, function: () => {}})
+        
         setLoding(true)
         const token = await Authenticate(email,password)
 
