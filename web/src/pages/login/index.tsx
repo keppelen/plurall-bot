@@ -6,7 +6,7 @@ import api from "../../services/api"
 import AlertBox from "../components/alertbox"
 
 const Login:React.FC = () => {
-    const [loading,setLoding] = useState(false)
+    const [loading,setLoading] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
@@ -16,10 +16,10 @@ const Login:React.FC = () => {
         if(email === '' || password === '')
             return setError({title:'Ops!', description: 'Preencha todos os campos!', on: true, function: () => {}})
         
-        setLoding(true)
+        setLoading(true)
         const token = await Authenticate(email,password)
 
-        setLoding(false)
+        setLoading(false)
         if(!token) return
 
         localStorage.setItem('token', token)

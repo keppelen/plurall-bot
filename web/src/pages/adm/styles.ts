@@ -90,3 +90,28 @@ export const Input = styled.input`
     font-weight: normal;
     font-family: 'Public Sans', sans-serif;
 `
+
+export const AdmItemContainer = styled.div`
+    display: flex;
+    width: 90%;
+    height: fit-content;
+    background-color: #fff;
+    border-radius: 20px;
+    text-align: left;
+    padding: 32px;
+    box-shadow: 0 1px 3px #cdc6c6;
+    align-self: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+`
+
+export const AdmItemRemoveButton = styled.button`
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+`
