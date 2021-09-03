@@ -107,10 +107,14 @@ export const InfoContainer = styled.div`
 `
 
 export const LogoImage = styled.img`
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 70px;
-    height: 42px;
-    width: 187px;
+    height: 0px;
+    width: 0px;
+    @media (min-height: 600px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: min(3vw, 70px);
+        height: 42px;
+        width: 187px;
+    }
 `

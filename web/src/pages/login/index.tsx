@@ -68,9 +68,7 @@ const Login:React.FC = () => {
             </LoginContainer>
             
             <InfoContainer> 
-                <InfoText> Não possui acesso? </InfoText>
-                <Link to='/info'> <InfoText style={{textDecoration: 'underline', fontWeight: 'bold'}}> Clique aqui </InfoText> </Link> 
-                <InfoText> para saber mais informações :D</InfoText>
+                <InfoText> Não possui acesso? <Link to='/info' style={{textDecoration: 'underline', fontWeight: 'bold', color: '#fff'}}>Clique aqui</Link> para saber mais informações 😃 </InfoText>
             </InfoContainer>
         </Page>
     )

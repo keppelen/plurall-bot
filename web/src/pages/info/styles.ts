@@ -8,12 +8,11 @@ export const Page = styled.div`
     background-color: #fafafa;
     background-color: #7229e6;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: absolute;
     align-items: center;
     justify-content: center;
 `
-
 export const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
