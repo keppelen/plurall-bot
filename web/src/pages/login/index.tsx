@@ -1,10 +1,11 @@
 import React from "react"
 import { useState } from "react"
-import { InfoContainer, InfoText, Input, LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
+import { InfoContainer, InfoText, Input, LoginButton, LoginContainer, LoginDescription, LoginText, LogoImage, Page } from "./styles"
 import ReactLoading from 'react-loading'
 import api from "../../services/api"
 import AlertBox from "../components/alertbox"
 import { Link } from "react-router-dom"
+import logoimage from '../../assets/Logo.png'
 
 const Login:React.FC = () => {
     const [loading,setLoading] = useState(false)
@@ -48,6 +49,7 @@ const Login:React.FC = () => {
 
     return (
         <Page>
+            <LogoImage src={logoimage}/>
             {error.on && 
                 <AlertBox title={error.title} description={error.description} onPressOk={() => {resetAlert();error.function()}}/>
             }

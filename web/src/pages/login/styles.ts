@@ -17,7 +17,7 @@ export const Page = styled.div`
 export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 450px;
+    width:  450px;
     height: fit-content;
     background-color: #fff;
     border-radius: 20px;
@@ -70,7 +70,7 @@ export const LoginButton = styled.button`
 
 export const Input = styled.input`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
-    height: 40px;
+    height: 35px;
     color: #262930;
     border-radius: 8px;
     box-shadow: #e5e7eb 0px 0px 0px 1px inset;
@@ -104,4 +104,13 @@ export const InfoText = styled.p`
 
 export const InfoContainer = styled.div`
     display: flex;
+`
+
+export const LogoImage = styled.img`
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 70px;
+    height: 42px;
+    width: 187px;
 `
