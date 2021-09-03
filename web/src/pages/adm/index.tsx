@@ -12,6 +12,25 @@ const Admin:React.FC = () =>{
     const [password, setPassword] = useState('password')
     const [error,setError] = useState({title:'Ops!',description: '',on: false, function: () => {resetAlert()}})
 
+
+    if(localStorage.getItem('did') !== 'true')
+        return (
+            <Page>
+                {error.on && 
+                    <AlertBox title={error.title} description={error.description} onPressOk={() => {resetAlert()}}/>
+                }
+
+                <AdmContainer>
+                    <AdmText> Pão de forma </AdmText>
+                    <AdmDescription> pão de forma?, bisnaguinha!</AdmDescription>
+
+                <Input placeholder='Digite sua senha' type='password' onChange={v => setPassword(v.target.value)}/>
+                    
+                <AdmButton onClick={() => CheckPass()} style={{backgroundColor: '#655aa3'}}> {LoadingText('Entrar', loading) }</AdmButton>
+                </AdmContainer>
+            </Page>
+        )
+
     async function Add() {
         try{
             setLoding(true)
@@ -49,6 +68,28 @@ const Admin:React.FC = () =>{
             
                 if(error.response)
                     setError({...error, description: error.response.data.error? error.response.data.error:'Erro inesperado', on: true})
+            else
+                setError({...error, description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true})
+        }
+    }
+
+    async function CheckPass() {
+        try{
+            const response = await api.get(`/adm/users/list`, {headers:{Authorization: `Bearer ${password}`}})
+            const {data} = response
+
+            if(data){
+                localStorage.setItem('did', 'true')
+                window.location.href = '/paodeforma'
+            }
+            
+
+        }catch(error:any){
+            if(!error)
+                setError({...error, description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/', on: true})
+
+            if(error.response)
+                setError({...error, description: error.response.data.error? error.response.data.error:'Erro inesperado', on: true})
             else
                 setError({...error, description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true})
         }
