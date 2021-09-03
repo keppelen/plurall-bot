@@ -1,9 +1,10 @@
 import React from "react"
 import { useState } from "react"
-import { Input, LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
+import { InfoContainer, InfoText, Input, LoginButton, LoginContainer, LoginDescription, LoginText, Page } from "./styles"
 import ReactLoading from 'react-loading'
 import api from "../../services/api"
 import AlertBox from "../components/alertbox"
+import { Link } from "react-router-dom"
 
 const Login:React.FC = () => {
     const [loading,setLoading] = useState(false)
@@ -63,6 +64,12 @@ const Login:React.FC = () => {
                     } 
                 </LoginButton>
             </LoginContainer>
+            
+            <InfoContainer> 
+                <InfoText> Não possui acesso? </InfoText>
+                <Link to='/info'> <InfoText style={{textDecoration: 'underline', fontWeight: 'bold'}}> Clique aqui </InfoText> </Link> 
+                <InfoText> para saber mais informações :D</InfoText>
+            </InfoContainer>
         </Page>
     )
 }

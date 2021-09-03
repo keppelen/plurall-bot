@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Page = styled.div`
     display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     background-color: #fafafa;
@@ -89,4 +90,18 @@ export const Input = styled.input`
     margin: 5px;
     font-weight: normal;
     font-family: 'Public Sans', sans-serif;
+`
+
+
+export const InfoText = styled.p`
+    @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+    font-family: 'Public Sans', sans-serif;
+    color: #fff;
+    margin-top: 20px;
+    margin-left: 5px;
+    font-size: 17px;
+`
+
+export const InfoContainer = styled.div`
+    display: flex;
 `
