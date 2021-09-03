@@ -13,12 +13,12 @@ const Info:React.FC = () => {
 
             <InfoContainer>
                 <InfoTitle> Mas o robô acerta todas as respostas?</InfoTitle>
-                <InfoText> Por enquanto não. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema de guarda as respostas certas de usuários anteriores, desse modo, quando mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
+                <InfoText> Por enquanto não. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema que guarda as respostas certas de usuários anteriores, desse modo, quando mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
             </InfoContainer>
 
             <InfoContainer>
                 <InfoTitle> Gostei! Como posso ter acesso?</InfoTitle>
-                <InfoText> Atualmente possuímos 2 planos, o mensal de R$00,00 e o vitalício de R$00,00. Os pagamentos são efetuado pelo PIX, e assim que aprovada o seu acesso a plataforma é liberado. Para efetuar o pagamento e saber mais informações entre em contato: (00) 00000-0000</InfoText>
+                <InfoText> Atualmente possuímos 2 planos, o mensal de R$00,00 e o vitalício de R$00,00. Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações entre em contato: (00) 00000-0000</InfoText>
             </InfoContainer>
             
         </Page>
