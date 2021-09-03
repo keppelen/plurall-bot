@@ -1,4 +1,4 @@
-import { app, setupServer } from "./app"
+import { setupServer } from "./app"
 import { setupDatabase } from "./data/setup"
 
 

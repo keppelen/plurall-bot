@@ -44,7 +44,7 @@ export async function removeUser(req:Request, res:Response) {
 
 export async function listUsers(req:Request, res:Response) {
     try{
-        const users = await User.find().select('+email')
+        const users = await User.find().select('+email').select('+createdAt')
         
         return res.status(200).send(users)
     }catch{
