@@ -3,14 +3,15 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { IconContext } from 'react-icons'
 import { useLocation } from 'react-router-dom'
 import BackButton from '../components/back-button'
-import { AdmContainer, AdmItemContainer, AdmItemRemoveButton, AdmText, Input, Page } from './styles'
+import { AdmContainer, AdmInfoContainer, AdmItemContainer, AdmItemRemoveButton, AdmText, AdmTextDate, Input, Page } from './styles'
 import { useState } from 'react'
 import api from '../../services/api'
 import AlertBox from '../components/alertbox'
 
 interface IItem {
     email: string,
-    _id: string
+    _id: string,
+    createdAt: string
 }
 
 interface ItemProps {
@@ -22,10 +23,21 @@ interface ItemProps {
 
 function Item(props:ItemProps){
     const {item} = props
+    const today = new Date()
+    const date = new Date(item.createdAt)
+    const day = date.getDate()
+    const month = date.getMonth()+1
+    const year = date.getFullYear()
+
+    const differenceInTime = Math.abs(today.getTime() - date.getTime())
+    const differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24))
 
     return (
         <AdmItemContainer>
+            <AdmInfoContainer> 
             <AdmText> {item.email} </AdmText>
+            <AdmTextDate> Criado: {`${day<10&&'0'}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
+            </AdmInfoContainer>
             <AdmItemRemoveButton onClick={() => {props.clickRemove(props.item.email)}}> 
                 <IconContext.Provider value={{ color: '#ff645f', size: '20'}}>
                     <FaTrashAlt/> 

@@ -33,6 +33,17 @@ export const AdmText = styled.p`
     font-family: 'Public Sans', sans-serif;
 `
 
+export const AdmTextDate = styled.p`
+    @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+    font-size: 18px;
+    text-align: left;
+    color: #262930;
+    font-size: 14px;
+    margin-top: 10px;
+    font-weight: normal;
+    font-family: 'Public Sans', sans-serif;
+`
+
 export const AdmDescription = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
     font-size: 18px;
@@ -114,4 +125,9 @@ export const AdmItemRemoveButton = styled.button`
     cursor: pointer;
     justify-content: center;
     align-items: center;
+`
+
+export const AdmInfoContainer = styled.div`
+    display: flex;
+    flex-direction: column;
 `
