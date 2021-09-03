@@ -10,7 +10,7 @@ const Info:React.FC = () => {
     return (
         <Page>
         <LogoImage src={logoimage}/>
-            <InfoContainer style={{marginTop: '50px'}}>
+            <InfoContainer style={{marginTop: '200px'}}>
                 <InfoTitle>❓ O que é?</InfoTitle>
                 <InfoText> Plurallbot é uma plataforma que resolve sua tarefa do plurall! Basta entrar com sua conta do plurall em nossa págia de login, escolher a tarefa ou apostila que deseja que o nosso robô resolva, e <strong>TCHARAM!</strong> Tarefa resolvida.</InfoText>
             

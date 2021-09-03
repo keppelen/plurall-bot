@@ -12,6 +12,7 @@ export const Page = styled.div`
     position: absolute;
     align-items: center;
     justify-content: center;
+    padding-bottom: 200px;
 `
 export const InfoContainer = styled.div`
     display: flex;
