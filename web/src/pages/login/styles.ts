@@ -17,7 +17,7 @@ export const Page = styled.div`
 export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width:  450px;
+    width:  min(75%, 450px);
     height: fit-content;
     background-color: #fff;
     border-radius: 20px;
@@ -99,7 +99,7 @@ export const InfoText = styled.p`
     color: #fff;
     margin-top: 20px;
     margin-left: 5px;
-    font-size: 17px;
+    font-size: min(3vw, 17px);
 `
 
 export const InfoContainer = styled.div`
