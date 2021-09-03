@@ -33,11 +33,12 @@ export const InfoTitle = styled.p`
     font-size: 22px;
     font-weight: 700;
     font-family: 'Public Sans', sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 `
 
 export const InfoText = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+    margin-top: 5px;
     font-size: 16px;
     text-align: left;
     color: #262930;
