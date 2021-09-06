@@ -6,16 +6,16 @@ const User:Model<IUser> = UserModel
 
 export async function addUser(req:Request, res:Response) {
     try{
-        const {email} = req.body
+        const {email,vital} = req.body
         const findedUser = await User.findOne({email})
 
-        if(!email)
+        if(!email || !vital)
             return res.status(400).send({error: 'Request malformed'})
 
         if(findedUser)
             return res.status(400).send({error: 'Usuário ja tem permisssao'})
 
-        await User.create({email})
+        await User.create({email,vital})
         
         return res.status(200).send({message: 'Usuário adicionado com sucesso!'})
     }catch{
