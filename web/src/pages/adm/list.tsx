@@ -11,7 +11,8 @@ import AlertBox from '../components/alertbox'
 interface IItem {
     email: string,
     _id: string,
-    createdAt: string
+    createdAt: string,
+    vital: boolean
 }
 
 interface ItemProps {
@@ -23,6 +24,7 @@ interface ItemProps {
 
 function Item(props:ItemProps){
     const {item} = props
+    const {email, vital} = item
     const today = new Date()
     const date = new Date(item.createdAt)
     const day = date.getDate()
@@ -35,8 +37,9 @@ function Item(props:ItemProps){
     return (
         <AdmItemContainer>
             <AdmInfoContainer> 
-            <AdmText> {item.email} </AdmText>
-            <AdmTextDate> Criado: {`${day<10&&'0'}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
+                <AdmText> {email} </AdmText>
+                <AdmTextDate> Criado: {`${day<10&&'0'}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
+                <AdmTextDate> Plano: {vital ? 'VITALICIO' : 'Mensal'} </AdmTextDate>
             </AdmInfoContainer>
             <AdmItemRemoveButton onClick={() => {props.clickRemove(props.item.email)}}> 
                 <IconContext.Provider value={{ color: '#ff645f', size: '20'}}>

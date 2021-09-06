@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
-import { AdmButton, AdmContainer, AdmDescription, AdmText, Input, Page } from './styles'
+import { AdmButton, AdmContainer, AdmDescription, AdmText, CheckBoxContainer, CheckBoxText, Input, Page } from './styles'
 import ReactLoading from 'react-loading'
 import api from '../../services/api'
 import AlertBox from '../components/alertbox'
 import { useHistory } from 'react-router-dom'
+import Switch from "react-switch"
 
 const Admin:React.FC = () =>{
     const [loading, setLoding] = useState(false)
     const history = useHistory()
     const [email, setEmail] = useState('email')
     const [password, setPassword] = useState('password')
+    const [vital, setVital] = useState(false)
     const [error,setError] = useState({title:'Ops!',description: '',on: false, function: () => {resetAlert()}})
 
 
@@ -34,7 +36,7 @@ const Admin:React.FC = () =>{
     async function Add() {
         try{
             setLoding(true)
-            const response = await api.post(`/adm/users/add`, {email}, {headers:{Authorization: `Bearer ${password}`}})
+            const response = await api.post(`/adm/users/add`, {email, vital}, {headers:{Authorization: `Bearer ${password}`}})
             console.log(response)
 
             if(!response.data.message) return
@@ -112,7 +114,12 @@ const Admin:React.FC = () =>{
 
             <Input placeholder='Digite o email' onChange={v => setEmail(v.target.value)}/>
             <Input placeholder='Digite sua senha' type='password' onChange={v => setPassword(v.target.value)}/>
-                
+            
+            <CheckBoxContainer> 
+                <CheckBoxText> 30 Dias </CheckBoxText>
+                <Switch onChange={checked => setVital(checked)} checked={vital} onColor='#00b083'/>
+                <CheckBoxText> Vitalício </CheckBoxText>
+            </CheckBoxContainer>
             <AdmButton onClick={() => Add()} style={{backgroundColor: '#00b083', marginTop: '20px'}} > {LoadingText('Adicionar', loading) }</AdmButton>
             <AdmButton onClick={() => List()} style={{backgroundColor: '#655aa3'}}> {LoadingText('Listar', loading) }</AdmButton>
             </AdmContainer>

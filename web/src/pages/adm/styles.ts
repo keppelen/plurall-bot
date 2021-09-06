@@ -131,3 +131,21 @@ export const AdmInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
 `
+
+export const CheckBoxContainer = styled.div`
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    align-self: center;
+    justify-content: center;
+`
+export const CheckBoxText = styled.p`
+    @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
+    font-family: 'Public Sans', sans-serif;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-self: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #9e9e9e;
+`
