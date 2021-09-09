@@ -3,17 +3,17 @@ import styled from 'styled-components'
 export const Page = styled.div`
     display: flex;
     flex-direction: column;
+    background-color: #7229e6;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
-    background-color: #7229e6;
     width: 100%;
     height: 100vh;
-    position: absolute;
     align-items: center;
     justify-content: center;
-    padding-bottom: 200px;
+    padding-bottom: 120px;
+    padding-top: 130px;
 `
+
 export const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
