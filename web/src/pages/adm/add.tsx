@@ -9,6 +9,7 @@ import NoToken from './notoken'
 const AdminAdd:React.FC = () =>{
     const [loading, setLoding] = useState(false)
     const [email, setEmail] = useState('email')
+    const [contact, setContact] = useState('')
     const password = localStorage.getItem('did') ? localStorage.getItem('did') : ''
     const [vital, setVital] = useState(false)
     const [error,setError] = useState({title:'Ops!',description: '',on: false, function: () => {resetAlert()}})
@@ -19,7 +20,7 @@ const AdminAdd:React.FC = () =>{
     async function Add() {
         try{
             setLoding(true)
-            const response = await api.post(`/adm/users/add`, {email, vital}, {headers:{Authorization: `Bearer ${password}`}})
+            const response = await api.post(`/adm/users/add`, {email, vital, contact}, {headers:{Authorization: `Bearer ${password}`}})
             console.log(response)
 
             if(!response.data.message) return
@@ -59,6 +60,7 @@ const AdminAdd:React.FC = () =>{
                 <AdmDescription> pão de forma, pão? de forma!</AdmDescription>
 
             <Input placeholder='Digite o email' onChange={v => setEmail(v.target.value)}/>
+            <Input placeholder='Digite o telefone de contao' onChange={v => setContact(v.target.value)}/>
             
             <CheckBoxContainer> 
                 <CheckBoxText> 30 Dias </CheckBoxText>

@@ -42,7 +42,7 @@ function Item(props:ItemProps){
                 <AdmText> {email} </AdmText>
                 <AdmTextDate> Criado: {`${day<10&&'0'}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
                 <AdmTextDate style={{marginTop: '5px'}}> Plano: {vital ? 'VITALICIO' : 'Mensal'} </AdmTextDate>
-                {contact && <AdmTextDate> Contato: {contact} </AdmTextDate>}
+                {contact && <AdmTextDate style={{marginTop: '5px'}}> Contato: {contact} </AdmTextDate>}
             </AdmInfoContainer>
             <div style={{display: 'flex'}}>
                 <AdmItemRemoveButton onClick={() => {props.clickRenew(props.item.email)}}> 
