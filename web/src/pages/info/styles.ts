@@ -44,4 +44,6 @@ export const InfoText = styled.p`
     color: #262930;
     font-weight: normal;
     font-family: 'Public Sans', sans-serif;
+    align-items: center;
+    justify-content: center;
 `

@@ -4,6 +4,7 @@ import ReactPlayer from 'react-player'
 import examplevideo from '../../assets/example.mp4'
 import { LogoImage } from "../login/styles"
 import logoimage from '../../assets/Logo.png'
+import { FaDiscord, FaPhone } from 'react-icons/fa'
 
 const Info:React.FC = () => {
 
@@ -27,13 +28,14 @@ const Info:React.FC = () => {
 
             <InfoContainer>
                 <InfoTitle>✅ Mas o robô acerta TODAS as respostas?</InfoTitle>
-                <InfoText> Por enquanto não. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema que guarda as respostas certas de usuários anteriores, desse modo, quando mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
+                <InfoText> Por enquanto não. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema que guarda as respostas certas de usuários anteriores, desse modo, quanto mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
             </InfoContainer>
 
             <InfoContainer>
                 <InfoTitle>😃 Gostei! Como posso ter acesso?</InfoTitle>
-                <InfoText> ⚠️ Em breve, site ainda em construção </InfoText>
-                <InfoText> Atualmente possuímos 2 planos, o mensal de <s>R$00,00</s> e o vitalício de <s>R$00,00</s>. Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações entre em contato: <s> (00) 00000-0000 </s></InfoText>
+                <InfoText> ⚠️ O Site ainda está em beta, então os preços podem váriar </InfoText>
+                <InfoText> Atualmente possuímos 2 planos, o mensal de <b style={{color: '#a973ff'}}>R$19,90</b> e o vitalício de <b style={{color: '#a973ff'}}>R$49,90</b>. Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações entre em contato:</InfoText>
+                <InfoText style={{marginTop: '10px'}}> <FaDiscord/>  Igor#8561   <FaPhone style={{marginLeft: '20px'}}/>  <s>(00) 00000-0000</s></InfoText>
             </InfoContainer>
         </Page>
     )
