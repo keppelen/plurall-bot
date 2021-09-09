@@ -6,7 +6,7 @@ const User:Model<IUser> = UserModel
 
 export async function addUser(req:Request, res:Response) {
     try{
-        const {email,vital} = req.body
+        const {email,vital,contact} = req.body
         const findedUser = await User.findOne({email})
 
         if(!email)
@@ -15,7 +15,7 @@ export async function addUser(req:Request, res:Response) {
         if(findedUser)
             return res.status(400).send({error: 'Usuário ja tem permisssao'})
 
-        await User.create({email,vital})
+        await User.create({email,vital, contact})
         
         return res.status(200).send({message: 'Usuário adicionado com sucesso!'})
     }catch{

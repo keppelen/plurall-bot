@@ -4,6 +4,7 @@ export interface IUser extends Document {
     email: string;
     createdAt: string;
     vital: boolean;
+    contact: string;
 }
 
 export const userSchema:Schema = new Schema({ 
@@ -17,6 +18,10 @@ export const userSchema:Schema = new Schema({
         type: Boolean,
         required: true,
         default: false
+    },
+    contact: {
+        type: String,
+        required: false
     },
     createdAt:{
         type: Date,
