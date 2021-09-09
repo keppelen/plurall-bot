@@ -2,9 +2,8 @@ import React, { useEffect } from 'react'
 import { FaTrashAlt } from 'react-icons/fa'
 import { MdAutorenew } from 'react-icons/md'
 import { IconContext } from 'react-icons'
-import { useLocation } from 'react-router-dom'
 import BackButton from '../components/back-button'
-import { AdmContainer, AdmInfoContainer, AdmItemContainer, AdmItemRemoveButton, AdmText, AdmTextDate, Input, ListContainer, Page } from './styles'
+import { AdmContainer, AdmInfoContainer, AdmItemContainer, AdmItemRemoveButton, AdmText, AdmTextDate, ListContainer, Page } from './styles'
 import { useState } from 'react'
 import api from '../../services/api'
 import AlertBox from '../components/alertbox'
@@ -71,14 +70,32 @@ const AdmList:React.FC = () =>{
 
     
     useEffect(() => {
+        async function UpdateList() {
+            try{ 
+                setLoading(true)
+                const response = await api.get(`/adm/users/list`, {headers:{Authorization: `Bearer ${password}`}})
+                const {data} = response
+                setData(data)
+                setLoading(false)
+            }catch(error:any){
+                setLoading(false)
+                if(!error)
+                    return setError({...error, description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/', on: true})
+                
+                    if(error.response)
+                        setError({...error, description: error.response.data.error? error.response.data.error:'Erro inesperado', on: true})
+                else
+                    setError({...error, description: 'Ocorreu um erro com os nossos servidores, tente novamente mais tarde :/',on: true})
+            }
+        }
         UpdateList()
-    },[])
+    },[password])
 
     if(password === '')
         return <NoToken/>
 
     async function UpdateList() {
-        try{
+        try{ 
             setLoading(true)
             const response = await api.get(`/adm/users/list`, {headers:{Authorization: `Bearer ${password}`}})
             const {data} = response

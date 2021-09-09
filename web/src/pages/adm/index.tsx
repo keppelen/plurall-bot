@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { AdmButton, AdmContainer, AdmDescription, AdmText, CheckBoxContainer, CheckBoxText, Input, Page } from './styles'
+import { AdmButton, AdmContainer, AdmDescription, AdmText, Input, Page } from './styles'
 import ReactLoading from 'react-loading'
 import api from '../../services/api'
 import AlertBox from '../components/alertbox'
-import { useHistory } from 'react-router-dom'
-import Switch from "react-switch"
 
 const Admin:React.FC = () =>{
     const [loading, setLoading] = useState(false)
