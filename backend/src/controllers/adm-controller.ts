@@ -9,7 +9,7 @@ export async function addUser(req:Request, res:Response) {
         const {email,vital} = req.body
         const findedUser = await User.findOne({email})
 
-        if(!email || !vital)
+        if(!email)
             return res.status(400).send({error: 'Request malformed'})
 
         if(findedUser)
@@ -37,6 +37,27 @@ export async function removeUser(req:Request, res:Response) {
         await User.findOneAndRemove({email})
         
         return res.status(200).send({message: 'Usuário removido com sucesso!'})
+    }catch{
+        return res.status(400).send({error: 'Erro ao efetuar login'})
+    }
+}
+
+export async function renewUser(req:Request, res:Response) {
+    try{
+        const {email} = req.body
+        const findedUser = await User.findOne({email})
+
+        if(!email)
+            return res.status(400).send({error: 'Request malformed'})
+
+        if(!findedUser)
+            return res.status(400).send({error: 'Usuário não encontrado'})
+
+        const now = new Date().toString()
+
+        const updatedUser = await User.findOneAndUpdate({email}, {createdAt: now}, {new: true}).select('+createdAt')
+        
+        return res.status(200).send(updatedUser)
     }catch{
         return res.status(400).send({error: 'Erro ao efetuar login'})
     }
