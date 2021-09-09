@@ -1,14 +1,18 @@
 import styled from 'styled-components'
 
+
+interface IListContainer {
+    opacity: string
+}
+
 export const Page = styled.div`
     display: flex;
     margin: 0;
     padding: 0;
-    background-color: #fafafa;
     background-color: #7229e6;
     width: 100%;
     height: 100%;
-    position: absolute;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
 `
@@ -104,7 +108,7 @@ export const Input = styled.input`
 
 export const AdmItemContainer = styled.div`
     display: flex;
-    width: 90%;
+    width: 85%;
     height: fit-content;
     background-color: #fff;
     border-radius: 20px;
@@ -125,6 +129,8 @@ export const AdmItemRemoveButton = styled.button`
     cursor: pointer;
     justify-content: center;
     align-items: center;
+    background-color: #fff;
+    margin-left: 10px;
 `
 
 export const AdmInfoContainer = styled.div`
@@ -148,4 +154,13 @@ export const CheckBoxText = styled.p`
     justify-content: center;
     font-weight: bold;
     color: #9e9e9e;
+`
+
+
+export const ListContainer = styled.div<IListContainer>`
+    opacity: ${props => props.opacity};
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
