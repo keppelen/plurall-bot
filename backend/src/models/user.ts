@@ -3,7 +3,7 @@ import { Document, Schema, model } from 'mongoose'
 export interface IUser extends Document {
     email: string;
     createdAt: string;
-    vital: boolean;
+    plan: string;
     contact: string;
 }
 
@@ -14,10 +14,10 @@ export const userSchema:Schema = new Schema({
         lowercase: true,
         select: false
     },
-    vital: {
-        type: Boolean,
+    plan: {
+        type: String,
         required: true,
-        default: false
+        default: 'trial'
     },
     contact: {
         type: String,

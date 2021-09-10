@@ -1,0 +1,14 @@
+[
+    {
+        "name": "trial",
+        "duration": 2
+    },
+    {
+        "name": "monthly",
+        "duration": 30
+    },
+    {
+        "name": "lifetime",
+        "duration": 0
+    }
+]

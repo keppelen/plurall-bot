@@ -1,21 +1,38 @@
 import { Request, Response } from "express"
 import { Model } from "mongoose"
 import { IUser, UserModel, userSchema } from "../models/user"
+import rawplans from '../plans.json'
 
 const User:Model<IUser> = UserModel
 
+interface IPlan {
+    name: string,
+    duration: number
+}
+
 export async function addUser(req:Request, res:Response) {
     try{
-        const {email,vital,contact} = req.body
+        const {email,plan,contact} = req.body
         const findedUser = await User.findOne({email})
 
         if(!email)
             return res.status(400).send({error: 'Request malformed'})
 
+        const plans:IPlan[] = rawplans
+
+        let validplan = false
+        plans.forEach(aplan => {
+            if(aplan.name === plan)
+                validplan = true
+        })
+
+        if(!validplan)
+            return res.status(400).send({error: 'Plano inválido'})
+
         if(findedUser)
             return res.status(400).send({error: 'Usuário ja tem permisssao'})
 
-        await User.create({email,vital, contact})
+        await User.create({email,plan,contact})
         
         return res.status(200).send({message: 'Usuário adicionado com sucesso!'})
     }catch{
