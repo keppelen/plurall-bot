@@ -22,7 +22,8 @@ const Info:React.FC = () => {
                     height='100%'
                     playing={true}
                     loop={true}
-                    controls={false}
+                    controls={true}
+                    volume={0}
                 />
             </InfoContainer>
 
