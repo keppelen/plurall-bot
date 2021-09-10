@@ -3,24 +3,32 @@ import { AdmButton, AdmContainer, AdmDescription, AdmText, CheckBoxContainer, Ch
 import ReactLoading from 'react-loading'
 import api from '../../services/api'
 import AlertBox from '../components/alertbox'
-import Switch from "react-switch"
 import NoToken from './notoken'
 
 const AdminAdd:React.FC = () =>{
     const [loading, setLoding] = useState(false)
     const [email, setEmail] = useState('email')
     const [contact, setContact] = useState('')
+    const [checkboxs, setCheckboxs] = useState([true,false,false])
+    const [plans, setPlans] = useState(['trial','monthly','lifetime'])
     const password = localStorage.getItem('did') ? localStorage.getItem('did') : ''
-    const [vital, setVital] = useState(false)
+    const [plan, setPlan] = useState('trial')
     const [error,setError] = useState({title:'Ops!',description: '',on: false, function: () => {resetAlert()}})
 
     if(password === '')
         return <NoToken/>
 
+    function changePlan(p:string){
+        setPlan(p)
+        let newarray = [false,false,false]
+        newarray[plans.indexOf(p)] = true
+        setCheckboxs(newarray)
+    }
+
     async function Add() {
         try{
             setLoding(true)
-            const response = await api.post(`/adm/users/add`, {email, vital, contact}, {headers:{Authorization: `Bearer ${password}`}})
+            const response = await api.post(`/adm/users/add`, {email, plan, contact}, {headers:{Authorization: `Bearer ${password}`}})
             console.log(response)
 
             if(!response.data.message) return
@@ -63,8 +71,11 @@ const AdminAdd:React.FC = () =>{
             <Input placeholder='Digite o telefone de contao' onChange={v => setContact(v.target.value)}/>
             
             <CheckBoxContainer> 
+                <input type="checkbox" checked={checkboxs[0]} onChange={(a) => {changePlan('trial')}}/>
+                <CheckBoxText> Trial </CheckBoxText>
+                <input type="checkbox" checked={checkboxs[1]} onChange={(a) => {changePlan('monthly')}}/>
                 <CheckBoxText> 30 Dias </CheckBoxText>
-                <Switch onChange={checked => setVital(checked)} checked={vital} onColor='#00b083'/>
+                <input type="checkbox" checked={checkboxs[2]} onChange={(a) => {changePlan('lifetime')}}/>
                 <CheckBoxText> Vitalício </CheckBoxText>
             </CheckBoxContainer>
             <AdmButton onClick={() => Add()} style={{backgroundColor: '#00b083', marginTop: '20px'}} > {LoadingText('Adicionar', loading) }</AdmButton>

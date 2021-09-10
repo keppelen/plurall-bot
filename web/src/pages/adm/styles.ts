@@ -148,7 +148,7 @@ export const CheckBoxContainer = styled.div`
 export const CheckBoxText = styled.p`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
     font-family: 'Public Sans', sans-serif;
-    margin-left: 20px;
+    margin-left: 5px;
     margin-right: 20px;
     align-self: center;
     justify-content: center;
