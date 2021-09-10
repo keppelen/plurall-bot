@@ -49,7 +49,10 @@ const Login:React.FC = () => {
 
     return (
         <Page>
-            <LogoImage src={logoimage}/>
+            <Link to='/'>
+                <LogoImage src={logoimage}/>
+            </Link>
+
             {error.on && 
                 <AlertBox title={error.title} description={error.description} onPressOk={() => {resetAlert();error.function()}}/>
             }

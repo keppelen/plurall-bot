@@ -5,12 +5,15 @@ import examplevideo from '../../assets/example.mp4'
 import { LogoImage } from "../login/styles"
 import logoimage from '../../assets/Logo.png'
 import { FaDiscord, FaPhone } from 'react-icons/fa'
+import { Link } from "react-router-dom"
 
 const Info:React.FC = () => {
 
     return (
         <Page>
-            <LogoImage src={logoimage}/>
+            <Link to='/'>
+                <LogoImage src={logoimage}/>
+            </Link>
             
             <InfoContainer>
                 <InfoTitle>❓ O que é?</InfoTitle>
