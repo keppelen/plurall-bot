@@ -13,7 +13,7 @@ interface IItem {
     email: string,
     _id: string,
     createdAt: string,
-    vital: boolean,
+    plan: string,
     contact: string|null
 }
 
@@ -26,7 +26,7 @@ interface ItemProps {
 
 function Item(props:ItemProps){
     const {item} = props
-    const {email, vital, contact} = item
+    const {email, plan, contact} = item
     const today = new Date()
     const date = new Date(item.createdAt)
     const day = date.getDate()
@@ -41,7 +41,7 @@ function Item(props:ItemProps){
             <AdmInfoContainer> 
                 <AdmText> {email} </AdmText>
                 <AdmTextDate> Criado: {`${day<10&&'0'}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
-                <AdmTextDate style={{marginTop: '5px'}}> Plano: {vital ? 'VITALICIO' : 'Mensal'} </AdmTextDate>
+                <AdmTextDate style={{marginTop: '5px'}}> Plano: {plan} </AdmTextDate>
                 {contact && <AdmTextDate style={{marginTop: '5px'}}> Contato: {contact} </AdmTextDate>}
             </AdmInfoContainer>
             <div style={{display: 'flex'}}>
