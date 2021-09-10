@@ -10,7 +10,7 @@ const AdminAdd:React.FC = () =>{
     const [email, setEmail] = useState('email')
     const [contact, setContact] = useState('')
     const [checkboxs, setCheckboxs] = useState([true,false,false])
-    const [plans, setPlans] = useState(['trial','monthly','lifetime'])
+    const plans = ['trial','monthly','lifetime']
     const password = localStorage.getItem('did') ? localStorage.getItem('did') : ''
     const [plan, setPlan] = useState('trial')
     const [error,setError] = useState({title:'Ops!',description: '',on: false, function: () => {resetAlert()}})
