@@ -1,5 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
+import jwt from 'jsonwebtoken'
 
+const secret = process.env.TOKEN_SECRET || ''
 
 export function tokenMiddleware(req:Request,res:Response,next:NextFunction){
     const authHeader:string|undefined = req.headers.authorization
@@ -16,6 +18,14 @@ export function tokenMiddleware(req:Request,res:Response,next:NextFunction){
 
     if (!/^Bearer$/i.test(scheme))
         return res.status(401).send({error: 'Token malformated'})
+
+    jwt.verify(token, secret, (err, decoded) => {
+        if(err)
+            return res.status(401).send({error: 'Invalid token'})
+
+        req.email = decoded?.email
+        req.pluralltoken = decoded?.pluralltoken
+    })
 
     req.token = token
     next()

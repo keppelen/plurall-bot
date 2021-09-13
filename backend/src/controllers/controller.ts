@@ -5,7 +5,20 @@ import { GuessAnswer } from "../requests/guess-answer"
 import { GetQuestionGroup } from "../requests/questions"
 import GetTaskGroup from "../requests/tasks"
 import { checkUser } from "./adm-controller"
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
+dotenv.config()
 
+const secret = process.env.TOKEN_SECRET || ''
+
+interface Itokenparams {
+    email: string,
+    pluralltoken: string
+}
+
+function generateToken(params:Itokenparams){
+    return jwt.sign(params, secret)
+}
 
 export async function login(req:Request, res:Response) {
     try{
@@ -19,10 +32,12 @@ export async function login(req:Request, res:Response) {
         if(!hasuser)
             return res.status(400).send({error: 'Você ainda não possui permissão para utilizar a plataforma :/'})
 
-        const token = await Authenticate(email,password)
+        const pluralltoken = await Authenticate(email,password)
 
-        if(!token)
+        if(!pluralltoken)
             return res.status(400).send({error: 'Email ou senha inválidos'})
+
+        const token = generateToken({email,pluralltoken})
 
         return res.status(200).send({token})
     }catch{
@@ -32,12 +47,12 @@ export async function login(req:Request, res:Response) {
 
 export async function booklist(req:Request, res:Response) {
     try{
-        const {token} = req
+        const {pluralltoken} = req
 
-        if(!token)
+        if(!pluralltoken)
             return res.status(400).send({error: 'No token provided'})
 
-        const books = await GetBooks(token)
+        const books = await GetBooks(pluralltoken)
 
         if(!books)
             return res.status(400).send({error: 'Ocorreu um erro ao carregar as apostilas'})
@@ -50,13 +65,13 @@ export async function booklist(req:Request, res:Response) {
 
 export async function tasklist(req:Request, res:Response) {
     try{
-        const {token} = req
+        const {pluralltoken} = req
         const {bookid} = req.params
 
-        if(!token)
+        if(!pluralltoken)
             return res.status(400).send({error: 'No token provided'})
 
-        const tasks = await GetTaskGroup(bookid, token)
+        const tasks = await GetTaskGroup(bookid, pluralltoken)
 
         if(!tasks)
             return res.status(400).send({error: 'Não foi possivel pegar as tarefas'})
@@ -69,13 +84,13 @@ export async function tasklist(req:Request, res:Response) {
 
 export async function questionlist(req:Request, res:Response) {
     try{
-        const {token} = req
+        const {pluralltoken} = req
         const {taskid} = req.params
 
-        if(!token)
+        if(!pluralltoken)
             return res.status(400).send({error: 'No token provided'})
 
-        const questions = await GetQuestionGroup(taskid, token)
+        const questions = await GetQuestionGroup(taskid, pluralltoken)
 
         if(!questions)
             return res.status(400).send({error: 'Não foi possivel pegar as perguntas da tarefa'})
@@ -88,14 +103,14 @@ export async function questionlist(req:Request, res:Response) {
 
 export async function guessQuestion(req:Request, res:Response) {
     try{
-        const {token} = req
+        const {pluralltoken} = req
         const {answer, email} = req.body
         const {bookid,groupid, questionid} = req.params
 
-        if(!token)
+        if(!pluralltoken)
             return res.status(400).send({error: 'No token provided'})
 
-        const questions = await GuessAnswer(bookid ,groupid, questionid, answer ,token, email)
+        const questions = await GuessAnswer(bookid ,groupid, questionid, answer ,pluralltoken, email)
 
         if(questions === null)
             return res.status(400).send({error: 'Não foi possivel chutar a pergunta'})
