@@ -27,10 +27,8 @@ export async function login(req:Request, res:Response) {
         if(!email || !password)
             return res.status(400).send({error: 'Request malformed'})
 
-        const hasuser = await checkUser(email)
-
-        if(!hasuser)
-            return res.status(400).send({error: 'Você ainda não possui permissão para utilizar a plataforma :/'})
+        if(!await checkUser(email))
+            return res.status(401).send({error: 'Você ainda não possui acesso à plataforma'})
 
         const pluralltoken = await Authenticate(email,password)
 
@@ -47,11 +45,14 @@ export async function login(req:Request, res:Response) {
 
 export async function booklist(req:Request, res:Response) {
     try{
-        const {pluralltoken} = req
+        const {pluralltoken, email} = req
 
-        if(!pluralltoken)
-            return res.status(400).send({error: 'No token provided'})
+        if(!pluralltoken || !email)
+        return res.status(400).send({error: 'No token provided'})
 
+        if(!await checkUser(email))
+            return res.status(401).send({error: 'Você ainda não possui acesso à plataforma'})
+        
         const books = await GetBooks(pluralltoken)
 
         if(!books)
@@ -65,11 +66,14 @@ export async function booklist(req:Request, res:Response) {
 
 export async function tasklist(req:Request, res:Response) {
     try{
-        const {pluralltoken} = req
+        const {pluralltoken, email} = req
         const {bookid} = req.params
 
-        if(!pluralltoken)
+        if(!pluralltoken || !email)
             return res.status(400).send({error: 'No token provided'})
+
+        if(!await checkUser(email))
+            return res.status(401).send({error: 'Você ainda não possui acesso à plataforma'})
 
         const tasks = await GetTaskGroup(bookid, pluralltoken)
 
@@ -84,11 +88,14 @@ export async function tasklist(req:Request, res:Response) {
 
 export async function questionlist(req:Request, res:Response) {
     try{
-        const {pluralltoken} = req
+        const {pluralltoken, email} = req
         const {taskid} = req.params
 
-        if(!pluralltoken)
+        if(!pluralltoken || !email)
             return res.status(400).send({error: 'No token provided'})
+
+        if(!await checkUser(email))
+            return res.status(401).send({error: 'Você ainda não possui acesso à plataforma'})
 
         const questions = await GetQuestionGroup(taskid, pluralltoken)
 

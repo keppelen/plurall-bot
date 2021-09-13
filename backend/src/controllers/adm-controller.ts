@@ -94,11 +94,8 @@ export async function listUsers(req:Request, res:Response) {
 export async function checkUser(email:string) {
     try{
         const findedUser = await User.findOne({email})
-
-        if(findedUser)
-            return true
-        else
-            return false
+        
+        return findedUser ? true : false
     }catch{
         return false
     }
