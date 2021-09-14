@@ -36,7 +36,7 @@ export const InfoTitle = styled.p`
     margin-bottom: 5px;
 `
 
-export const InfoText = styled.p`
+export const InfoText = styled.a`
     @import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@700&display=swap');
     margin-top: 5px;
     font-size: 16px;

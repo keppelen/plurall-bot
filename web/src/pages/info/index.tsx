@@ -4,8 +4,9 @@ import ReactPlayer from 'react-player'
 import examplevideo from '../../assets/example.mp4'
 import { LogoImage } from "../login/styles"
 import logoimage from '../../assets/Logo.png'
-import { FaDiscord, FaPhone } from 'react-icons/fa'
+import { FaDiscord } from 'react-icons/fa'
 import { Link } from "react-router-dom"
+import { IconContext } from "react-icons"
 
 const Info:React.FC = () => {
 
@@ -37,10 +38,10 @@ const Info:React.FC = () => {
 
             <InfoContainer>
                 <InfoTitle>😃 Gostei! Como posso ter acesso?</InfoTitle>
-                {/* <InfoText> ⚠️ O Site ainda está em beta, então os preços podem váriar </InfoText> */}
                 <InfoText> Atualmente possuímos 2 planos, o mensal (30 dias) e o vitalício (para sempre). Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações sobre preço e como funciona, entre em contato:</InfoText>
-                {/* <InfoText> Atualmente possuímos 2 planos, o mensal de <b style={{color: '#a973ff'}}>R$19,90</b> e o vitalício de <b style={{color: '#a973ff'}}>R$49,90</b>. Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações entre em contato:</InfoText>                <InfoText style={{marginTop: '10px'}}> <FaDiscord/>  Igor#8561   <FaPhone style={{marginLeft: '20px'}}/>  <s>(00) 00000-0000</s></InfoText> */}
-                <InfoText style={{marginTop: '10px'}}> <FaDiscord/>  Igor#8561   <FaPhone style={{marginLeft: '20px'}}/>  <s>(00) 00000-0000</s></InfoText>
+                <IconContext.Provider value={{ color: '#5662f6'}}>
+                    <InfoText href='https://discord.gg/swDRtaqvsb' style={{marginTop: '10px', fontSize: '18px', alignItems: 'center'}}> <FaDiscord/> Discord </InfoText>
+                </IconContext.Provider>
             </InfoContainer>
         </Page>
     )
