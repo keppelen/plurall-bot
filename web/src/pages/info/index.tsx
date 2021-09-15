@@ -33,12 +33,12 @@ const Info:React.FC = () => {
 
             <InfoContainer>
                 <InfoTitle>✅ Mas o robô acerta TODAS as respostas?</InfoTitle>
-                <InfoText> Por enquanto não. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema que guarda as respostas certas de usuários anteriores, desse modo, quanto mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
+                <InfoText> Por enquanto não 100%. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema que guarda as respostas certas de usuários anteriores, desse modo, quanto mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
             </InfoContainer>
 
             <InfoContainer>
                 <InfoTitle>😃 Gostei! Como posso ter acesso?</InfoTitle>
-                <InfoText> Atualmente possuímos 2 planos, o mensal (30 dias) e o vitalício (para sempre). Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações sobre preço e como funciona, entre em contato:</InfoText>
+                <InfoText> Atualmente possuímos 2 planos, o mensal e o anual. Os pagamentos são efetuado pelo PIX, e assim que aprovado seu acesso à plataforma é liberado. Para efetuar o pagamento e saber mais informações sobre preço e como funciona, entre em nosso servidor no Discord:</InfoText>
                 <IconContext.Provider value={{ color: '#5662f6'}}>
                     <InfoText href='https://discord.gg/swDRtaqvsb' style={{marginTop: '10px', fontSize: '18px', alignItems: 'center'}}> <FaDiscord/> Discord </InfoText>
                 </IconContext.Provider>
