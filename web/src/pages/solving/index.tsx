@@ -118,8 +118,9 @@ const Solving:React.FC = () => {
 
                 {!solving && !finished && <StartButton onClick={() => {StartSolve()}}> Resolver </StartButton>}
                 {solving  && <StopButton onClick={() => {Pause(true)}}> Parar </StopButton>}
-                {finished && <FinishedTaskText> <FaCheck/> {solveAll ? 'Parte da apostila' : 'Tarefa'} Concluída </FinishedTaskText>}
-
+                {finished && <FinishedTaskText> <FaCheck/> {solveAll ? 'PARTE da apostila' : 'Tarefa'} Concluída </FinishedTaskText>}
+                {finished && solveAll && <FinishedTaskText style={{fontSize: '9px', fontWeight: 'normal', textAlign: 'center'}}> (O robô resolveu um pedaço da apostila, para certificar que você não possui mais tarefas para serem resolvidas, tente voltar e iniciar o processo novamente) </FinishedTaskText>}
+            
             </Content>
         </Page>
     )

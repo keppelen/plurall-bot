@@ -72,3 +72,21 @@ export async function list(req:Request, res:Response) {
         return res.status(400).send({error: 'Erro ao adicionar dados'})
     }
 }
+
+export async function totalanswers(req:Request, res:Response) {
+  try{
+      const {book} = req.query
+
+      const search = book ?
+      { book: book.toString()}
+      : {}
+
+      const answers = await Question.find(search)
+
+      const totalansers = answers.length
+
+      return res.status(200).send({total: totalansers})
+  }catch{
+      return res.status(400).send({error: 'Erro ao pegar quantidade de respostas'})
+  }
+}
