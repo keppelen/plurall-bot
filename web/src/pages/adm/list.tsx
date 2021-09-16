@@ -40,7 +40,7 @@ function Item(props:ItemProps){
         <AdmItemContainer>
             <AdmInfoContainer> 
                 <AdmText> {email} </AdmText>
-                <AdmTextDate> Criado: {`${day<10&&'0'}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
+                <AdmTextDate> Criado: {`${day<10?'0':''}${day}/${month<10&&'0'}${month}/${year}`} |  {differenceInDays} Dias </AdmTextDate>
                 <AdmTextDate style={{marginTop: '5px'}}> Plano: {plan} </AdmTextDate>
                 {contact && <AdmTextDate style={{marginTop: '5px'}}> Contato: {contact} </AdmTextDate>}
             </AdmInfoContainer>
