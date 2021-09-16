@@ -5,7 +5,6 @@ import { tokenMiddleware } from '../middlewares/token.middleware'
 
 const routes:Router = Router()
 
-routes.get('/answer/list/:book', list)
 routes.get('/answer/total', totalanswers)
 
 
@@ -13,6 +12,7 @@ routes.post('/login', login)
 
 routes.use(tokenMiddleware)
 
+routes.get('/answer/list/:book', list)
 routes.get('/book/list', booklist)
 routes.get('/task/list/:bookid', tasklist)
 routes.get('/questions/list/:taskid', questionlist)
