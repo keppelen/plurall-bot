@@ -24,7 +24,7 @@ export async function SaveAnswer(bookid:string, groupid:string, questionid:strin
             email: email ? email : 'undefined'
         })
 
-        console.log(newQuestion)
+        // console.log(newQuestion)
 
         return true
     }catch{
