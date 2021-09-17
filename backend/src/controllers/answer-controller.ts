@@ -3,10 +3,15 @@ import {Model} from 'mongoose'
 import { IQuestion } from "../models/question"
 import { QuestionModel } from "../models/question"
 import { convert } from 'html-to-text'
+import fs from 'fs'
 
 const Question:Model<IQuestion> = QuestionModel
 
 const saveExampleText = 'Já assisti a video aula, porém ainda não entendi a resposta'
+
+const maxlog = 40
+let savedlogs = 0
+let log:IQuestion[] = []
 
 export async function SaveAnswer(bookid:string, groupid:string, questionid:string, answer:string, email:string) {
     try{
@@ -25,11 +30,27 @@ export async function SaveAnswer(bookid:string, groupid:string, questionid:strin
         })
 
         // console.log(newQuestion)
+        saveLog(newQuestion)
 
         return true
     }catch{
         console.log('ERRO ao adicionar resposta')
     }
+}
+
+async function saveLog(question:IQuestion){
+  if(savedlogs >= maxlog){
+    savedlogs = 0
+
+    fs.writeFile('log.json', JSON.stringify(log), err => {
+      if(err) return console.log('Erro ao escrever no json')
+    })
+
+    log = []
+  }
+  log.push(question)
+  savedlogs++
+
 }
 
 function TreatHtml(answer:string){
