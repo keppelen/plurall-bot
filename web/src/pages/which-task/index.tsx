@@ -7,7 +7,7 @@ import AlertBox, { Leave } from '../components/alertbox'
 import { Content } from '../components/content'
 import ContentHeader from '../components/content-header'
 import Header from '../components/header'
-import { Page, TasksContainer, TaskGroup} from './styles'
+import { Page, TasksContainer, TaskGroup, NoTaskText} from './styles'
 import Task, { ITask } from './task'
 
 export interface ITaskGroup {
@@ -36,14 +36,47 @@ const WhichTask:React.FC = () => {
     const {id, name} = useParams<IParams>()
     const [taskGroups, setTaskGroups] = useState<ITaskGroup[]>([])
     const [error,setError] = useState({title:'',description: '',on: false, function: () => {}})
+    const [fullsolved, setFullSolved] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function requestTasks(){
             try{
+                setLoading(true)
                 const response = await api.get(`/task/list/${id}`, authorizaton)
-                const taskGroups = response.data
+                let taskGroups:ITaskGroup[] = response.data
+
+                let totaltasks = 0
+                let totalsolvedtasks = 0
+
+                taskGroups.forEach(taskGroup => { 
+                    let tasks = taskGroup.tasks.length
+                    let solvedtasks = 0
+
+                    totaltasks += tasks
+
+                    taskGroup.tasks.forEach(task => {
+                        const {correct, wrong, total} = task.progress
+                        if(correct && wrong){
+                            if((correct + wrong) >= total)
+                                solvedtasks++
+                        }
+                    })
+
+                    if(solvedtasks >= tasks){
+                        taskGroups.splice(taskGroups.indexOf(taskGroup), 1)
+                    }
+
+                    totalsolvedtasks += solvedtasks
+                })
+
+                const isfullsolved = totalsolvedtasks >= totaltasks
+                setFullSolved(isfullsolved)
+                
                 setTaskGroups(taskGroups)
+                setLoading(false)
             }catch(error:any){
+                setLoading(false)
                 if(!error) 
                     return setError({title:'Ops!', description: 'Ocorreu um erro inesperado, tente novamente mais tarde :/',on: true, function: () => {}})
                 
@@ -55,6 +88,8 @@ const WhichTask:React.FC = () => {
         }
         requestTasks()
     },[id])
+
+
 
 
     return (
@@ -69,14 +104,19 @@ const WhichTask:React.FC = () => {
                     
                     <ContentHeader bookname={name} title='Selecione a tarefa desejada'/>
 
+                    {(fullsolved && !loading) && 
+                        <NoTaskText> Parabéns! Você ja completou todas as tarefas dessa apostila 🥳 </NoTaskText>
+                    }
+
                     <TasksContainer>
-                        {taskGroups.map(taskGroup => (
+                        {taskGroups.map(taskGroup => 
                             <TaskGroup key={taskGroup.node_id}>
-                                {taskGroup.tasks.map(task => (
+                                
+                                {taskGroup.tasks.map(task => 
                                     <Task task={task} key={task.id}/>
-                                ))}
+                                )}
                             </TaskGroup>
-                        ))}
+                        )}
                     </TasksContainer>
                 </Content>
             </Page>

@@ -8,8 +8,9 @@ export const Page = styled.div`
     background-color: #fafafa; 
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 `
 
 export const TasksContainer = styled.div`
@@ -26,5 +27,13 @@ export const TaskGroup = styled.div`
     height: fit-content;
     margin-top: 30px;
     margin-bottom: 20px;
+`
+
+export const NoTaskText = styled.p`
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 25%;
+    font-size: 20px;
+    text-align: center;
 `
 
