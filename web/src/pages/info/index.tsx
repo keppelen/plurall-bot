@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { InfoContainer, InfoText, InfoTitle, Page } from "./styles"
 import ReactPlayer from 'react-player'
 import examplevideo from '../../assets/example.mp4'
@@ -7,8 +7,24 @@ import logoimage from '../../assets/Logo.png'
 import { FaDiscord } from 'react-icons/fa'
 import { Link } from "react-router-dom"
 import { IconContext } from "react-icons"
+import api from "../../services/api"
 
 const Info:React.FC = () => {
+
+    const [answers, setAnswers] = useState(0)
+
+    useEffect(() => {
+        async function getAnswers(){
+            try{
+                const response = await api.get('/answer/total')
+                const {total} = response.data
+                setAnswers(total)
+            }catch{
+                console.log('Ocorreu um erro ao pegar total de respostas')
+            }
+        }
+        getAnswers()
+    },[])
 
     return (
         <Page>
@@ -34,6 +50,7 @@ const Info:React.FC = () => {
             <InfoContainer>
                 <InfoTitle>✅ Mas o robô acerta TODAS as respostas?</InfoTitle>
                 <InfoText> Por enquanto não 100%. Porém a chance é muito maior do que apenas chutando livremente, pois nós possuimos um sistema que guarda as respostas certas de usuários anteriores, desse modo, quanto mais usuários utilizando a plataforma, maiores são as chances de acerto. </InfoText>
+                <InfoText> Atualmente possímos em nosso sistema mais de <b>{answers > 0 ? `${(Math.ceil(answers/10))}0` : 'Carregando...'}</b> respostas corretas!</InfoText>
             </InfoContainer>
 
             <InfoContainer>
