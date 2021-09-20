@@ -64,10 +64,22 @@ export async function booklist(req:Request, res:Response) {
     }
 }
 
+function isNumber(n:any) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 export async function tasklist(req:Request, res:Response) {
     try{
         const {pluralltoken, email} = req
         const {bookid} = req.params
+        const {page} = req.query
+
+        let numpage = 1
+
+        if(page){
+            if(isNumber(page))
+                numpage = parseInt(page.toString())
+        }
 
         if(!pluralltoken || !email)
             return res.status(400).send({error: 'No token provided'})
@@ -75,7 +87,7 @@ export async function tasklist(req:Request, res:Response) {
         if(!await checkUser(email))
             return res.status(401).send({error: 'Você ainda não possui acesso à plataforma'})
 
-        const tasks = await GetTaskGroup(bookid, pluralltoken)
+        const tasks = await GetTaskGroup(bookid, pluralltoken, numpage) 
 
         if(!tasks)
             return res.status(400).send({error: 'Não foi possivel pegar as tarefas'})

@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import { copyFileSync } from 'fs'
 import { IBook } from './books'
 
 interface ITaskProgress {
@@ -35,7 +36,7 @@ export interface ITaskGroup {
 }
 
 
-async function GetTaskGroup(bookid:string, token:string){
+async function GetTaskGroup(bookid:string, token:string, page=1){
 
     const config:AxiosRequestConfig = {
         headers: {
@@ -55,7 +56,7 @@ async function GetTaskGroup(bookid:string, token:string){
     }
     
     try{
-        const {data} = await axios.get(`https://api.plurall.net/api/task_workflows?only_available_todo=true&node_group=${bookid}&page=1`,config)
+        const {data} = await axios.get(`https://api.plurall.net/api/task_workflows?only_available_todo=true&node_group=${bookid}&page=${page}`,config)
         const taskGroups:ITaskGroup[] = data.data
         return taskGroups
     }catch{
